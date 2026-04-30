@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Undangan Pernikahan</title>
+
+<link rel="stylesheet" href="style.css">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="overlay">
+    <h1>Undangan Pernikahan</h1>
+    <h2>Nama Kamu & Lela</h2>
+    <button onclick="openInvite()">Buka Undangan</button>
+  </div>
+</section>
+
+<audio id="music" loop>
+  <source src="music.mp3">
+</audio>
+
+<div id="content" class="hidden">
+
+<section class="hero" data-aos="fade-up">
+  <h3>بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</h3>
+  <h1>Nama Kamu & Lela</h1>
+  <p>Sabtu, 12 Desember 2026</p>
+</section>
+
+<section class="gallery">
+  <img src="foto/pre1.jpg" data-aos="zoom-in">
+  <img src="foto/pre2.jpg" data-aos="zoom-in">
+  <img src="foto/pre3.jpg" data-aos="zoom-in">
+</section>
+
+<section class="event" data-aos="fade-up">
+  <h2>Akad Nikah</h2>
+  <p>Masjid Agung Lumajang</p>
+  <a href="https://maps.app.goo.gl/LsykqYvSHXrjYNeh8" target="_blank" class="btn-map">
+    Lihat Lokasi
+  </a>
+
+  <h2>Resepsi</h2>
+  <p>Rumah Mempelai Pria</p>
+  <a href="https://maps.app.goo.gl/n5YVLbPgTpNigAPL8" target="_blank" class="btn-map">
+    Lihat Lokasi
+  </a>
+</section>
+
+
+<section class="countdown" data-aos="fade-up">
+  <h2>Menuju Hari Bahagia</h2>
+  <div id="timer"></div>
+</section>
+
+<section class="rsvp" data-aos="fade-up">
+  <h2>Konfirmasi Kehadiran</h2>
+
+  <form id="rsvpForm">
+    <input type="text" name="nama" placeholder="Nama" required>
+    <select name="hadir">
+      <option>Hadir</option>
+      <option>Tidak Hadir</option>
+    </select>
+    <input type="number" name="jumlah" placeholder="Jumlah">
+    <button type="submit">Kirim</button>
+  </form>
+
+  <p id="status"></p>
+</section>
+
+<!-- QRIS SECTION -->
+<section class="gift" data-aos="fade-up">
+  <h2>Tanda Kasih</h2>
+
+  <p class="gift-text">
+    Kehadiran dan doa restu Bapak/Ibu/Saudara/i merupakan kebahagiaan tersendiri bagi kami. <br><br>
+    Apabila berkenan untuk berbagi kebahagiaan dalam bentuk lain, dapat disampaikan melalui QRIS di bawah ini. <br><br>
+    Tanpa mengurangi rasa hormat, hal tersebut bersifat opsional. <br><br>
+    Terima kasih atas segala doa dan kebaikan yang diberikan.
+  </p>
+
+  <img src="foto/qris.png" class="qris">
+
+  <p class="rek">a.n. Nama Kamu</p>
+
+  <p class="thanks">Terima Kasih</p>
+</section>
+
+</div>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
