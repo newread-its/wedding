@@ -196,3 +196,22 @@ input, select {
   border-radius: 8px;
   font-weight: bold;
 }
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.divider span {
+  flex: 1;
+  height: 1px;
+  background: #e6c98f; /* warna gold */
+  opacity: 0.6;
+}
+
+.divider p {
+  margin: 0 12px;
+  font-size: 14px;
+  color: #e6c98f;
+}
