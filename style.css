@@ -123,6 +123,9 @@ button {
 .hero {
   padding: 60px 20px;
   font-family: 'Playfair Display', serif;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 /* GALLERY */
