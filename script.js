@@ -5,8 +5,6 @@ function openInvite() {
   document.getElementById("content").classList.remove("hidden");
   document.getElementById("music").play();
 }
-document.getElementById("btnInvite")
-        .addEventListener("click", openInvite);
 
 /* COUNTDOWN */
 const target = new Date("Jun 12, 2026 08:00:00").getTime();
