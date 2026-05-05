@@ -36,3 +36,26 @@ document.getElementById("rsvpForm").addEventListener("submit", e => {
     document.getElementById("status").innerText = "Gagal kirim";
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const container = document.querySelector(".sparkle");
+
+  function createSparkle() {
+    const el = document.createElement("span");
+
+    el.style.left = Math.random() * window.innerWidth + "px";
+    el.style.top = Math.random() * window.innerHeight + "px";
+
+    el.style.animationDuration = (1.5 + Math.random() * 1.5) + "s";
+
+    container.appendChild(el);
+
+    setTimeout(() => {
+      el.remove();
+    }, 2000);
+  }
+
+  setInterval(createSparkle, 300);
+
+});
