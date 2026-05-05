@@ -17,6 +17,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
+   position: relative;
 
   background: radial-gradient(circle at top, #3a1515, #1b0c0c);
 }
@@ -25,6 +26,8 @@ body {
 .content {
   max-width: 420px;
   padding: 20px;
+   position: relative;
+  z-index: 2;
 }
 
 /* TOP TEXT */
@@ -214,4 +217,39 @@ input, select {
   margin: 0 12px;
   font-size: 14px;
   color: #e6c98f;
+}
+
+/* LAYER BINTANG */
+.stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+/* SATU BINTANG */
+.stars span {
+  position: absolute;
+  display: block;
+  width: 2px;
+  height: 2px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #fff;
+  animation: blink 2s infinite ease-in-out;
+}
+
+/* ANIMASI KEDIP */
+@keyframes blink {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.8);
+  }
 }
