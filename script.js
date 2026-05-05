@@ -41,20 +41,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const container = document.querySelector(".sparkle");
 
-  function createSparkle() {
-    const el = document.createElement("span");
+function createSparkle() {
+  const el = document.createElement("span");
 
-    el.style.left = Math.random() * window.innerWidth + "px";
-    el.style.top = Math.random() * window.innerHeight + "px";
+  const rect = container.getBoundingClientRect();
 
-    el.style.animationDuration = (1.5 + Math.random() * 1.5) + "s";
+  el.style.left = Math.random() * rect.width + "px";
+  el.style.top = Math.random() * rect.height + "px";
 
-    container.appendChild(el);
+  el.style.animationDuration = (1.5 + Math.random() * 1.5) + "s";
 
-    setTimeout(() => {
-      el.remove();
-    }, 2000);
-  }
+  container.appendChild(el);
+
+  setTimeout(() => {
+    el.remove();
+  }, 2000);
+}
 
   setInterval(createSparkle, 300);
 
