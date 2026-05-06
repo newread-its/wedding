@@ -40,7 +40,7 @@ document.getElementById("rsvpForm").addEventListener("submit", e => {
 document.addEventListener("DOMContentLoaded", () => {
 
   const container = document.querySelector(".sparkle");
-
+/*
 function createSparkle() {
   const el = document.createElement("span");
 
@@ -59,5 +59,50 @@ function createSparkle() {
 }
 
   setInterval(createSparkle, 300);
+*/
 
+function createSparkle(x, y) {
+  const sparkle = document.createElement("span");
+
+  // bentuk bintang random
+  const shapes = ["✦","✧","✦","✧"];
+  sparkle.innerHTML = shapes[Math.floor(Math.random() * shapes.length)];
+
+  // posisi awal
+  sparkle.style.left = x + "px";
+  sparkle.style.top = y + "px";
+
+  // ukuran random
+  sparkle.style.fontSize = (6 + Math.random() * 8) + "px";
+
+  // arah menyebar random
+  const moveX = (Math.random() - 0.5) * 120;
+  const moveY = (Math.random() - 0.5) * 120;
+
+  sparkle.style.setProperty("--x", moveX + "px");
+  sparkle.style.setProperty("--y", moveY + "px");
+
+  // durasi random biar natural
+  sparkle.style.animationDuration = (0.6 + Math.random() * 0.6) + "s";
+
+  document.querySelector(".sparkle").appendChild(sparkle);
+
+  // hapus setelah animasi
+  setTimeout(() => {
+    sparkle.remove();
+  }, 1200);
+}
+
+setInterval(() => {
+  const container = document.querySelector(".sparkle");
+  const rect = container.getBoundingClientRect();
+
+  const x = Math.random() * rect.width;
+  const y = Math.random() * rect.height;
+
+  createSparkle(x, y);
+}, 120);
+  
 });
+
+
