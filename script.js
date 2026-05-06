@@ -6,8 +6,16 @@ function openInvite() {
   document.getElementById("music").play();
 }
 
+let path = window.location.pathname; // contoh: /M%20Ainur%20Ridho
+let nama = path.replace("/", "");
+
+if (nama) {
+    nama = decodeURIComponent(nama); // otomatis ubah %20 jadi spasi
+    document.getElementById("guestName").innerText = nama;
+}
+
 /* COUNTDOWN */
-const target = new Date("Jun 12, 2026 08:00:00").getTime();
+const target = new Date("Jun 13, 2026 12:30:00").getTime();
 
 setInterval(() => {
   const now = new Date().getTime();
@@ -40,69 +48,43 @@ document.getElementById("rsvpForm").addEventListener("submit", e => {
 document.addEventListener("DOMContentLoaded", () => {
 
   const container = document.querySelector(".sparkle");
-/*
-function createSparkle() {
-  const el = document.createElement("span");
 
-  const rect = container.getBoundingClientRect();
+  function createSparkle(x, y) {
+    const sparkle = document.createElement("span");
 
-  el.style.left = Math.random() * rect.width + "px";
-  el.style.top = Math.random() * rect.height + "px";
+    const shapes = ["✦","✧"];
+    sparkle.innerHTML = shapes[Math.floor(Math.random() * shapes.length)];
 
-  el.style.animationDuration = (1.5 + Math.random() * 1.5) + "s";
+    sparkle.style.left = x + "px";
+    sparkle.style.top = y + "px";
 
-  container.appendChild(el);
+    sparkle.style.fontSize = (6 + Math.random() * 8) + "px";
 
-  setTimeout(() => {
-    el.remove();
-  }, 2000);
-}
+    const moveX = (Math.random() - 0.5) * 40;
+    const moveY = (Math.random() - 0.5) * 40;
 
-  setInterval(createSparkle, 300);
-*/
+    sparkle.style.setProperty("--x", moveX + "px");
+    sparkle.style.setProperty("--y", moveY + "px");
 
-function createSparkle(x, y) {
-  const sparkle = document.createElement("span");
+    const duration = 1.5 + Math.random() * 1.5;
+    sparkle.style.animationDuration = duration + "s";
 
-  // bentuk bintang random
-  const shapes = ["✦","✧","✦","✧"];
-  sparkle.innerHTML = shapes[Math.floor(Math.random() * shapes.length)];
+    container.appendChild(sparkle);
 
-  // posisi awal
-  sparkle.style.left = x + "px";
-  sparkle.style.top = y + "px";
+    setTimeout(() => {
+      sparkle.remove();
+    }, duration * 1000);
+  }
 
-  // ukuran random
-  sparkle.style.fontSize = (6 + Math.random() * 8) + "px";
+  setInterval(() => {
+    const rect = container.getBoundingClientRect();
 
-  // arah menyebar random
-  const moveX = (Math.random() - 0.5) * 120;
-  const moveY = (Math.random() - 0.5) * 120;
+    const x = Math.random() * rect.width;
+    const y = Math.random() * rect.height;
 
-  sparkle.style.setProperty("--x", moveX + "px");
-  sparkle.style.setProperty("--y", moveY + "px");
+    createSparkle(x, y);
+  }, 150);
 
-  // durasi random biar natural
-  sparkle.style.animationDuration = (0.6 + Math.random() * 0.6) + "s";
-
-  document.querySelector(".sparkle").appendChild(sparkle);
-
-  // hapus setelah animasi
-  setTimeout(() => {
-    sparkle.remove();
-  }, 1200);
-}
-
-setInterval(() => {
-  const container = document.querySelector(".sparkle");
-  const rect = container.getBoundingClientRect();
-
-  const x = Math.random() * rect.width;
-  const y = Math.random() * rect.height;
-
-  createSparkle(x, y);
-}, 120);
-  
 });
 
 
