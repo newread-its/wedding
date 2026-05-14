@@ -87,31 +87,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-const reveals = document.querySelectorAll(".reveal");
+const photos = document.querySelectorAll(".photo-wrapper");
 
 function revealOnScroll(){
 
-    const triggerBottom = window.innerHeight * 0.85;
-    const triggerTop = window.innerHeight * 0.15;
+    const triggerMiddle = window.innerHeight * 0.55;
 
-    reveals.forEach((element) => {
+    photos.forEach((photo) => {
 
-        const rect = element.getBoundingClientRect();
+        const rect = photo.parentElement.getBoundingClientRect();
 
+        const text = photo.parentElement.querySelector(".text-content");
+
+        /* Saat tulisan mendekati tengah layar */
         if(
-            rect.top < triggerBottom &&
-            rect.bottom > triggerTop
+            rect.top < triggerMiddle &&
+            rect.bottom > triggerMiddle
         ){
 
-            element.classList.add("active");
-            element.classList.remove("hide");
+            photo.classList.add("active");
+            photo.classList.remove("hide");
+
+            text.classList.add("down");
 
         }else{
 
-            if(element.classList.contains("active")){
+            if(photo.classList.contains("active")){
 
-                element.classList.remove("active");
-                element.classList.add("hide");
+                photo.classList.remove("active");
+                photo.classList.add("hide");
+
+                text.classList.remove("down");
 
             }
 
