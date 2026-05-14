@@ -98,18 +98,22 @@ function revealOnScroll(){
 
         const rect = element.getBoundingClientRect();
 
-        /* Muncul saat masuk area layar */
         if(
             rect.top < triggerBottom &&
             rect.bottom > triggerTop
         ){
 
             element.classList.add("active");
+            element.classList.remove("hide");
 
         }else{
 
-            /* Hilang saat keluar fokus layar */
-            element.classList.remove("active");
+            if(element.classList.contains("active")){
+
+                element.classList.remove("active");
+                element.classList.add("hide");
+
+            }
 
         }
 
@@ -118,4 +122,5 @@ function revealOnScroll(){
 }
 
 window.addEventListener("scroll", revealOnScroll);
+
 revealOnScroll();
