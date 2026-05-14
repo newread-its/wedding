@@ -301,7 +301,6 @@ input, select {
     width:320px;
     text-align:center;
     position:relative;
-    margin-bottom:12px;
 }
 
 
@@ -471,13 +470,13 @@ input, select {
   font-size:16px;
   letter-spacing:12px;
   color:#c8ae78;
-  margin-bottom:24px;
+  margin-bottom:10px;
   font-weight:300;
 }
 
 .schedule-title{
   font-family:'Cormorant Garamond', serif;
-  font-size:82px;
+  font-size:36px;
   line-height:1.05;
   color:#2b170f;
   font-weight:400;
@@ -515,27 +514,27 @@ input, select {
 
 .event-date{
   font-family:'Cormorant Garamond', serif;
-  font-size:68px;
+  font-size:18px;
   line-height:1.1;
   color:#2b170f;
   font-weight:500;
-  margin:0 0 18px;
+  margin:0 0 10px;
 }
 
 .event-time{
   font-family:'Montserrat', sans-serif;
-  font-size:34px;
+  font-size:16px;
   color:#8d7765;
-  margin-bottom:65px;
+  margin-bottom:10px;
   font-weight:400;
 }
 
 .event-location{
   font-family:'Cormorant Garamond', serif;
   color:#6e5848;
-  font-size:34px;
+  font-size:14px;
   line-height:1.7;
-  margin-bottom:60px;
+  margin-bottom:10px;
 }
 
 .event-location p{
@@ -545,14 +544,14 @@ input, select {
 .map-button{
   display:inline-flex;
   align-items:center;
-  gap:14px;
+  gap:10px;
   padding:24px 46px;
   border:2px solid #e0cfb0;
   border-radius:999px;
   text-decoration:none;
   color:#c8ae78;
   font-family:'Montserrat', sans-serif;
-  font-size:28px;
+  font-size:16px;
   font-weight:400;
   transition:0.3s ease;
 }
