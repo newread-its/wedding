@@ -89,14 +89,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const reveals = document.querySelectorAll(".reveal");
 
-function revealOnScroll() {
+function revealOnScroll(){
 
     reveals.forEach((element) => {
 
         const windowHeight = window.innerHeight;
         const elementTop = element.getBoundingClientRect().top;
 
-        if(elementTop < windowHeight - 100){
+        if(elementTop < windowHeight - 120){
             element.classList.add("active");
         }
 
