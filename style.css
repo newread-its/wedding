@@ -383,36 +383,43 @@ input, select {
     font-size:70px;
     color:#d4af37;
 
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
     animation:pulse 2s infinite;
 }
 
 
-/* ===== ANIMASI MUNCUL ===== */
+/* ===== ANIMASI AWAL ===== */
 
 .reveal{
     opacity:0;
-    transition:1s;
+    transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
 }
 
 .left{
     transform:
-    translateX(-120px)
-    scale(0.5);
+    translateX(-150px)
+    scale(0.3);
 }
 
 .right{
     transform:
-    translateX(120px)
-    scale(0.5);
+    translateX(150px)
+    scale(0.3);
 }
+
+
+/* ===== SAAT TERLIHAT ===== */
 
 .reveal.active{
     opacity:1;
     transform:
     translateX(0)
     scale(1);
-
-    animation:bounceIn 1.2s;
 }
 
 
