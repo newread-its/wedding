@@ -596,56 +596,72 @@ input, select {
         font-size:50px;
     }
 
+    /* ===== SCHEDULE ===== */
+
     .schedule-section{
-    padding:55px 20px;
-  }
+        padding:55px 20px;
+    }
 
-  .schedule-subtitle{
-    font-size:12px;
-    letter-spacing:8px;
-    margin-bottom:18px;
-  }
+    .schedule-subtitle{
+        font-size:10px;
+        letter-spacing:5px;
+        margin-bottom:10px;
+    }
 
-  .schedule-title{
-    font-size:62px;
-    margin-bottom:50px;
-  }
+    .schedule-title{
+        font-size:32px;
+        margin-bottom:30px;
+    }
 
-  .schedule-card{
-    padding:60px 26px 50px;
-    border-radius:28px;
-  }
+    .schedule-card{
+        padding:40px 20px;
+        border-radius:24px;
+    }
 
-  .schedule-icon{
-    width:100px;
-    height:100px;
-    margin-bottom:35px;
-  }
+    .schedule-icon{
+        width:80px;
+        height:80px;
+        margin-bottom:20px;
+    }
 
-  .event-type{
-    font-size:16px;
-    letter-spacing:6px;
-  }
+    .schedule-icon svg{
+        width:28px;
+        height:28px;
+    }
 
-  .event-date{
-    font-size:42px;
-  }
+    .event-type{
+        font-size:12px;
+        letter-spacing:4px;
+        margin-bottom:20px;
+    }
 
-  .event-time{
-    font-size:22px;
-    margin-bottom:50px;
-  }
+    .event-date{
+        font-size:20px;
+        margin-bottom:8px;
+    }
 
-  .event-location{
-    font-size:24px;
-    margin-bottom:45px;
-  }
+    .event-time{
+        font-size:14px;
+        margin-bottom:15px;
+    }
 
-  .map-button{
-    padding:18px 32px;
-    font-size:20px;
-  }
+    .event-location{
+        font-size:13px;
+        margin-bottom:20px;
+    }
+
+    .map-button{
+        padding:12px 22px;
+        font-size:12px;
+        gap:8px;
+    }
+
+    .map-button svg{
+        width:16px;
+        height:16px;
+    }
 }
+
 
 
 
