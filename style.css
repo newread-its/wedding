@@ -605,13 +605,13 @@ input, select {
     }
 
     .schedule-subtitle{
-        font-size:10px;
+        font-size:18px;
         letter-spacing:5px;
         margin-bottom:10px;
     }
 
     .schedule-title{
-        font-size:32px;
+        font-size:24px;
         margin-bottom:30px;
     }
 
@@ -632,7 +632,7 @@ input, select {
     }
 
     .event-type{
-        font-size:12px;
+        font-size:18px;
         letter-spacing:4px;
         margin-bottom:20px;
     }
