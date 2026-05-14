@@ -288,9 +288,9 @@ input, select {
     background:
     linear-gradient(
         to bottom,
-        #fffaf5,
-        #fff,
-        #fffaf5
+        #eee7df,
+        #eee,
+        #eee7df
     );
 }
 
@@ -391,35 +391,71 @@ input, select {
 }
 
 
-/* ===== ANIMASI AWAL ===== */
+/* ===== FOTO DEFAULT ===== */
 
 .reveal{
     opacity:0;
-    transition:
-    opacity 0.8s ease,
-    transform 0.8s ease;
-}
+    transform:scale(0);
 
-.left{
-    transform:
-    translateX(-150px)
-    scale(0.3);
-}
-
-.right{
-    transform:
-    translateX(150px)
-    scale(0.3);
+    transition:none;
 }
 
 
-/* ===== SAAT TERLIHAT ===== */
+/* ===== FOTO MUNCUL ===== */
 
 .reveal.active{
-    opacity:1;
-    transform:
-    translateX(0)
-    scale(1);
+    animation:showPhoto 0.9s forwards;
+}
+
+
+/* ===== FOTO HILANG ===== */
+
+.reveal.hide{
+    animation:hidePhoto 0.7s forwards;
+}
+
+
+/* ===== ANIMASI MASUK ===== */
+
+@keyframes showPhoto{
+
+    0%{
+        opacity:0;
+        transform:scale(0);
+    }
+
+    60%{
+        opacity:1;
+        transform:scale(1.15);
+    }
+
+    100%{
+        opacity:1;
+        transform:scale(1);
+    }
+
+}
+
+
+/* ===== ANIMASI KELUAR ===== */
+
+@keyframes hidePhoto{
+
+    0%{
+        opacity:1;
+        transform:scale(1);
+    }
+
+    40%{
+        opacity:1;
+        transform:scale(1.12);
+    }
+
+    100%{
+        opacity:0;
+        transform:scale(0);
+    }
+
 }
 
 
