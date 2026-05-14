@@ -17,15 +17,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-   position: relative;
-/*
-  background: #e6c98f;
-
-box-shadow:
-  0 0 10px rgba(230,201,143,0.9),
-  0 0 20px rgba(230,201,143,0.6),
-  0 0 40px rgba(230,201,143,0.4);
-  */
+  position: relative;
   background: radial-gradient(circle at top, #3a1515, #1b0c0c);
 }
 
@@ -91,7 +83,7 @@ box-shadow:
 }
 
 .quote1 {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.8;
   margin: 30px 0;
   font-style: normal;
@@ -445,6 +437,135 @@ input, select {
 
 }
 
+.nama_pengantin{
+    font-size:36px;
+    color:#2F1A0F;
+    font-family:'Great Vibes', cursive;
+    font-style:bold;
+    margin-top:10px;
+}
+
+.status_anak{
+    font-size:16px;
+    color:#9A7D6A;
+    font-family:'Poppins', sans-serif;
+    font-style:italic;
+    margin-top:8px;
+}
+.ortu{
+    font-size:18px;
+    color:#2F1A0F;
+    font-family:'Georgia', serif;
+    margin-top:10px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap');
+.schedule-section{
+  padding:70px 24px;
+  text-align:center;
+  background:#f7f5f2;
+}
+
+.schedule-subtitle{
+  font-family:'Montserrat', sans-serif;
+  font-size:16px;
+  letter-spacing:12px;
+  color:#c8ae78;
+  margin-bottom:24px;
+  font-weight:300;
+}
+
+.schedule-title{
+  font-family:'Cormorant Garamond', serif;
+  font-size:82px;
+  line-height:1.05;
+  color:#2b170f;
+  font-weight:400;
+  margin:0 0 70px;
+}
+
+.schedule-card{
+  max-width:760px;
+  margin:auto;
+  border:2px solid #eadfce;
+  border-radius:38px;
+  padding:85px 40px 70px;
+  background:#f7f5f2;
+}
+
+.schedule-icon{
+  width:130px;
+  height:130px;
+  border:2px solid #eadfce;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 45px;
+}
+
+.event-type{
+  font-family:'Montserrat', sans-serif;
+  font-size:22px;
+  letter-spacing:8px;
+  color:#c8ae78;
+  margin-bottom:34px;
+  font-weight:300;
+}
+
+.event-date{
+  font-family:'Cormorant Garamond', serif;
+  font-size:68px;
+  line-height:1.1;
+  color:#2b170f;
+  font-weight:500;
+  margin:0 0 18px;
+}
+
+.event-time{
+  font-family:'Montserrat', sans-serif;
+  font-size:34px;
+  color:#8d7765;
+  margin-bottom:65px;
+  font-weight:400;
+}
+
+.event-location{
+  font-family:'Cormorant Garamond', serif;
+  color:#6e5848;
+  font-size:34px;
+  line-height:1.7;
+  margin-bottom:60px;
+}
+
+.event-location p{
+  margin:0;
+}
+
+.map-button{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  padding:24px 46px;
+  border:2px solid #e0cfb0;
+  border-radius:999px;
+  text-decoration:none;
+  color:#c8ae78;
+  font-family:'Montserrat', sans-serif;
+  font-size:28px;
+  font-weight:400;
+  transition:0.3s ease;
+}
+
+.map-button:hover{
+  background:#c8ae78;
+  color:#fff;
+}
+
+.map-button:hover svg path,
+.map-button:hover svg circle{
+  stroke:#fff;
+}
 
 /* ===== RESPONSIVE HP ===== */
 
@@ -475,26 +596,58 @@ input, select {
         font-size:50px;
     }
 
-}
+    .schedule-section{
+    padding:55px 20px;
+  }
 
-.nama_pengantin{
-    font-size:36px;
-    color:#2F1A0F;
-    font-family:'Great Vibes', cursive;
-    font-style:bold;
-    margin-top:10px;
-}
+  .schedule-subtitle{
+    font-size:12px;
+    letter-spacing:8px;
+    margin-bottom:18px;
+  }
 
-.status_anak{
+  .schedule-title{
+    font-size:62px;
+    margin-bottom:50px;
+  }
+
+  .schedule-card{
+    padding:60px 26px 50px;
+    border-radius:28px;
+  }
+
+  .schedule-icon{
+    width:100px;
+    height:100px;
+    margin-bottom:35px;
+  }
+
+  .event-type{
     font-size:16px;
-    color:#9A7D6A;
-    font-family:'Poppins', sans-serif;
-    font-style:italic;
-    margin-top:8px;
+    letter-spacing:6px;
+  }
+
+  .event-date{
+    font-size:42px;
+  }
+
+  .event-time{
+    font-size:22px;
+    margin-bottom:50px;
+  }
+
+  .event-location{
+    font-size:24px;
+    margin-bottom:45px;
+  }
+
+  .map-button{
+    padding:18px 32px;
+    font-size:20px;
+  }
 }
-.ortu{
-    font-size:18px;
-    color:#2F1A0F;
-    font-family:'Georgia', serif;
-    margin-top:10px;
-}
+
+
+
+
+
