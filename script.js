@@ -91,13 +91,26 @@ const reveals = document.querySelectorAll(".reveal");
 
 function revealOnScroll(){
 
+    const triggerBottom = window.innerHeight * 0.85;
+    const triggerTop = window.innerHeight * 0.15;
+
     reveals.forEach((element) => {
 
-        const windowHeight = window.innerHeight;
-        const elementTop = element.getBoundingClientRect().top;
+        const rect = element.getBoundingClientRect();
 
-        if(elementTop < windowHeight - 120){
+        /* Muncul saat masuk area layar */
+        if(
+            rect.top < triggerBottom &&
+            rect.bottom > triggerTop
+        ){
+
             element.classList.add("active");
+
+        }else{
+
+            /* Hilang saat keluar fokus layar */
+            element.classList.remove("active");
+
         }
 
     });
@@ -105,5 +118,4 @@ function revealOnScroll(){
 }
 
 window.addEventListener("scroll", revealOnScroll);
-
 revealOnScroll();
