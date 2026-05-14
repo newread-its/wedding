@@ -47,6 +47,22 @@ document.getElementById("rsvpForm").addEventListener("submit", e => {
 
 document.addEventListener("DOMContentLoaded", () => {
 
+  // =========================
+  // ANIMASI CARD
+  // =========================
+  const card = document.querySelector(".schedule-card");
+
+  if (card) {
+    card.style.opacity = "0";
+    card.style.transform = "translateY(30px)";
+
+    setTimeout(() => {
+      card.style.transition = "all 1s ease";
+      card.style.opacity = "1";
+      card.style.transform = "translateY(0)";
+    }, 300);
+  }
+
   const container = document.querySelector(".sparkle");
 
   function createSparkle(x, y) {
