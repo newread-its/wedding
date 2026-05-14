@@ -467,7 +467,8 @@ input, select {
 
 .schedule-subtitle{
   font-family:'Montserrat', sans-serif;
-  font-size:16px;
+  font-size:18px;
+  font-style:bold;
   letter-spacing:12px;
   color:#c8ae78;
   margin-bottom:10px;
@@ -476,7 +477,7 @@ input, select {
 
 .schedule-title{
   font-family:'Cormorant Garamond', serif;
-  font-size:36px;
+  font-size:28px;
   line-height:1.05;
   color:#2b170f;
   font-weight:400;
@@ -506,7 +507,8 @@ input, select {
 
 .event-type{
   font-family:'Montserrat', sans-serif;
-  font-size:22px;
+  font-size:24px;
+  font-style:bold;
   letter-spacing:8px;
   color:#c8ae78;
   margin-bottom:34px;
