@@ -783,6 +783,8 @@ input, select {
         #eee,
         #eee7df
     );
+
+    min-height: 600px; /* 🔥 INI KUNCI FIX */
 }
 
 /* container animasi */
@@ -849,7 +851,7 @@ input, select {
     }
 
     100%{
-        transform: translateY(-600px) scale(2.2);
+        transform: translateY(-100%) scale(2.2);
         opacity: 0;
     }
 }
