@@ -5,8 +5,7 @@
 }
 
 body {
-  /*background: #1b0c0c;*/
-  background: ##1B4D3E
+  background: #1b0c0c;
   color: #e6c98f;
   font-family: 'Playfair Display', serif;
 }
@@ -19,7 +18,8 @@ body {
   align-items: center;
   text-align: center;
   position: relative;
-  background: radial-gradient(circle at top, #3a1515, #1b0c0c);
+  /*background: radial-gradient(circle at top, #3a1515, #1b0c0c);*/
+  background: radial-gradient(circle at top, #2f4f3e, #0d1813);
 }
 
 /* CONTAINER */
