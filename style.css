@@ -501,7 +501,7 @@ input, select {
   font-style:bold;
   letter-spacing:12px;
   color:#c8ae78;
-  margin-bottom:50px;
+  margin-bottom:70px;
   font-weight:300;
 }
 
@@ -549,17 +549,19 @@ input, select {
 .schedule-card::before{
     content:"";
     position:absolute;
-    inset:0;
-    border-radius:38px;
-    /* TEBAL BORDER */
-    padding:2.8px;
+    /* masuk sedikit supaya tidak keluar di corner */
+    inset:2px;
+    /* radius dikurangi */
+    border-radius:34px;
+    /* ketebalan border */
+    padding:3px;
     background:
     conic-gradient(
         from var(--angle),
-        rgba(255,255,255,0.04),
-        rgba(255,255,255,0.98),
+        rgba(255,255,255,0.03),
+        rgba(255,255,255,1),
         rgba(230,201,143,1),
-        rgba(255,255,255,0.04)
+        rgba(255,255,255,0.03)
     );
     animation:borderFlow 5s linear infinite;
     -webkit-mask:
@@ -568,10 +570,10 @@ input, select {
     -webkit-mask-composite:xor;
             mask-composite:exclude;
     filter:
-    blur(0.6px)
-    drop-shadow(0 0 14px rgba(255,255,255,0.20));
+    drop-shadow(0 0 10px rgba(255,255,255,0.12));
     pointer-events:none;
 }
+
 
 @keyframes borderFlow{
     from{
