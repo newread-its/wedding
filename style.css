@@ -779,37 +779,80 @@ input, select {
 }
 
 /* CONTAINER LOVE */
+.love-story-section{
+    position: relative;
+    overflow: hidden;
+
+    padding: 100px 25px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #eee7df,
+            #eee,
+            #eee7df
+        );
+}
+
+/* CONTAINER LOVE */
 .floating-love-container{
     position: absolute;
     inset: 0;
+
     overflow: hidden;
+
     pointer-events: none;
+
     z-index: 1;
 }
 
-/* ISI TEXT */
+/* ISI */
 .love-story-content{
     position: relative;
     z-index: 2;
 
     max-width: 750px;
+
     margin: auto;
+
     text-align: center;
+}
+
+/* JUDUL */
+.love-story-title{
+    font-family: 'Great Vibes', cursive;
+
+    font-size: 48px;
+
+    color: #c8ae78;
+
+    margin-bottom: 35px;
+}
+
+/* TEXT */
+.love-story-text{
+    font-size: 16px;
+
+    line-height: 2;
+
+    color: #555;
 }
 
 /* LOVE */
 .floating-love{
     position: absolute;
+
     bottom: -50px;
 
     opacity: 0;
 
-    animation: loveFloat linear forwards;
+    animation:
+        loveFloat linear forwards;
 
     user-select: none;
 }
 
-/* ANIMASI */
+/* ANIMASI LOVE */
 @keyframes loveFloat{
 
     0%{
@@ -819,6 +862,7 @@ input, select {
             rotate(0deg);
 
         opacity: 0;
+
         color: #ffb3c1;
     }
 
@@ -837,6 +881,7 @@ input, select {
             rotate(360deg);
 
         opacity: 0;
+
         color: #ff003c;
     }
 }
