@@ -221,37 +221,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function createLove() {
 
-        if (!loveContainer) return;
+    if (!loveContainer) return;
 
-        const love =
-            document.createElement("div");
+    const love =
+        document.createElement("div");
 
-        love.classList.add("floating-love");
+    love.classList.add("floating-love");
 
-        love.innerHTML = "❤";
+    love.innerHTML = "❤";
 
-        love.style.left =
-            Math.random() * 100 + "%";
+    // 🔥 POSISI RANDOM FULL AREA (INI YANG KAMU BELUM PUNYA)
+    const rect = loveContainer.getBoundingClientRect();
 
-        const size =
-            Math.random() * 20 + 10;
+    love.style.left =
+        Math.random() * rect.width + "px";
 
-        love.style.fontSize =
-            size + "px";
+    love.style.top =
+        rect.height - 10 + "px"; // start dari bawah container
 
-        const duration =
-            Math.random() * 4 + 5;
+    // ukuran
+    const size =
+        Math.random() * 20 + 10;
 
-        love.style.animationDuration =
-            duration + "s";
+    love.style.fontSize =
+        size + "px";
 
-        loveContainer.appendChild(love);
+    // durasi
+    const duration =
+        Math.random() * 4 + 5;
 
-        setTimeout(() => {
+    love.style.animationDuration =
+        duration + "s";
 
-            love.remove();
+    loveContainer.appendChild(love);
 
-        }, duration * 1000);
+    setTimeout(() => {
+        love.remove();
+    }, duration * 1000);
 
     }
 
