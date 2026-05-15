@@ -440,7 +440,6 @@ input, select {
     font-size:36px;
     color:#2F1A0F;
     font-family:'Great Vibes', cursive;
-    font-style:bold;
     margin-top:20px;
 }
 
@@ -498,11 +497,10 @@ input, select {
 .schedule-subtitle{
   font-family:'Montserrat', sans-serif;
   font-size:18px;
-  font-style:bold;
   letter-spacing:12px;
   color:#c8ae78;
-  margin-bottom:70px;
-  font-weight:300;
+  font-weight:400;
+  margin:0 0 70px;
 }
 
 .schedule-title{
@@ -517,6 +515,7 @@ input, select {
 /* ===== GLASS CARD ===== */
 
 .schedule-card{
+    isolation:isolate;
     position:sticky;
     top:80px;
     max-width:760px;
@@ -549,19 +548,16 @@ input, select {
 .schedule-card::before{
     content:"";
     position:absolute;
-    /* masuk sedikit supaya tidak keluar di corner */
     inset:2px;
-    /* radius dikurangi */
     border-radius:34px;
-    /* ketebalan border */
     padding:3px;
     background:
     conic-gradient(
         from var(--angle),
-        rgba(255,255,255,0.03),
+        rgba(255,255,255,0.02),
         rgba(255,255,255,1),
         rgba(230,201,143,1),
-        rgba(255,255,255,0.03)
+        rgba(255,255,255,0.02)
     );
     animation:borderFlow 5s linear infinite;
     -webkit-mask:
@@ -569,10 +565,9 @@ input, select {
         linear-gradient(#fff 0 0);
     -webkit-mask-composite:xor;
             mask-composite:exclude;
-    filter:
-    drop-shadow(0 0 10px rgba(255,255,255,0.12));
     pointer-events:none;
 }
+
 
 
 @keyframes borderFlow{
@@ -598,7 +593,6 @@ input, select {
 .event-type{
   font-family:'Montserrat', sans-serif;
   font-size:24px;
-  font-style:bold;
   letter-spacing:8px;
   color:#c8ae78;
   margin-bottom:34px;
