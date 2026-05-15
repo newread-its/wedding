@@ -774,6 +774,7 @@ input, select {
 .love-story-section{
     position: relative;
     overflow: hidden;
+
     padding: 100px 25px;
 
     background: linear-gradient(
@@ -784,26 +785,60 @@ input, select {
     );
 }
 
+/* container animasi */
 .floating-love-container{
     position: absolute;
     inset: 0;
-    overflow: hidden;
     pointer-events: none;
     z-index: 1;
 }
 
+/* isi harus center stabil */
+.love-story-content{
+    position: relative;
+    z-index: 2;
+
+    max-width: 750px;
+    margin: auto;
+
+    text-align: center;
+}
+
+/* TITLE FIX */
+.love-story-title{
+    font-family: 'Great Vibes', cursive;
+
+    font-size: 48px;
+
+    color: #c8ae78;
+
+    margin-bottom: 25px;
+}
+
+/* TEXT FIX */
+.love-story-text{
+    font-size: 16px;
+
+    line-height: 2;
+
+    color: #555;
+}
+
+/* LOVE */
 .floating-love{
     position: absolute;
 
+    bottom: -20px;
+
     opacity: 0;
 
-    user-select: none;
-
     animation: loveFloat linear forwards;
+
+    user-select: none;
 }
 
+/* ANIMASI */
 @keyframes loveFloat{
-
     0%{
         transform: translateY(0) scale(0.3);
         opacity: 0;
@@ -814,11 +849,10 @@ input, select {
     }
 
     100%{
-        transform: translateY(-120%) scale(2.2);
+        transform: translateY(-130%) scale(2.2);
         opacity: 0;
     }
 }
-
 
 
 
