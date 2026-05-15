@@ -216,10 +216,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // =========================
     // LOVE
     // =========================
-    const loveContainer =
-        document.querySelector(".floating-love-container");
+   const loveContainer =
+    document.querySelector(".floating-love-container");
 
-    function createLove() {
+function createLove() {
 
     if (!loveContainer) return;
 
@@ -230,25 +230,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     love.innerHTML = "❤";
 
-    // 🔥 POSISI RANDOM FULL AREA (INI YANG KAMU BELUM PUNYA)
-    const rect = loveContainer.getBoundingClientRect();
-
     love.style.left =
-        Math.random() * rect.width + "px";
-
-    love.style.top =
-        rect.height - 10 + "px"; // start dari bawah container
-
-    // ukuran
-    const size =
-        Math.random() * 20 + 10;
+        Math.random() * 100 + "%";
 
     love.style.fontSize =
-        size + "px";
+        (10 + Math.random() * 20) + "px";
 
-    // durasi
     const duration =
-        Math.random() * 4 + 5;
+        4 + Math.random() * 3;
 
     love.style.animationDuration =
         duration + "s";
@@ -258,10 +247,9 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
         love.remove();
     }, duration * 1000);
+}
 
-    }
-
-    setInterval(createLove, 300);
+setInterval(createLove, 250);
 
     // =========================
     // FOTO SCROLL
