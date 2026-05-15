@@ -774,75 +774,26 @@ input, select {
 .love-story-section{
     position: relative;
     overflow: hidden;
-
     padding: 100px 25px;
 
-    /* background gradient kamu tetap */
-    background:
-        linear-gradient(
-            to bottom,
-            #eee7df,
-            #eee,
-            #eee7df
-        );
+    background: linear-gradient(
+        to bottom,
+        #eee7df,
+        #eee,
+        #eee7df
+    );
 }
 
-/* =========================
-   CONTAINER LOVE (HANYA SECTION INI)
-========================= */
 .floating-love-container{
     position: absolute;
     inset: 0;
-
     overflow: hidden;
-
     pointer-events: none;
-
     z-index: 1;
 }
 
-/* =========================
-   CONTENT TEXT (DI ATAS LOVE)
-========================= */
-.love-story-content{
-    position: relative;
-    z-index: 2;
-
-    max-width: 750px;
-    margin: auto;
-
-    text-align: center;
-
-    color: #444;
-}
-
-/* TITLE */
-.love-story-title{
-    font-family: 'Great Vibes', cursive;
-
-    font-size: 48px;
-
-    color: #c8ae78;
-
-    margin-bottom: 30px;
-}
-
-/* TEXT PARAGRAF */
-.love-story-text{
-    font-size: 16px;
-
-    line-height: 2;
-
-    color: #555;
-}
-
-/* =========================
-   LOVE STYLE
-========================= */
 .floating-love{
     position: absolute;
-
-    bottom: -20px; /* start sedikit dari bawah section */
 
     opacity: 0;
 
@@ -851,45 +802,20 @@ input, select {
     animation: loveFloat linear forwards;
 }
 
-/* =========================
-   ANIMASI LOVE FLOAT
-========================= */
 @keyframes loveFloat{
 
     0%{
-        transform:
-            translateY(0)
-            translateX(0)
-            scale(0.3)
-            rotate(0deg);
-
+        transform: translateY(0) scale(0.3);
         opacity: 0;
-
-        color: #ffb3c1;
     }
 
     10%{
         opacity: 1;
     }
 
-    40%{
-        color: #ff4d6d;
-    }
-
-    70%{
-        color: #ff1744;
-    }
-
     100%{
-        transform:
-            translateY(-120%)
-            translateX(30px)
-            scale(2.2)
-            rotate(360deg);
-
+        transform: translateY(-120%) scale(2.2);
         opacity: 0;
-
-        color: #ff003c;
     }
 }
 
