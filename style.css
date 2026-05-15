@@ -771,46 +771,71 @@ input, select {
 
 /* Love animation */
 
-.floating-love-container{
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
+/* SECTION LOVE STORY */
+.love-story-section{
+    position: relative;
     overflow: hidden;
-    z-index: 9999;
+    padding: 100px 25px;
 }
 
+/* CONTAINER LOVE */
+.floating-love-container{
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ISI TEXT */
+.love-story-content{
+    position: relative;
+    z-index: 2;
+
+    max-width: 750px;
+    margin: auto;
+    text-align: center;
+}
+
+/* LOVE */
 .floating-love{
     position: absolute;
-    bottom: -40px;
-    font-size: 10px;
+    bottom: -50px;
+
     opacity: 0;
-    animation: floatLove linear forwards;
-    filter: drop-shadow(0 0 10px rgba(255,0,80,0.5));
-    transform-origin: center;
+
+    animation: loveFloat linear forwards;
+
     user-select: none;
 }
 
-@keyframes floatLove{
+/* ANIMASI */
+@keyframes loveFloat{
+
     0%{
-        transform: translateY(0) scale(0.2) rotate(0deg);
+        transform:
+            translateY(0)
+            scale(0.2)
+            rotate(0deg);
+
         opacity: 0;
-        color: #ff8aa5;
+        color: #ffb3c1;
     }
 
     10%{
         opacity: 1;
     }
 
-    30%{
+    50%{
         color: #ff4d6d;
     }
 
-    60%{
-        color: #ff1744;
-    }
-
     100%{
-        transform: translateY(-120vh) scale(2.2) rotate(360deg);
+        transform:
+            translateY(-120%)
+            scale(2)
+            rotate(360deg);
+
         opacity: 0;
         color: #ff003c;
     }
