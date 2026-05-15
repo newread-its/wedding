@@ -774,7 +774,6 @@ input, select {
 .love-story-section{
     position: relative;
     overflow: hidden;
-
     padding: 100px 25px;
 
     background: linear-gradient(
@@ -783,8 +782,6 @@ input, select {
         #eee,
         #eee7df
     );
-
-    min-height: 600px; /* 🔥 INI KUNCI FIX */
 }
 
 /* container animasi */
@@ -821,7 +818,7 @@ input, select {
 .love-story-text{
     font-size: 16px;
 
-    line-height: 1;
+    line-height: 1.5;
 
     color: #555;
 }
@@ -830,7 +827,7 @@ input, select {
 .floating-love{
     position: absolute;
 
-    bottom: 0;
+    bottom: -20px;
 
     opacity: 0;
 
@@ -851,7 +848,7 @@ input, select {
     }
 
     100%{
-        transform: translateY(-100%) scale(2.2);
+        transform: translateY(-120vh) scale(2.2);
         opacity: 0;
     }
 }
