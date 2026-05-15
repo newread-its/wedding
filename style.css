@@ -811,12 +811,10 @@ input, select {
 /* TITLE FIX */
 .love-story-title{
     font-family: 'Great Vibes', cursive;
-
     font-size: 48px;
-
     color: #c8ae78;
-
     margin-bottom: 25px;
+    transform: translateY(-20px);
 }
 
 /* TEXT FIX */
