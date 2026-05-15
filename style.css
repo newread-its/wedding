@@ -769,33 +769,36 @@ input, select {
     }
 
     /*count menuju hari bahagia*/
-    .main-title{
+     .main-title{
         font-size:58px;
         line-height:1.1;
     }
 
     .date-text{
-        font-size:22px;
-        margin-bottom:45px;
+        font-size:20px;
+        margin-bottom:35px;
     }
 
     .countdown-wrapper{
-        gap:18px;
+        gap:10px;
+        flex-wrap:nowrap;
+        justify-content:center;
     }
 
     .lux-card{
-        width:150px;
-        height:200px;
-        border-radius:30px;
+        width:82px;
+        height:115px;
+        border-radius:22px;
     }
 
     .number{
-        font-size:62px;
+        font-size:38px;
     }
 
     .label{
-        font-size:14px;
-        letter-spacing:3px;
+        margin-top:6px;
+        font-size:11px;
+        letter-spacing:2px;
     }
 }
 
