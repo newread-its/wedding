@@ -353,7 +353,7 @@ input, select {
 
 .text-content{
     transition:transform 0.7s ease;
-    margin-top:-50px;
+    margin-top:-30px;
 }
 
 
@@ -459,11 +459,46 @@ input, select {
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap');
-.schedule-section{
-  padding:70px 24px;
-  text-align:center;
-  background:#f7f5f2;
+
+/* ===== WRAPPER ===== */
+.schedule-wrapper{
+    position:relative;
+    min-height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
+
+/* ===== GIF BACKGROUND ===== */
+.schedule-bg{
+    position:absolute;
+    inset:0;
+    background:
+    linear-gradient(
+        rgba(15,8,8,0.45),
+        rgba(15,8,8,0.55)
+    ),
+    url("../foto/bg_schedule.gif");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    transform:scale(1.08);
+    z-index:0;
+    filter:
+    saturate(1.05)
+    brightness(0.92);
+}
+
+.schedule-section{
+    position:relative;
+    z-index:2;
+    width:100%;
+    padding:120px 24px;
+    background:transparent;
+}
+
 
 .schedule-subtitle{
   font-family:'Montserrat', sans-serif;
@@ -484,6 +519,8 @@ input, select {
   margin:0 0 70px;
 }
 
+/* ===== GLASS CARD ===== */
+
 .schedule-card{
     position:relative;
     max-width:760px;
@@ -491,48 +528,50 @@ input, select {
     margin-bottom:30px;
     padding:85px 40px 70px;
     border-radius:38px;
-    background:#f7f5f2;
     overflow:hidden;
+    background:
+    linear-gradient(
+        rgba(255,255,255,0.08),
+        rgba(255,255,255,0.03)
+    );
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    border:
+    1px solid rgba(255,255,255,0.14);
+    box-shadow:
+    0 10px 40px rgba(0,0,0,0.28);
 }
-
-/* BORDER GRADASI MUTER */
+/* ===== BORDER FLOW PREMIUM ===== */
+@property --angle{
+    syntax:"<angle>";
+    initial-value:0deg;
+    inherits:false;
+}
 .schedule-card::before{
-
     content:"";
-
     position:absolute;
-
     inset:0;
-
     border-radius:38px;
-
-    padding:2px;
-
+    padding:1.5px;
     background:
     conic-gradient(
         from var(--angle),
-        rgba(234,223,206,0.35),
-        rgba(255,255,255,1),
+        rgba(255,255,255,0.05),
+        rgba(255,255,255,0.9),
         rgba(230,201,143,0.95),
-        rgba(234,223,206,0.35),
-        rgba(234,223,206,0.35)
+        rgba(255,255,255,0.05)
     );
-    animation:borderFlow 4s linear infinite;
-    /* hanya border */
+
+    animation:borderFlow 5s linear infinite;
     -webkit-mask:
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
     -webkit-mask-composite:xor;
             mask-composite:exclude;
     filter:
-    drop-shadow(0 0 8px rgba(255,255,255,0.25));
+    blur(0.4px)
+    drop-shadow(0 0 12px rgba(255,255,255,0.18));
     pointer-events:none;
-}
-
-@property --angle{
-    syntax:"<angle>";
-    initial-value:0deg;
-    inherits:false;
 }
 
 @keyframes borderFlow{
@@ -543,8 +582,6 @@ input, select {
         --angle:360deg;
     }
 }
-
-
 
 .schedule-icon{
   width:130px;
