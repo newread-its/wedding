@@ -471,7 +471,7 @@ input, select {
   font-style:bold;
   letter-spacing:12px;
   color:#c8ae78;
-  margin-bottom:10px;
+  margin-bottom:30px;
   font-weight:300;
 }
 
@@ -485,14 +485,57 @@ input, select {
 }
 
 .schedule-card{
-  max-width:760px;
-  margin:auto;
-  border:2px solid #eadfce;
-  border-radius:38px;
-  padding:85px 40px 70px;
-  background:#f7f5f2;
-  margin-bottom:30px;
+    position:relative;
+    max-width:760px;
+    margin:auto;
+    margin-bottom:30px;
+    padding:85px 40px 70px;
+    border-radius:38px;
+    background:#f7f5f2;
+    overflow:hidden;
 }
+
+/* BORDER GRADASI MUTER */
+
+.schedule-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:38px;
+    padding:2px;
+    background:
+    conic-gradient(
+        from 0deg,
+        rgba(234,223,206,0.35),
+        rgba(255,255,255,0.95),
+        rgba(230,201,143,0.9),
+        rgba(234,223,206,0.35),
+        rgba(255,255,255,0.95),
+        rgba(230,201,143,0.9),
+        rgba(234,223,206,0.35)
+    );
+    animation:rotateBorder 5s linear infinite;
+    /* bikin jadi border */
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor;
+            mask-composite:exclude;
+    filter:
+    blur(0.5px)
+    drop-shadow(0 0 10px rgba(255,255,255,0.25));
+    pointer-events:none;
+}
+
+@keyframes rotateBorder{
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform:rotate(360deg);
+    }
+}
+
 
 .schedule-icon{
   width:130px;
