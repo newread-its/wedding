@@ -769,7 +769,52 @@ input, select {
     }
 }
 
+/* Love animation */
 
+.floating-love-container{
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.floating-love{
+    position: absolute;
+    bottom: -40px;
+    font-size: 10px;
+    opacity: 0;
+    animation: floatLove linear forwards;
+    filter: drop-shadow(0 0 10px rgba(255,0,80,0.5));
+    transform-origin: center;
+    user-select: none;
+}
+
+@keyframes floatLove{
+    0%{
+        transform: translateY(0) scale(0.2) rotate(0deg);
+        opacity: 0;
+        color: #ff8aa5;
+    }
+
+    10%{
+        opacity: 1;
+    }
+
+    30%{
+        color: #ff4d6d;
+    }
+
+    60%{
+        color: #ff1744;
+    }
+
+    100%{
+        transform: translateY(-120vh) scale(2.2) rotate(360deg);
+        opacity: 0;
+        color: #ff003c;
+    }
+}
 
 
 
