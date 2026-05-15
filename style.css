@@ -769,7 +769,12 @@ input, select {
     }
 
     /*count menuju hari bahagia*/
-     .main-title{
+     .luxury-countdown{
+        padding-left:10px;
+        padding-right:10px;
+    }
+
+    .main-title{
         font-size:58px;
         line-height:1.1;
     }
@@ -780,25 +785,30 @@ input, select {
     }
 
     .countdown-wrapper{
-        gap:10px;
+        display:flex;
         flex-wrap:nowrap;
-        justify-content:center;
+        justify-content:space-between;
+        gap:8px;
+        width:100%;
     }
 
     .lux-card{
-        width:82px;
-        height:115px;
-        border-radius:22px;
+        width:25%;
+        min-width:0;
+
+        height:105px;
+
+        border-radius:20px;
     }
 
     .number{
-        font-size:38px;
+        font-size:34px;
     }
 
     .label{
-        margin-top:6px;
-        font-size:11px;
-        letter-spacing:2px;
+        margin-top:4px;
+        font-size:10px;
+        letter-spacing:1px;
     }
 }
 
