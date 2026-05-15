@@ -326,3 +326,67 @@ setInterval(createLove, 250);
     revealOnScroll();
 
 });
+
+const targetDate = new Date("June 13, 2026 12:30:00").getTime();
+
+const daysEl = document.getElementById("days");
+const hoursEl = document.getElementById("hours");
+const minutesEl = document.getElementById("minutes");
+const secondsEl = document.getElementById("seconds");
+
+function animateFlip(el){
+
+    el.style.animation = 'none';
+
+    el.offsetHeight;
+
+    el.style.animation = 'flip .8s ease';
+}
+
+function updateCountdown(){
+
+    const now = new Date().getTime();
+
+    const distance = targetDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+    const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24))
+        / (1000 * 60 * 60)
+    );
+
+    const minutes = Math.floor(
+        (distance % (1000 * 60 * 60))
+        / (1000 * 60)
+    );
+
+    const seconds = Math.floor(
+        (distance % (1000 * 60))
+        / 1000
+    );
+
+    if(daysEl.innerText !== String(days).padStart(2,'0')){
+        animateFlip(daysEl);
+    }
+
+    if(hoursEl.innerText !== String(hours).padStart(2,'0')){
+        animateFlip(hoursEl);
+    }
+
+    if(minutesEl.innerText !== String(minutes).padStart(2,'0')){
+        animateFlip(minutesEl);
+    }
+
+    animateFlip(secondsEl);
+
+    daysEl.innerText = String(days).padStart(2,'0');
+    hoursEl.innerText = String(hours).padStart(2,'0');
+    minutesEl.innerText = String(minutes).padStart(2,'0');
+    secondsEl.innerText = String(seconds).padStart(2,'0');
+
+}
+
+setInterval(updateCountdown, 1000);
+
+updateCountdown();
