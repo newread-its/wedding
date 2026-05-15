@@ -941,13 +941,18 @@ input, select {
 .countdown-wrapper{
     display:flex;
     justify-content:center;
-    gap:35px;
-    flex-wrap:wrap;
+    align-items:center;
+    flex-wrap:nowrap;
+    gap:12px;
+    width:100%;
+    max-width:1000px;
+    margin:auto;
 }
 
 .lux-card{
-    width:220px;
-    height:280px;
+    width:24%;
+    min-width:0;
+    height:170px;
 
     position:relative;
 
@@ -1042,7 +1047,7 @@ input, select {
 }
 
 .number{
-    font-size:92px;
+    font-size:58px;
     font-weight:700;
     color:#fff6df;
 
@@ -1056,7 +1061,7 @@ input, select {
 }
 
 .label{
-    margin-top:12px;
+    margin-top:6px;
 
     color:#d7b989;
 
