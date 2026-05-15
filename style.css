@@ -902,6 +902,7 @@ input, select {
     font-size:16px;
     margin-bottom:12px;
     text-transform:uppercase;
+    font-weight:700;
 }
 
 .main-title{
