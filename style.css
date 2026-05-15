@@ -789,7 +789,11 @@ input, select {
 .floating-love-container{
     position: absolute;
     inset: 0;
+
+    height: 100%; /* 🔥 ini penting */
+
     pointer-events: none;
+
     z-index: 1;
 }
 
@@ -819,7 +823,7 @@ input, select {
 .love-story-text{
     font-size: 16px;
 
-    line-height: 2;
+    line-height: 1;
 
     color: #555;
 }
@@ -828,7 +832,7 @@ input, select {
 .floating-love{
     position: absolute;
 
-    bottom: -20px;
+    bottom: 0;   /* start dari bawah SECTION */
 
     opacity: 0;
 
@@ -837,8 +841,8 @@ input, select {
     user-select: none;
 }
 
-/* ANIMASI */
 @keyframes loveFloat{
+
     0%{
         transform: translateY(0) scale(0.3);
         opacity: 0;
@@ -849,10 +853,9 @@ input, select {
     }
 
     100%{
-        transform: translateY(-130%) scale(2.2);
+        transform: translateY(-140%) scale(2.2);
         opacity: 0;
     }
 }
-
 
 
