@@ -832,7 +832,7 @@ input, select {
 .floating-love{
     position: absolute;
 
-    bottom: -20px;
+    bottom: 0;
 
     opacity: 0;
 
@@ -841,7 +841,7 @@ input, select {
     user-select: none;
 }
 
-@keyframes loveFloat{
+@keyframes loveFloatDynamic{
 
     0%{
         transform: translateY(0) scale(0.3);
@@ -853,9 +853,8 @@ input, select {
     }
 
     100%{
-        transform: translateY(-130vh) scale(2.2);
+        transform: translateY(calc(var(--travel) * -1)) scale(2.2);
         opacity: 0;
     }
 }
-
 
