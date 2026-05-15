@@ -789,11 +789,7 @@ input, select {
 .floating-love-container{
     position: absolute;
     inset: 0;
-
-    height: 100%; /* 🔥 ini penting */
-
     pointer-events: none;
-
     z-index: 1;
 }
 
@@ -832,7 +828,7 @@ input, select {
 .floating-love{
     position: absolute;
 
-    bottom: 0;   /* start dari bawah SECTION */
+    bottom: 0;
 
     opacity: 0;
 
@@ -853,7 +849,7 @@ input, select {
     }
 
     100%{
-        transform: translateY(-140%) scale(2.2);
+        transform: translateY(-600px) scale(2.2);
         opacity: 0;
     }
 }
