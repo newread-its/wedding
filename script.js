@@ -146,3 +146,51 @@ function revealOnScroll(){
 window.addEventListener("scroll", revealOnScroll);
 
 revealOnScroll();
+
+// Love animasi
+
+const loveContainer = document.querySelector('.floating-love-container');
+
+function createLove() {
+
+    const love = document.createElement('div');
+    love.classList.add('floating-love');
+
+    // icon love
+    love.innerHTML = '❤';
+
+    // posisi random horizontal
+    love.style.left = Math.random() * 100 + 'vw';
+
+    // ukuran random
+    const size = Math.random() * 20 + 10;
+    love.style.fontSize = size + 'px';
+
+    // durasi random
+    const duration = Math.random() * 4 + 4;
+    love.style.animationDuration = duration + 's';
+
+    // arah goyang random
+    const moveX = (Math.random() - 0.5) * 200;
+
+    love.animate([
+        { transform: `translateX(0px)` },
+        { transform: `translateX(${moveX}px)` }
+    ], {
+        duration: duration * 1000,
+        iterations: 1,
+        fill: 'forwards'
+    });
+
+    loveContainer.appendChild(love);
+
+    // hapus setelah selesai
+    setTimeout(() => {
+        love.remove();
+    }, duration * 1000);
+}
+
+// spawn terus menerus
+setInterval(() => {
+    createLove();
+}, 250);
