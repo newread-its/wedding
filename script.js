@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // =========================
     // LOVE
     // =========================
-   const loveContainer =
+       const loveContainer =
     document.querySelector(".floating-love-container");
 
 function createLove() {
@@ -241,6 +241,17 @@ function createLove() {
 
     love.style.animationDuration =
         duration + "s";
+
+    /* 🔥 INI YANG NENTUKAN “SEBERAPA JAUH NAIKNYA” */
+    const travel =
+        loveContainer.offsetHeight + 200;
+
+    love.style.setProperty(
+        "--travel",
+        travel + "px"
+    );
+
+    love.style.animationName = "loveFloatDynamic";
 
     loveContainer.appendChild(love);
 
