@@ -771,20 +771,13 @@ input, select {
 
 /* Love animation */
 
-/* SECTION LOVE STORY */
-.love-story-section{
-    position: relative;
-    overflow: hidden;
-    padding: 100px 25px;
-}
-
-/* CONTAINER LOVE */
 .love-story-section{
     position: relative;
     overflow: hidden;
 
     padding: 100px 25px;
 
+    /* background gradient kamu tetap */
     background:
         linear-gradient(
             to bottom,
@@ -794,7 +787,9 @@ input, select {
         );
 }
 
-/* CONTAINER LOVE */
+/* =========================
+   CONTAINER LOVE (HANYA SECTION INI)
+========================= */
 .floating-love-container{
     position: absolute;
     inset: 0;
@@ -806,19 +801,22 @@ input, select {
     z-index: 1;
 }
 
-/* ISI */
+/* =========================
+   CONTENT TEXT (DI ATAS LOVE)
+========================= */
 .love-story-content{
     position: relative;
     z-index: 2;
 
     max-width: 750px;
-
     margin: auto;
 
     text-align: center;
+
+    color: #444;
 }
 
-/* JUDUL */
+/* TITLE */
 .love-story-title{
     font-family: 'Great Vibes', cursive;
 
@@ -826,10 +824,10 @@ input, select {
 
     color: #c8ae78;
 
-    margin-bottom: 35px;
+    margin-bottom: 30px;
 }
 
-/* TEXT */
+/* TEXT PARAGRAF */
 .love-story-text{
     font-size: 16px;
 
@@ -838,27 +836,31 @@ input, select {
     color: #555;
 }
 
-/* LOVE */
+/* =========================
+   LOVE STYLE
+========================= */
 .floating-love{
     position: absolute;
 
-    bottom: -50px;
+    bottom: -20px; /* start sedikit dari bawah section */
 
     opacity: 0;
 
-    animation:
-        loveFloat linear forwards;
-
     user-select: none;
+
+    animation: loveFloat linear forwards;
 }
 
-/* ANIMASI LOVE */
+/* =========================
+   ANIMASI LOVE FLOAT
+========================= */
 @keyframes loveFloat{
 
     0%{
         transform:
             translateY(0)
-            scale(0.2)
+            translateX(0)
+            scale(0.3)
             rotate(0deg);
 
         opacity: 0;
@@ -870,14 +872,19 @@ input, select {
         opacity: 1;
     }
 
-    50%{
+    40%{
         color: #ff4d6d;
+    }
+
+    70%{
+        color: #ff1744;
     }
 
     100%{
         transform:
             translateY(-120%)
-            scale(2)
+            translateX(30px)
+            scale(2.2)
             rotate(360deg);
 
         opacity: 0;
