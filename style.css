@@ -132,7 +132,7 @@ button {
 .hidden { display: none; }
 
 .hero {
-  padding: 60px 20px;
+  padding: 5px 5px 20px 20px;
   font-family: 'Playfair Display', serif;
   justify-content: center;
   align-items: center;
@@ -282,7 +282,7 @@ input, select {
     justify-content:center;
     align-items:center;
 
-    padding:20px 20px;
+    padding:5px 20px;
 
     overflow:hidden;
 
@@ -483,7 +483,7 @@ input, select {
     margin-top:8px;
 }
 .ortu{
-    font-size:18px;
+    font-size:16px;
     color:#2F1A0F;
     font-family:'Georgia', serif;
     margin-top:10px;
@@ -521,7 +521,7 @@ input, select {
 .schedule-section{
     position:relative;
     z-index:2;
-    padding:120px 20px;
+    padding:40px 20px;
     text-align:center;
 }
 
@@ -710,7 +710,7 @@ input, select {
     position: relative;
     overflow: visible; /* 🔥 INI KUNCI FIX */
 
-    padding: 20px 20px;
+    padding: 10px 10px;
 
     background:transparent;
 }
@@ -744,6 +744,7 @@ input, select {
     font-size: 48px;
     color: #c8ae78;
     margin-bottom: 25px;
+    margin-top: 30px;
     transform: translateY(-20px);
 }
 
