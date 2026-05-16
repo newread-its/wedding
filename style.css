@@ -673,145 +673,6 @@ input, select {
     0 1px 8px rgba(230,201,143,0.18);
 }
 
-
-/* ===== RESPONSIVE HP ===== */
-
-@media(max-width:768px){
-
-    .couple-section{
-        gap:20px;
-        padding:80px 20px;
-    }
-
-    .photo-wrapper img{
-        width:200px;
-        height:200px;
-    }
-
-    .photo-wrapper::before{
-        width:220px;
-        height:220px;
-    }
-
-    .couple-card h2{
-        font-size:34px;
-    }
-
-    .love-icon{
-        width:100%;
-        text-align:center;
-        font-size:50px;
-    }
-
-    /* ===== SCHEDULE ===== */
-
-    .schedule-section{
-        padding:55px 20px;
-    }
-
-    .schedule-subtitle{
-        font-size:18px;
-        letter-spacing:5px;
-        margin-bottom:10px;
-    }
-
-    .schedule-title{
-        font-size:24px;
-        margin-bottom:30px;
-    }
-
-    .schedule-card{
-        padding:40px 20px;
-        border-radius:24px;
-    }
-
-    .schedule-icon{
-        width:80px;
-        height:80px;
-        margin-bottom:20px;
-    }
-
-    .schedule-icon svg{
-        width:28px;
-        height:28px;
-    }
-
-    .event-type{
-        font-size:18px;
-        letter-spacing:4px;
-        margin-bottom:20px;
-    }
-
-    .event-date{
-        font-size:20px;
-        margin-bottom:8px;
-    }
-
-    .event-time{
-        font-size:14px;
-        margin-bottom:15px;
-    }
-
-    .event-location{
-        font-size:13px;
-        margin-bottom:20px;
-    }
-
-    .map-button{
-        padding:12px 22px;
-        font-size:12px;
-        gap:8px;
-    }
-
-    .map-button svg{
-        width:16px;
-        height:16px;
-    }
-
-    /*count menuju hari bahagia*/
-     .luxury-countdown{
-        padding-left:10px;
-        padding-right:10px;
-    }
-
-    .main-title{
-        font-size:58px;
-        line-height:1.1;
-    }
-
-    .date-text{
-        font-size:20px;
-        margin-bottom:35px;
-    }
-
-    .countdown-wrapper{
-        display:flex;
-        flex-wrap:nowrap;
-        justify-content:space-between;
-        gap:8px;
-        width:100%;
-    }
-
-    .lux-card{
-        width:25%;
-        min-width:0;
-
-        height:105px;
-
-        border-radius:20px;
-    }
-
-    .number{
-        font-size:34px;
-    }
-
-    .label{
-        margin-top:4px;
-        font-size:10px;
-        letter-spacing:1px;
-    }
-}
-
 /* Love animation */
 
 .love-story-section{
@@ -1130,4 +991,274 @@ input, select {
 
 .bottom{
     margin-top:70px;
+}
+
+.save-wrapper{
+    display:flex;
+    justify-content:center;
+    margin-top:55px;
+}
+
+.save-date-btn{
+
+    position:relative;
+
+    width:290px;
+    height:72px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:999px;
+
+    text-decoration:none;
+
+    overflow:hidden;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,255,255,0.14),
+        rgba(255,255,255,0.04)
+    );
+
+    border:1px solid rgba(255,255,255,0.18);
+
+    backdrop-filter:blur(16px);
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,0.45),
+    inset 0 0 25px rgba(255,255,255,0.04);
+
+    transition:.45s ease;
+}
+
+.save-date-btn span{
+
+    position:relative;
+    z-index:3;
+
+    color:#f7e6c1;
+
+    font-size:14px;
+    font-weight:600;
+
+    letter-spacing:4px;
+    text-transform:uppercase;
+}
+
+.save-date-btn::before{
+
+    content:'';
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.12),
+        transparent
+    );
+
+    transform:translateX(-100%);
+
+    animation:btnShine 4s linear infinite;
+}
+
+.save-date-btn::after{
+
+    content:'';
+
+    position:absolute;
+
+    width:180%;
+    height:180%;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(255,215,150,0.18),
+        transparent 60%
+    );
+
+    opacity:0;
+
+    transition:.5s;
+}
+
+.save-date-btn:hover{
+
+    transform:
+    translateY(-7px)
+    scale(1.03);
+
+    box-shadow:
+    0 22px 45px rgba(0,0,0,0.55),
+    0 0 35px rgba(255,215,150,0.18);
+}
+
+.save-date-btn:hover::after{
+    opacity:1;
+}
+
+@keyframes btnShine{
+
+    100%{
+        transform:translateX(100%);
+    }
+
+}
+
+
+/* ===== RESPONSIVE HP ===== */
+
+@media(max-width:768px){
+
+    .couple-section{
+        gap:20px;
+        padding:80px 20px;
+    }
+
+    .photo-wrapper img{
+        width:200px;
+        height:200px;
+    }
+
+    .photo-wrapper::before{
+        width:220px;
+        height:220px;
+    }
+
+    .couple-card h2{
+        font-size:34px;
+    }
+
+    .love-icon{
+        width:100%;
+        text-align:center;
+        font-size:50px;
+    }
+
+    /* ===== SCHEDULE ===== */
+
+    .schedule-section{
+        padding:55px 20px;
+    }
+
+    .schedule-subtitle{
+        font-size:18px;
+        letter-spacing:5px;
+        margin-bottom:10px;
+    }
+
+    .schedule-title{
+        font-size:24px;
+        margin-bottom:30px;
+    }
+
+    .schedule-card{
+        padding:40px 20px;
+        border-radius:24px;
+    }
+
+    .schedule-icon{
+        width:80px;
+        height:80px;
+        margin-bottom:20px;
+    }
+
+    .schedule-icon svg{
+        width:28px;
+        height:28px;
+    }
+
+    .event-type{
+        font-size:18px;
+        letter-spacing:4px;
+        margin-bottom:20px;
+    }
+
+    .event-date{
+        font-size:20px;
+        margin-bottom:8px;
+    }
+
+    .event-time{
+        font-size:14px;
+        margin-bottom:15px;
+    }
+
+    .event-location{
+        font-size:13px;
+        margin-bottom:20px;
+    }
+
+    .map-button{
+        padding:12px 22px;
+        font-size:12px;
+        gap:8px;
+    }
+
+    .map-button svg{
+        width:16px;
+        height:16px;
+    }
+
+    /*count menuju hari bahagia*/
+     .luxury-countdown{
+        padding-left:10px;
+        padding-right:10px;
+    }
+
+    .main-title{
+        font-size:58px;
+        line-height:1.1;
+    }
+
+    .date-text{
+        font-size:20px;
+        margin-bottom:35px;
+    }
+
+    .countdown-wrapper{
+        display:flex;
+        flex-wrap:nowrap;
+        justify-content:space-between;
+        gap:8px;
+        width:100%;
+    }
+
+    .lux-card{
+        width:25%;
+        min-width:0;
+
+        height:105px;
+
+        border-radius:20px;
+    }
+
+    .number{
+        font-size:34px;
+    }
+
+    .label{
+        margin-top:4px;
+        font-size:10px;
+        letter-spacing:1px;
+    }
+
+    .save-date-btn{
+        width:240px;
+        height:62px;
+    }
+
+    .save-date-btn span{
+        font-size:12px;
+        letter-spacing:3px;
+    }
+  
 }
