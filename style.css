@@ -282,7 +282,7 @@ input, select {
     justify-content:center;
     align-items:center;
 
-    padding:120px 20px;
+    padding:20px 20px;
 
     overflow:hidden;
 
@@ -710,14 +710,9 @@ input, select {
     position: relative;
     overflow: visible; /* 🔥 INI KUNCI FIX */
 
-    padding: 100px 25px;
+    padding: 20px 20px;
 
-    background: linear-gradient(
-        to bottom,
-        #eee7df,
-        #eee,
-        #eee7df
-    );
+    background:transparent;
 }
 
 /* container animasi */
