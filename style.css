@@ -87,11 +87,10 @@ body {
   font-size: 16px;
   font-weight: 600;
   line-height: 1.8;
-  margin: 30px 0;
   margin-top:30px;
   margin-bottom:0px;
-  margin-left:5;
-  margin-right:5;
+  margin-left:15;
+  margin-right:15;
   font-style: normal;
   opacity: 0.85;
 }
@@ -815,6 +814,7 @@ input, select {
     font-family:'Great Vibes', cursive;
     font-size:90px;
     color:#f3d8a3;
+    font-weight:700;
 
     text-shadow:
     0 0 15px rgba(255,215,150,0.25),
