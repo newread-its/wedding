@@ -1512,3 +1512,27 @@ input, select {
 
     transform:translateX(-50%) translateY(0);
 }
+
+.download-btn{
+    margin-top:15px;
+
+    padding:12px 22px;
+
+    border:none;
+    border-radius:14px;
+
+    background:rgba(0,0,0,0.18);
+    color:white;
+
+    cursor:pointer;
+
+    backdrop-filter:blur(8px);
+
+    transition:0.3s;
+
+    width:100%;
+}
+
+.download-btn:hover{
+    background:rgba(0,0,0,0.28);
+}
