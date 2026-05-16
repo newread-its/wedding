@@ -309,13 +309,13 @@
 
   <!-- BUTTON -->
 <div class="save-wrapper">
-  <button class="save-date-btn" onclick="toggleGift()">
+  <button class="save-date-btn" onclick="toggleGift1()">
     <span>SEND GIFT</span>
   </button>
 </div>
 
 <!-- HIDE SHOW CONTENT -->
-<div id="giftContent" class="gift-content">
+<div id="giftContent1" class="gift-content">
   <!-- QRIS -->
   <div class="gift-card">
     <h3>QRIS</h3>
@@ -365,16 +365,36 @@
   </div>
 </div>
 
-  <h2>WISHES</h2>
-  <form id="rsvpForm">
-    <input type="text" name="nama" placeholder="Nama" required>
-    <select name="hadir">
-      <option>Hadir</option>
-      <option>Tidak Hadir</option>
-    </select>
-    <input type="number" name="jumlah" placeholder="Jumlah">
-    <button type="submit">Kirim</button>
-  </form>
+<div class="save-wrapper">
+  <button class="save-date-btn" onclick="toggleGift2()">
+    <span>WISHES</span>
+  </button>
+</div>
+
+<div id="giftContent2" class="gift-content">
+  <!-- KARTU ALAMAT -->
+  <div class="gift-card address-card">
+    <h3>Kehadiran</h3>
+    <form id="rsvpForm">
+      <input type="text" name="nama" placeholder="Nama" required>
+      <select name="hadir">
+        <option>Hadir</option>
+        <option>Tidak Hadir</option>
+      </select>
+      <input type="text" name="jumlah" placeholder="Pesan">
+      <button type="submit">Kirim</button>
+    </form>
+    <div class="address-box">
+      <p class="address-name">M. Ainur Ridho</p>
+      <p class="address-text">
+        Dsn. Kembang RT22/RW08<br>
+        Desa Tekung Kec. Tekung<br>
+        Lumajang, Jawa Timur<br>
+        67381
+      </p>
+    </div>
+  </div>
+</div>
 
 </section>
 
