@@ -1265,53 +1265,57 @@ input, select {
 
 .section-flip{
 
-    opacity:0;
+    opacity:1;
 
     transform:
-    scale(0.72)
-    translateY(80px);
+    scale(0.94);
 
     filter:
-    blur(18px)
-    brightness(1.4);
+    blur(16px)
+    brightness(1.15);
 
     transition:
     transform 2.2s cubic-bezier(.19,1,.22,1),
-    opacity 2s ease,
-    filter 2.4s ease;
+    filter 2.5s ease;
 
     will-change:
     transform,
-    opacity,
     filter;
 }
 
 .section-flip.show{
 
-    opacity:1;
-
     transform:
-    scale(1)
-    translateY(0px);
+    scale(1);
 
     filter:
     blur(0px)
     brightness(1);
 
     animation:
-    luxuryFloat 6s ease-in-out infinite;
+    luxuryBreath 7s ease-in-out infinite;
 }
 
-@keyframes luxuryFloat{
+@keyframes luxuryBreath{
 
     0%,100%{
+
         transform:
-        translateY(0px);
+        scale(1);
+
+        filter:
+        blur(0px)
+        brightness(1);
     }
 
     50%{
+
         transform:
-        translateY(-6px);
+        scale(1.012);
+
+        filter:
+        blur(.3px)
+        brightness(1.03);
     }
 
 }
