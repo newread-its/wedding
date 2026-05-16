@@ -416,7 +416,6 @@ flipSections.forEach(section=>{
 
 });
 
-<script>
 let activeGift = null;
 
 function toggleGift(id, event) {
@@ -447,7 +446,6 @@ function toggleGift(id, event) {
     block: "start"
   });
 }
-</script>
 
 function showPopup(text = "Berhasil Disalin"){
 
