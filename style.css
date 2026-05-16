@@ -169,6 +169,7 @@ input, select {
 /* QRIS */
 .gift {
   background: radial-gradient(circle at top, #2f4f3e, #0d1813);
+  position: relative;
 }
 
 .gift h2 {
@@ -1029,6 +1030,8 @@ input, select {
     display:flex;
     justify-content:center;
     margin-top:55px;
+    position: relative;
+    z-index: 10;
 }
 
 .save-date-btn{
@@ -1539,27 +1542,44 @@ input, select {
 
 /* ===== FOCUS MODE (TAMBAHAN SAJA) ===== */
 
-.gift-content {
+/* default hidden */
+.gift-content{
   max-height: 0;
   overflow: hidden;
+  opacity: 0;
+  transition: all 0.4s ease;
 }
 
-/* aktif = scroll internal */
-.gift.focus .gift-content {
-  max-height: calc(100vh - 120px);
-  overflow-y: auto;
+/* MODE AKTIF */
+.gift.active{
+  position: relative;
 }
 
-/* tombol tetap di atas viewport */
-.gift.focus .save-wrapper {
+/* tombol jadi nempel atas viewport */
+.gift.active .save-wrapper{
   position: sticky;
   top: 0;
   z-index: 999;
+  background: transparent;
 }
 
-/* optional: section lain jadi "tidak ganggu" */
-body.gift-active .gift:not(.focus) {
-  opacity: 0.15;
+/* CONTENT JADI FULL SCROLL AREA */
+.gift.active .gift-content{
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+  opacity: 1;
+  margin-top: 25px;
+  padding-bottom: 40px;
+}
+
+/* optional: biar smooth scroll dalam panel */
+.gift.active .gift-content{
+  scroll-behavior: smooth;
+}
+
+/* section lain redup saat focus */
+body.gift-focus .gift:not(.active){
+  opacity: 0.2;
   filter: blur(1px);
   pointer-events: none;
 }
