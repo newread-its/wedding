@@ -416,32 +416,26 @@ flipSections.forEach(section=>{
 
 });
 
-let activeGift = null;
+let activeId = null;
 
 function toggleGift(id, event) {
-  const clickedGift = event.currentTarget.closest(".gift");
+  const panel = document.getElementById(id);
 
-  // CLOSE kalau klik yang sama
-  if (activeGift === clickedGift) {
-    document.querySelectorAll(".gift").forEach(g => {
-      g.classList.remove("active");
-    });
-
-    document.body.classList.remove("gift-lock");
-    activeGift = null;
+  // kalau klik yang sama → close
+  if (activeId === id) {
+    panel.classList.remove("active");
+    activeId = null;
     return;
   }
 
-  // HARD RESET semua
-  document.querySelectorAll(".gift").forEach(g => {
-    g.classList.remove("active");
+  // tutup semua dulu (INTERLOCK FIX)
+  document.querySelectorAll(".gift-content").forEach(p => {
+    p.classList.remove("active");
   });
 
-  // OPEN hanya 1
-  clickedGift.classList.add("active");
-  document.body.classList.add("gift-lock");
-
-  activeGift = clickedGift;
+  // buka hanya 1
+  panel.classList.add("active");
+  activeId = id;
 
   // scroll tombol ke atas
   event.currentTarget.scrollIntoView({
