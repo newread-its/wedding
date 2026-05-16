@@ -390,3 +390,27 @@ function updateCountdown(){
 setInterval(updateCountdown, 1000);
 
 updateCountdown();
+
+const flipSections = document.querySelectorAll('.section-flip');
+
+const flipObserver = new IntersectionObserver((entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add('show');
+
+        }
+
+    });
+
+},{
+    threshold:0.25
+});
+
+flipSections.forEach(section=>{
+
+    flipObserver.observe(section);
+
+});
