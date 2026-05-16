@@ -391,6 +391,7 @@ setInterval(updateCountdown, 1000);
 
 updateCountdown();
 
+
 const flipSections = document.querySelectorAll('.section-flip');
 
 const flipObserver = new IntersectionObserver((entries)=>{
@@ -406,7 +407,7 @@ const flipObserver = new IntersectionObserver((entries)=>{
     });
 
 },{
-    threshold:0.25
+    threshold:0.2
 });
 
 flipSections.forEach(section=>{
