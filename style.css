@@ -283,9 +283,10 @@ input, select {
     align-items:center;
     gap:60px;
     flex-wrap:wrap;
+    min-height:75vh;
     padding:120px 20px;
     overflow:hidden;
-
+    perspective:1800px;
     background:
     linear-gradient(
         to bottom,
@@ -1268,15 +1269,19 @@ input, select {
     opacity:1;
 
     transform:
-    scale(0.94);
+    translateY(80px)
+    scale(0.82)
+    rotateX(18deg);
 
     filter:
-    blur(16px)
-    brightness(1.15);
+    blur(22px)
+    brightness(1.35);
 
     transition:
-    transform 2.2s cubic-bezier(.19,1,.22,1),
-    filter 2.5s ease;
+    transform 3.8s cubic-bezier(.19,1,.22,1),
+    filter 5s cubic-bezier(.19,1,.22,1);
+
+    transform-style:preserve-3d;
 
     will-change:
     transform,
@@ -1286,36 +1291,11 @@ input, select {
 .section-flip.show{
 
     transform:
-    scale(1);
+    translateY(0px)
+    scale(1)
+    rotateX(0deg);
 
     filter:
     blur(0px)
     brightness(1);
-
-    animation:
-    luxuryBreath 7s ease-in-out infinite;
-}
-
-@keyframes luxuryBreath{
-
-    0%,100%{
-
-        transform:
-        scale(1);
-
-        filter:
-        blur(0px)
-        brightness(1);
-    }
-
-    50%{
-
-        transform:
-        scale(1.012);
-
-        filter:
-        blur(.3px)
-        brightness(1.03);
-    }
-
 }
