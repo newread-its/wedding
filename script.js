@@ -416,14 +416,42 @@ flipSections.forEach(section=>{
 
 });
 
-function toggleGift1(){
-    const content = document.getElementById("giftContent1");
-    content.classList.toggle("show");
-}
+let activeGift = null;
 
-function toggleGift2(){
-    const content = document.getElementById("giftContent2");
-    content.classList.toggle("show");
+function toggleGift(id, event) {
+  const clickedGift = event.currentTarget.closest(".gift");
+  const panel = document.getElementById(id);
+
+  // kalau klik yang sama → CLOSE
+  if (activeGift === id) {
+    clickedGift.classList.remove("focus");
+    document.body.classList.remove("gift-active");
+    activeGift = null;
+    return;
+  }
+
+  // reset semua gift
+  document.querySelectorAll(".gift").forEach(g => {
+    g.classList.remove("focus");
+  });
+
+  document.querySelectorAll(".gift-content").forEach(p => {
+    p.classList.remove("active");
+  });
+
+  // aktifkan yang dipilih
+  clickedGift.classList.add("focus");
+  document.body.classList.add("gift-active");
+
+  panel.classList.add("active");
+
+  activeGift = id;
+
+  // scroll tombol ke atas viewport
+  event.currentTarget.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
 }
 
 function showPopup(text = "Berhasil Disalin"){
