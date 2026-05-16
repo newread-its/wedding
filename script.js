@@ -459,6 +459,19 @@ function copyRekening2(){
     showPopup();
 }
 
+function downloadQRIS(){
+
+    const link = document.createElement("a");
+
+    link.href = "foto/qris1.png"; // lokasi QRIS kamu
+    link.download = "QRIS.png";
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    showPopup("QRIS Tersimpan");
+}
 
 // =========================
 // DISABLE COPY / INSPECT
