@@ -1542,7 +1542,7 @@ input, select {
 
 /* ===== FOCUS MODE (TAMBAHAN SAJA) ===== */
 
-/* default semua content mati */
+/* default hidden */
 .gift-content{
   max-height: 0;
   overflow: hidden;
@@ -1550,7 +1550,7 @@ input, select {
   transition: all 0.4s ease;
 }
 
-/* hanya content di gift aktif yang jalan */
+/* ONLY ACTIVE GIFT CAN OPEN CONTENT */
 .gift.is-active .gift-content{
   max-height: calc(100vh - 160px);
   overflow-y: auto;
@@ -1558,15 +1558,14 @@ input, select {
   margin-top: 25px;
 }
 
-/* tombol sticky hanya di active gift */
+/* sticky tombol hanya di active */
 .gift.is-active .save-wrapper{
   position: sticky;
   top: 0;
   z-index: 999;
-  background: transparent;
 }
 
-/* optional: yang lain diredupkan */
+/* optional dim background */
 body.gift-mode .gift:not(.is-active){
   opacity: 0.15;
   filter: blur(1px);
