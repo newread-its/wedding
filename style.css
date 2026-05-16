@@ -1542,31 +1542,31 @@ input, select {
 
 /* ===== FOCUS MODE (TAMBAHAN SAJA) ===== */
 
-/* default hidden */
+/* DEFAULT = TERTUTUP */
 .gift-content{
-  max-height: 0;
+  max-height: 0 !important;
   overflow: hidden;
   opacity: 0;
   transition: all 0.4s ease;
 }
 
-/* ONLY ACTIVE GIFT CAN OPEN CONTENT */
-.gift.is-active .gift-content{
+/* ONLY 1 ACTIVE */
+.gift.is-open .gift-content{
   max-height: calc(100vh - 160px);
   overflow-y: auto;
   opacity: 1;
   margin-top: 25px;
 }
 
-/* sticky tombol hanya di active */
-.gift.is-active .save-wrapper{
+/* tombol sticky saat open */
+.gift.is-open .save-wrapper{
   position: sticky;
   top: 0;
   z-index: 999;
 }
 
-/* optional dim background */
-body.gift-mode .gift:not(.is-active){
+/* optional dim yang lain */
+body.gift-lock .gift:not(.is-open){
   opacity: 0.15;
   filter: blur(1px);
   pointer-events: none;
