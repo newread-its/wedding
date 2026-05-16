@@ -1353,3 +1353,74 @@ input, select {
     }
 
 }
+
+/* HIDE SHOW */
+.gift-content{
+    max-height:0;
+    overflow:hidden;
+    opacity:0;
+    transition:all 0.5s ease;
+}
+
+/* SAAT MUNCUL */
+.gift-content.show{
+    max-height:1200px;
+    opacity:1;
+    margin-top:25px;
+}
+
+/* CARD */
+.gift-card{
+    width:90%;
+    max-width:420px;
+    margin:20px auto;
+    padding:20px;
+    border-radius:25px;
+
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,0.15);
+
+    text-align:center;
+}
+
+/* JUDUL */
+.gift-card h3{
+    color:#c8ae78;
+    margin-bottom:18px;
+    font-size:24px;
+}
+
+/* QRIS IMAGE */
+.gift-image{
+    width:100%;
+    border-radius:18px;
+    display:block;
+}
+
+/* ADDRESS */
+.address-box{
+    padding:25px;
+    border-radius:20px;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(200,174,120,0.25),
+        rgba(255,255,255,0.05)
+    );
+}
+
+.address-name{
+    font-size:26px;
+    color:#c8ae78;
+    margin-bottom:12px;
+    font-weight:bold;
+}
+
+.address-text{
+    color:white;
+    line-height:1.8;
+    font-size:16px;
+}
