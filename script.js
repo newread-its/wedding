@@ -422,6 +422,14 @@ function toggleGift(){
     content.classList.toggle("show");
 }
 
+function copyRekening(){
+
+    const rekening =
+    document.getElementById("bcaNumber").innerText;
+
+    navigator.clipboard.writeText(rekening);
+
+}
 // =========================
 // DISABLE COPY / INSPECT
 // =========================
