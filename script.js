@@ -416,6 +416,12 @@ flipSections.forEach(section=>{
 
 });
 
+function toggleGift(){
+    const content = document.getElementById("giftContent");
+
+    content.classList.toggle("show");
+}
+
 // =========================
 // DISABLE COPY / INSPECT
 // =========================
