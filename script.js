@@ -422,7 +422,7 @@ function toggleGift1(){
 }
 
 function toggleGift2(){
-    const content = document.getElementById("giftContent1");
+    const content = document.getElementById("giftContent2");
     content.classList.toggle("show");
 }
 
