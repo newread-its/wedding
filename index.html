@@ -307,15 +307,35 @@
 <section class="gift" data-aos="fade-up">
   <h2>Send Gift & Wishes</h2>
 
-  <div class="save-wrapper">
-  <a
-    class="save-date-btn"
-    href="wedding.ics"
-    download
-  >
+  <!-- BUTTON -->
+<div class="save-wrapper">
+  <button class="save-date-btn" onclick="toggleGift()">
     <span>SEND GIFT</span>
-  </a>
+  </button>
+</div>
+
+<!-- HIDE SHOW CONTENT -->
+<div id="giftContent" class="gift-content">
+  <!-- QRIS -->
+  <div class="gift-card">
+    <h3>QRIS</h3>
+    <!-- GANTI DENGAN GAMBAR QRIS -->
+    <img src="images/qris.png" alt="QRIS" class="gift-image">
   </div>
+  <!-- KARTU ALAMAT -->
+  <div class="gift-card address-card">
+    <h3>Kirim Kado</h3>
+    <div class="address-box">
+      <p class="address-name">M. Ainur Ridho</p>
+      <p class="address-text">
+        Dsn. Kembang RT22/RW08<br>
+        Desa Tekung Kec. Tekung<br>
+        Lumajang, Jawa Timur<br>
+        67381
+      </p>
+    </div>
+  </div>
+</div>
 
   <h2>WISHES</h2>
   <form id="rsvpForm">
