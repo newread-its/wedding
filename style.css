@@ -1268,22 +1268,17 @@ input, select {
     opacity:0;
 
     transform:
-    perspective(2200px)
-    translateZ(-900px)
-    rotateY(-120deg)
-    rotateX(35deg)
-    scale(0.25);
+    scale(0.72)
+    translateY(80px);
 
-    transform-style:preserve-3d;
-
-    transform-origin:center center;
-
-    filter:blur(12px);
+    filter:
+    blur(18px)
+    brightness(1.4);
 
     transition:
-    transform 2.8s cubic-bezier(.19,1,.22,1),
-    opacity 2.3s ease,
-    filter 2.5s ease;
+    transform 2.2s cubic-bezier(.19,1,.22,1),
+    opacity 2s ease,
+    filter 2.4s ease;
 
     will-change:
     transform,
@@ -1296,58 +1291,27 @@ input, select {
     opacity:1;
 
     transform:
-    perspective(2200px)
-    translateZ(0px)
-    rotateY(0deg)
-    rotateX(0deg)
-    scale(1);
+    scale(1)
+    translateY(0px);
 
-    filter:blur(0px);
+    filter:
+    blur(0px)
+    brightness(1);
 
     animation:
-    floatingRotate 7s ease-in-out infinite;
+    luxuryFloat 6s ease-in-out infinite;
 }
 
-@keyframes floatingRotate{
+@keyframes luxuryFloat{
 
-    0%{
+    0%,100%{
         transform:
-        perspective(2200px)
-        rotateY(0deg)
-        rotateX(0deg)
         translateY(0px);
-    }
-
-    25%{
-        transform:
-        perspective(2200px)
-        rotateY(2deg)
-        rotateX(1deg)
-        translateY(-4px);
     }
 
     50%{
         transform:
-        perspective(2200px)
-        rotateY(-2deg)
-        rotateX(-1deg)
-        translateY(0px);
-    }
-
-    75%{
-        transform:
-        perspective(2200px)
-        rotateY(1deg)
-        rotateX(2deg)
-        translateY(-3px);
-    }
-
-    100%{
-        transform:
-        perspective(2200px)
-        rotateY(0deg)
-        rotateX(0deg)
-        translateY(0px);
+        translateY(-6px);
     }
 
 }
