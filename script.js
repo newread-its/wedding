@@ -421,24 +421,25 @@ let activeGift = null;
 function toggleGift(id, event) {
   const clickedGift = event.currentTarget.closest(".gift");
 
-  // 🔒 kalau klik yang sama → close semua
+  // 🔥 kalau klik yang sama → CLOSE SEMUA
   if (activeGift === clickedGift) {
     document.querySelectorAll(".gift").forEach(g => {
-      g.classList.remove("is-active");
+      g.classList.remove("is-open");
     });
-    document.body.classList.remove("gift-mode");
+
+    document.body.classList.remove("gift-lock");
     activeGift = null;
     return;
   }
 
-  // 🔥 FORCE CLOSE SEMUA (INTERLOCK CORE)
+  // 🔒 HARD RESET SEMUA (INI KUNCI UTAMA)
   document.querySelectorAll(".gift").forEach(g => {
-    g.classList.remove("is-active");
+    g.classList.remove("is-open");
   });
 
-  // aktifkan hanya 1
-  clickedGift.classList.add("is-active");
-  document.body.classList.add("gift-mode");
+  // buka hanya 1
+  clickedGift.classList.add("is-open");
+  document.body.classList.add("gift-lock");
 
   activeGift = clickedGift;
 
@@ -448,7 +449,6 @@ function toggleGift(id, event) {
     block: "start"
   });
 }
-
 
 function showPopup(text = "Berhasil Disalin"){
 
