@@ -276,17 +276,30 @@ input, select {
 
 /* ===== SECTION PENAMPIL FOTO ===== */
 
-.couple-section{
+..couple-section{
     position:relative;
+
+    width:90%;
+    max-width:1300px;
+
+    margin:80px auto;
+
+    border-radius:40px;
+
     display:flex;
     justify-content:center;
     align-items:center;
     gap:60px;
     flex-wrap:wrap;
+
     min-height:75vh;
+
     padding:120px 20px;
+
     overflow:hidden;
+
     perspective:1800px;
+
     background:
     linear-gradient(
         to bottom,
@@ -1298,4 +1311,27 @@ input, select {
     filter:
     blur(0px)
     brightness(1);
+
+    animation:
+    luxuryFloating 7s ease-in-out infinite;
+}
+
+@keyframes luxuryFloating{
+
+    0%,100%{
+
+        transform:
+        translateY(0px)
+        scale(1)
+        rotateX(0deg);
+    }
+
+    50%{
+
+        transform:
+        translateY(-10px)
+        scale(1.01)
+        rotateX(1deg);
+    }
+
 }
