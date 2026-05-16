@@ -1542,7 +1542,7 @@ input, select {
 
 /* ===== FOCUS MODE (TAMBAHAN SAJA) ===== */
 
-/* default hidden */
+/* default semua content mati */
 .gift-content{
   max-height: 0;
   overflow: hidden;
@@ -1550,36 +1550,25 @@ input, select {
   transition: all 0.4s ease;
 }
 
-/* MODE AKTIF */
-.gift.active{
-  position: relative;
+/* hanya content di gift aktif yang jalan */
+.gift.is-active .gift-content{
+  max-height: calc(100vh - 160px);
+  overflow-y: auto;
+  opacity: 1;
+  margin-top: 25px;
 }
 
-/* tombol jadi nempel atas viewport */
-.gift.active .save-wrapper{
+/* tombol sticky hanya di active gift */
+.gift.is-active .save-wrapper{
   position: sticky;
   top: 0;
   z-index: 999;
   background: transparent;
 }
 
-/* CONTENT JADI FULL SCROLL AREA */
-.gift.active .gift-content{
-  max-height: calc(100vh - 140px);
-  overflow-y: auto;
-  opacity: 1;
-  margin-top: 25px;
-  padding-bottom: 40px;
-}
-
-/* optional: biar smooth scroll dalam panel */
-.gift.active .gift-content{
-  scroll-behavior: smooth;
-}
-
-/* section lain redup saat focus */
-body.gift-focus .gift:not(.active){
-  opacity: 0.2;
+/* optional: yang lain diredupkan */
+body.gift-mode .gift:not(.is-active){
+  opacity: 0.15;
   filter: blur(1px);
   pointer-events: none;
 }
