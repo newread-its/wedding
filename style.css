@@ -1262,3 +1262,31 @@ input, select {
     }
   
 }
+
+.section-flip{
+
+    opacity:0;
+
+    transform:
+    perspective(1400px)
+    rotateX(70deg)
+    scale(0.65);
+
+    transform-origin:center center;
+
+    transition:
+    opacity 1.4s ease,
+    transform 1.4s cubic-bezier(.22,1,.36,1);
+
+    will-change:transform, opacity;
+}
+
+.section-flip.show{
+
+    opacity:1;
+
+    transform:
+    perspective(1400px)
+    rotateX(0deg)
+    scale(1);
+}
