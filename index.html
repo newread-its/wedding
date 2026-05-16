@@ -323,25 +323,27 @@
     <img src="foto/qris1.png" alt="QRIS" class="gift-image">
   </div>
 
+   <!-- KARTU ATM BRI -->
+  <div class="gift-card bank-card">
+    <div class="atm-image-wrapper">
+    <!-- GAMBAR ATM -->
+    <img src="foto/BRI.png" alt="BCA" class="atm-image">
+    <!-- BUTTON COPY -->
+    <button class="copy-btn" onclick="copyRekening1()">
+      Salin
+    </button>
+    </div>
+  </div>
+  
    <!-- KARTU ATM BCA -->
   <div class="gift-card bank-card">
-    <div class="atm-card bca">
-      <!-- CHIP -->
-      <div class="chip"></div>
-      <!-- LOGO -->
-      <div class="bank-logo">BCA</div>
-      <!-- NOMOR -->
-      <div class="card-number" id="bcaNumber">
-        3300968821
-      </div>
-      <!-- NAMA -->
-      <div class="card-name">
-        Lela Eliana
-      </div>
-      <!-- BUTTON COPY -->
-      <button class="copy-btn" onclick="copyRekening()">
-        Salin
-      </button>
+    <div class="atm-image-wrapper">
+    <!-- GAMBAR ATM -->
+    <img src="foto/BCA.png" alt="BCA" class="atm-image">
+    <!-- BUTTON COPY -->
+    <button class="copy-btn" onclick="copyRekening2()">
+      Salin
+    </button>
     </div>
   </div>
   
@@ -375,6 +377,11 @@
 
 </div>
 
+<!-- POPUP -->
+<div id="copyPopup" class="copy-popup">
+  Berhasil Disalin
+</div>
+  
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script src="script.js"></script>
 
