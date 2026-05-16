@@ -415,3 +415,43 @@ flipSections.forEach(section=>{
     flipObserver.observe(section);
 
 });
+
+// =========================
+// DISABLE COPY / INSPECT
+// =========================
+
+document.addEventListener('contextmenu', e=>{
+    e.preventDefault();
+});
+
+document.addEventListener('copy', e=>{
+    e.preventDefault();
+});
+
+document.addEventListener('selectstart', e=>{
+    e.preventDefault();
+});
+
+document.addEventListener('keydown', (e)=>{
+
+    if(
+
+        (e.ctrlKey && e.key === '+') ||
+        (e.ctrlKey && e.key === '-') ||
+        (e.ctrlKey && e.key === '=') ||
+        (e.ctrlKey && e.key === 'u') ||
+        (e.ctrlKey && e.key === 'U') ||
+        (e.ctrlKey && e.key === 'c') ||
+        (e.ctrlKey && e.key === 'C') ||
+        (e.ctrlKey && e.key === 's') ||
+        (e.ctrlKey && e.key === 'S') ||
+        (e.ctrlKey && e.key === 'p') ||
+        (e.ctrlKey && e.key === 'P')
+
+    ){
+
+        e.preventDefault();
+
+    }
+
+});
