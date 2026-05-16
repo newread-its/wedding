@@ -421,10 +421,10 @@ let activeGift = null;
 function toggleGift(id, event) {
   const clickedGift = event.currentTarget.closest(".gift");
 
-  // 🔥 kalau klik yang sama → CLOSE SEMUA
+  // CLOSE kalau klik yang sama
   if (activeGift === clickedGift) {
     document.querySelectorAll(".gift").forEach(g => {
-      g.classList.remove("is-open");
+      g.classList.remove("active");
     });
 
     document.body.classList.remove("gift-lock");
@@ -432,13 +432,13 @@ function toggleGift(id, event) {
     return;
   }
 
-  // 🔒 HARD RESET SEMUA (INI KUNCI UTAMA)
+  // HARD RESET semua
   document.querySelectorAll(".gift").forEach(g => {
-    g.classList.remove("is-open");
+    g.classList.remove("active");
   });
 
-  // buka hanya 1
-  clickedGift.classList.add("is-open");
+  // OPEN hanya 1
+  clickedGift.classList.add("active");
   document.body.classList.add("gift-lock");
 
   activeGift = clickedGift;
