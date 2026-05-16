@@ -419,20 +419,20 @@ flipSections.forEach(section=>{
 let activeGift = null;
 
 function toggleGift(id, event) {
-  const clickedGift = event.currentTarget.closest(".gift");
+  const gift = event.currentTarget.closest(".gift");
   const panel = document.getElementById(id);
 
-  // kalau klik yang sama → CLOSE
+  // CLOSE jika klik yang sama
   if (activeGift === id) {
-    clickedGift.classList.remove("focus");
-    document.body.classList.remove("gift-active");
+    gift.classList.remove("active");
+    document.body.classList.remove("gift-focus");
     activeGift = null;
     return;
   }
 
-  // reset semua gift
+  // reset semua
   document.querySelectorAll(".gift").forEach(g => {
-    g.classList.remove("focus");
+    g.classList.remove("active");
   });
 
   document.querySelectorAll(".gift-content").forEach(p => {
@@ -440,14 +440,14 @@ function toggleGift(id, event) {
   });
 
   // aktifkan yang dipilih
-  clickedGift.classList.add("focus");
-  document.body.classList.add("gift-active");
+  gift.classList.add("active");
+  document.body.classList.add("gift-focus");
 
   panel.classList.add("active");
 
   activeGift = id;
 
-  // scroll tombol ke atas viewport
+  // push tombol ke atas viewport
   event.currentTarget.scrollIntoView({
     behavior: "smooth",
     block: "start"
