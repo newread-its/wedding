@@ -422,14 +422,44 @@ function toggleGift(){
     content.classList.toggle("show");
 }
 
-function copyRekening(){
+function showPopup(text = "Berhasil Disalin"){
 
-    const rekening =
-    document.getElementById("bcaNumber").innerText;
+    const popup =
+    document.getElementById("copyPopup");
+
+    popup.innerText = text;
+
+    popup.classList.add("show");
+
+    clearTimeout(popup.hideTimeout);
+
+    popup.hideTimeout = setTimeout(() => {
+        popup.classList.remove("show");
+    }, 2000);
+}
+
+
+/* COPY REKENING */
+function copyRekening1(){
+
+    const rekening = "005501104349501";
 
     navigator.clipboard.writeText(rekening);
 
+    showPopup();
 }
+
+/* COPY REKENING */
+function copyRekening2(){
+
+    const rekening = "3300968821";
+
+    navigator.clipboard.writeText(rekening);
+
+    showPopup();
+}
+
+
 // =========================
 // DISABLE COPY / INSPECT
 // =========================
