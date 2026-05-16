@@ -419,33 +419,36 @@ flipSections.forEach(section=>{
 let activeGift = null;
 
 function toggleGift(id, event) {
-  const gift = event.currentTarget.closest(".gift");
+  const clickedGift = event.currentTarget.closest(".gift");
 
-  // kalau klik yang sama → close
-  if (activeGift === gift) {
-    gift.classList.remove("is-active");
+  // 🔒 kalau klik yang sama → close semua
+  if (activeGift === clickedGift) {
+    document.querySelectorAll(".gift").forEach(g => {
+      g.classList.remove("is-active");
+    });
     document.body.classList.remove("gift-mode");
     activeGift = null;
     return;
   }
 
-  // tutup semua gift lain
+  // 🔥 FORCE CLOSE SEMUA (INTERLOCK CORE)
   document.querySelectorAll(".gift").forEach(g => {
     g.classList.remove("is-active");
   });
 
-  // aktifkan hanya yang dipilih
-  gift.classList.add("is-active");
+  // aktifkan hanya 1
+  clickedGift.classList.add("is-active");
   document.body.classList.add("gift-mode");
 
-  activeGift = gift;
+  activeGift = clickedGift;
 
-  // scroll tombol ke atas viewport
+  // scroll tombol ke atas
   event.currentTarget.scrollIntoView({
     behavior: "smooth",
     block: "start"
   });
 }
+
 
 function showPopup(text = "Berhasil Disalin"){
 
