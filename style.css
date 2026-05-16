@@ -1424,3 +1424,138 @@ input, select {
     line-height:1.8;
     font-size:16px;
 }
+
+/* ATM CARD */
+.atm-card{
+    position:relative;
+
+    width:100%;
+    height:240px;
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    padding:30px;
+
+    box-sizing:border-box;
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.25);
+}
+
+/* BCA STYLE */
+.bca{
+    background:
+    linear-gradient(
+        135deg,
+        #005baa,
+        #007bff,
+        #00a6ff
+    );
+}
+
+/* CHIP */
+.chip{
+    width:58px;
+    height:45px;
+
+    border-radius:10px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ffd86b,
+        #e3a600
+    );
+
+    margin-top:30px;
+}
+
+/* CHIP DETAIL */
+.chip::before,
+.chip::after{
+    content:'';
+    position:absolute;
+    background:rgba(0,0,0,0.15);
+}
+
+.chip::before{
+    width:58px;
+    height:2px;
+    margin-top:20px;
+}
+
+.chip::after{
+    width:2px;
+    height:45px;
+    margin-left:28px;
+}
+
+/* BANK LOGO */
+.bank-logo{
+    position:absolute;
+    top:28px;
+    right:30px;
+
+    font-size:42px;
+    font-weight:bold;
+
+    color:white;
+
+    letter-spacing:2px;
+}
+
+/* CARD NUMBER */
+.card-number{
+    margin-top:40px;
+
+    font-size:28px;
+    letter-spacing:4px;
+
+    color:white;
+
+    text-align:left;
+}
+
+/* NAME */
+.card-name{
+    margin-top:18px;
+
+    font-size:20px;
+
+    color:white;
+
+    text-transform:uppercase;
+
+    text-align:left;
+}
+
+/* COPY BUTTON */
+.copy-btn{
+    position:absolute;
+
+    right:30px;
+    bottom:30px;
+
+    padding:12px 22px;
+
+    border:none;
+    border-radius:14px;
+
+    background:rgba(255,255,255,0.25);
+
+    color:white;
+
+    cursor:pointer;
+
+    backdrop-filter:blur(10px);
+
+    transition:0.3s;
+}
+
+.copy-btn:hover{
+    background:rgba(255,255,255,0.35);
+}
