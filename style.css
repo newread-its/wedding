@@ -168,7 +168,7 @@ input, select {
 
 /* QRIS */
 .gift {
-  background: linear-gradient(#4b0f1c, #2a0810);
+  background: radial-gradient(circle at top, #2f4f3e, #0d1813);
 }
 
 .gift h2 {
