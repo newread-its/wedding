@@ -493,7 +493,7 @@ input, select {
     margin-top:10px;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;700;800;900&display=swap');
 
 /* ===== WRAPPER ===== */
 .schedule-wrapper{
@@ -803,7 +803,7 @@ input, select {
 
 .mini-title{
     color:#c9a96e;
-    letter-spacing:6px;
+    letter-spacing:4px;
     font-size:16px;
     margin-bottom:12px;
     text-transform:uppercase;
