@@ -1536,3 +1536,30 @@ input, select {
 .download-btn:hover{
     background:rgba(0,0,0,0.28);
 }
+
+/* ===== FOCUS MODE (TAMBAHAN SAJA) ===== */
+
+.gift-content {
+  max-height: 0;
+  overflow: hidden;
+}
+
+/* aktif = scroll internal */
+.gift.focus .gift-content {
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+/* tombol tetap di atas viewport */
+.gift.focus .save-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+/* optional: section lain jadi "tidak ganggu" */
+body.gift-active .gift:not(.focus) {
+  opacity: 0.15;
+  filter: blur(1px);
+  pointer-events: none;
+}
