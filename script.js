@@ -416,9 +416,13 @@ flipSections.forEach(section=>{
 
 });
 
-function toggleGift(){
-    const content = document.getElementById("giftContent");
+function toggleGift1(){
+    const content = document.getElementById("giftContent1");
+    content.classList.toggle("show");
+}
 
+function toggleGift2(){
+    const content = document.getElementById("giftContent1");
     content.classList.toggle("show");
 }
 
