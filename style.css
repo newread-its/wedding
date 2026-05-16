@@ -276,13 +276,31 @@ input, select {
 
 /* ===== SECTION PENAMPIL FOTO ===== */
 
-..couple-section{
+.couple-section{
     position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:120px 20px;
+
+    overflow:hidden;
+
+    background:
+    linear-gradient(
+        to bottom,
+        #eee7df,
+        #eee,
+        #eee7df
+    );
+}
+
+.couple-container{
 
     width:90%;
     max-width:1300px;
 
-    margin:80px auto;
+    margin:auto;
 
     border-radius:40px;
 
@@ -294,19 +312,19 @@ input, select {
 
     min-height:75vh;
 
-    padding:120px 20px;
+    padding:100px 30px;
+
+    position:relative;
 
     overflow:hidden;
 
-    perspective:1800px;
-
     background:
-    linear-gradient(
-        to bottom,
-        #eee7df,
-        #eee,
-        #eee7df
-    );
+    rgba(255,255,255,0.22);
+
+    backdrop-filter:blur(10px);
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,0.12);
 }
 
 
