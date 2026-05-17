@@ -20,7 +20,8 @@ body {
   position: relative;
   z-index: 999;
   /*background: radial-gradient(circle at top, #3a1515, #1b0c0c);*/
-  background: radial-gradient(circle at top, #2f4f3e, #0d1813);
+  /*background: radial-gradient(circle at top, #2f4f3e, #0d1813);*/
+  background: radial-gradient(circle at top, #8b5a2b, #3b1f0f);
 }
 
 /* CONTAINER */
@@ -140,7 +141,7 @@ button {
   position: relative;
   z-index: 10;
 
-  padding: 50px 5px 5px 5px;
+  padding: 50px 15px 5px 15px;
   font-family: 'Playfair Display', serif;
   justify-content: center;
   align-items: center;
@@ -172,7 +173,7 @@ input, select {
 
 /* QRIS */
 .gift {
-  background: radial-gradient(circle at top, #2f4f3e, #0d1813);
+   background: radial-gradient(circle at top, #8b5a2b, #3b1f0f);
   position: relative;
 }
 
