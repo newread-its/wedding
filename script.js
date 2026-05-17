@@ -481,6 +481,17 @@ function copyRekening2(){
     showPopup();
 }
 
+/* COPY ALAMAT */
+function copyRekening3(){
+    const rekening = `M Ainur Ridho
+Dusun Kembang RT22/RW08 Desa Tekung
+Kec. Tekung Lumajang
+67381
+(Depan Musholla Ky. Buchori)`;
+    navigator.clipboard.writeText(rekening);
+    showPopup();
+}
+
 function downloadQRIS(){
 
     const link = document.createElement("a");
