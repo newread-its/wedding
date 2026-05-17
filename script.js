@@ -73,7 +73,7 @@ setInterval(() => {
 // =========================
 
 const rsvpForm = document.getElementById("rsvpForm");
-
+const submitBtn = rsvpForm.querySelector("button");
 const wishList = document.getElementById("wishList");
 
 const refreshWish =
@@ -211,6 +211,18 @@ if(rsvpForm){
 
         e.preventDefault();
 
+
+        // LOCK BUTTON
+        submitBtn.disabled = true;
+
+        submitBtn.innerText = "Mengirim...";
+
+        document.getElementById(
+            "status"
+        ).innerText =
+        "Sedang mengirim data...";
+
+
         const formData =
         new FormData(e.target);
 
@@ -229,10 +241,23 @@ if(rsvpForm){
             ).innerText =
             "Berhasil terkirim";
 
+            submitBtn.innerText =
+            "Terkirim ✓";
+
             e.target.reset();
 
-            // reload wishes
             loadWishes();
+
+
+            // AKTIFKAN LAGI
+            setTimeout(() => {
+
+                submitBtn.disabled = false;
+
+                submitBtn.innerText =
+                "Kirim";
+
+            }, 2000);
 
         }
 
@@ -242,6 +267,11 @@ if(rsvpForm){
                 "status"
             ).innerText =
             "Gagal kirim";
+
+            submitBtn.disabled = false;
+
+            submitBtn.innerText =
+            "Kirim";
 
         }
 
