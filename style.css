@@ -1971,79 +1971,62 @@ body.gift-lock .gift:not(.active){
 }
 
 /* =========================
-   GIFT TITLE HANDWRITING
+   GIFT TITLE
 ========================= */
 
 .gift-title{
 
-    position:relative;
+    width:100%;
 
-    width:max-content;
+    margin-top:30px;
+    margin-bottom:35px;
 
-    margin:0 auto 35px;
+    text-align:center;
 
     font-family:'Great Vibes', cursive;
 
-    font-size:48px;
+    font-size:36px;
 
     font-weight:400;
 
     color:#d4b06a;
-
-    text-align:center;
 
     letter-spacing:1px;
 
     overflow:hidden;
 
     white-space:nowrap;
-}
-
-
-/* EFEK TULIS */
-
-.gift-title::before{
-
-    content:attr(data-text);
-
-    position:absolute;
-
-    top:0;
-    left:0;
-
-    width:0;
-
-    color:#f4d28d;
-
-    overflow:hidden;
-
-    white-space:nowrap;
-
-    border-right:
-    2px solid #f4d28d;
 
     animation:
-    handwriting 5s linear infinite;
+    typingText 4s steps(24) infinite;
 }
 
 
-/* ANIMASI */
+/* TYPING */
 
-@keyframes handwriting{
+@keyframes typingText{
 
     0%{
         width:0;
+        opacity:0;
     }
 
-    45%{
-        width:100%;
+    10%{
+        opacity:1;
     }
 
-    55%{
+    60%{
         width:100%;
+        opacity:1;
+    }
+
+    85%{
+        width:100%;
+        opacity:1;
     }
 
     100%{
         width:0;
+        opacity:0;
     }
 }
