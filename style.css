@@ -1835,7 +1835,7 @@ body.gift-lock .gift:not(.active){
     justify-content:space-between;
     align-items:center;
     gap:10px;
-    margin-bottom:2px;
+    margin-bottom:6px;
 }
 
 
