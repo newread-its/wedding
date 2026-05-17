@@ -1976,20 +1976,21 @@ body.gift-lock .gift:not(.active){
 
 .gift-title{
 
-    width:100%;
+    display:block;
 
-    margin-top:30px;
-    margin-bottom:35px;
+    width:fit-content;
+
+    margin:40px auto 30px;
 
     text-align:center;
 
     font-family:'Great Vibes', cursive;
 
-    font-size:36px;
+    font-size:24px;
 
     font-weight:400;
 
-    color:#d4b06a;
+    color:#c8ae78;
 
     letter-spacing:1px;
 
@@ -2002,7 +2003,7 @@ body.gift-lock .gift:not(.active){
 }
 
 
-/* TYPING */
+/* ANIMATION */
 
 @keyframes typingText{
 
