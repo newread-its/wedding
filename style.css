@@ -1835,7 +1835,7 @@ body.gift-lock .gift:not(.active){
     justify-content:space-between;
     align-items:center;
     gap:10px;
-    margin-bottom:8px;
+    margin-bottom:2px;
 }
 
 
@@ -1929,9 +1929,10 @@ body.gift-lock .gift:not(.active){
 
 .wish-message{
     margin:0;
-    padding-top:2px;
-    padding-bottom:0;
-    line-height:1.35;
+    padding-top:4px;
+    border-top:
+    1px solid rgba(255,255,255,0.12);
+    line-height:1.4;
     font-size:13px;
     text-align:left;
     white-space:pre-line;
