@@ -68,39 +68,208 @@ setInterval(() => {
 // =========================
 // RSVP
 // =========================
-const rsvpForm =
-    document.getElementById("rsvpForm");
+// =========================
+// ELEMENT
+// =========================
 
-if (rsvpForm) {
+const rsvpForm = document.getElementById("rsvpForm");
 
-    rsvpForm.addEventListener("submit", e => {
+const wishList = document.getElementById("wishList");
+
+const refreshWish =
+document.getElementById("refreshWish");
+
+
+// =========================
+// APPS SCRIPT URL
+// =========================
+
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbwNjzXpPMgeRb7NqkXhDooHCeqFd0HhK7JGrqzYEBsGO9rVDIzBnwJ851Js6imNB4rDZA/exec";
+
+
+// =========================
+// LOAD WISHES
+// =========================
+
+async function loadWishes(){
+
+    wishList.innerHTML = "Loading...";
+
+    try{
+
+        const res =
+        await fetch(SCRIPT_URL);
+
+        const data =
+        await res.json();
+
+        // terbaru di atas
+        data.reverse();
+
+        if(data.length === 0){
+
+            wishList.innerHTML = `
+                <div class="wish-item">
+                    Belum ada pesan
+                </div>
+            `;
+
+            return;
+        }
+
+        wishList.innerHTML = "";
+
+        data.forEach(item => {
+
+            const hadirClass =
+            item.hadir === "Hadir"
+            ? "hadir"
+            : "tidak-hadir";
+
+            const hadirIcon =
+            item.hadir === "Hadir"
+            ? "✔"
+            : "✖";
+
+            const div =
+            document.createElement("div");
+
+            div.className = "wish-item";
+
+            div.innerHTML = `
+
+                <div class="wish-top">
+
+                    <div class="wish-profile">
+
+                        <div class="wish-avatar">
+
+                            ${item.nama
+                                .charAt(0)
+                                .toUpperCase()}
+
+                        </div>
+
+                        <div class="wish-info">
+
+                            <div class="wish-name">
+
+                                ${item.nama}
+
+                            </div>
+
+                            <div class="wish-date">
+
+                                ${item.waktu || ""}
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="wish-status ${hadirClass}">
+
+                        ${hadirIcon}
+                        ${item.hadir}
+
+                    </div>
+
+                </div>
+
+                <div class="wish-message">
+
+                    ${item.pesan || "-"}
+
+                </div>
+
+            `;
+
+            wishList.appendChild(div);
+
+        });
+
+    }
+
+    catch(err){
+
+        wishList.innerHTML = `
+            <div class="wish-item">
+                Gagal memuat pesan
+            </div>
+        `;
+    }
+
+}
+
+
+// =========================
+// SUBMIT RSVP
+// =========================
+
+if(rsvpForm){
+
+    rsvpForm.addEventListener(
+        "submit",
+        async e => {
 
         e.preventDefault();
 
-        fetch("https://script.google.com/macros/s/AKfycbwNjzXpPMgeRb7NqkXhDooHCeqFd0HhK7JGrqzYEBsGO9rVDIzBnwJ851Js6imNB4rDZA/exec", {
-            method: "POST",
-            body: new FormData(e.target)
-        })
+        const formData =
+        new FormData(e.target);
 
-        .then(() => {
+        try{
 
-            document.getElementById("status").innerText =
-                "Berhasil terkirim";
+            await fetch(SCRIPT_URL, {
+
+                method:"POST",
+
+                body:formData
+
+            });
+
+            document.getElementById(
+                "status"
+            ).innerText =
+            "Berhasil terkirim";
 
             e.target.reset();
 
-        })
+            // reload wishes
+            loadWishes();
 
-        .catch(() => {
+        }
 
-            document.getElementById("status").innerText =
-                "Gagal kirim";
+        catch{
 
-        });
+            document.getElementById(
+                "status"
+            ).innerText =
+            "Gagal kirim";
+
+        }
 
     });
 
 }
+
+
+// =========================
+// REFRESH BUTTON
+// =========================
+
+refreshWish.addEventListener(
+    "click",
+    loadWishes
+);
+
+
+// =========================
+// FIRST LOAD
+// =========================
+
+loadWishes();
 
 // =========================
 // SEMUA SETELAH HTML SIAP
