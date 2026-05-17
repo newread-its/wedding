@@ -2031,3 +2031,48 @@ body.gift-lock .gift:not(.active){
         opacity:0;
     }
 }
+
+.gift-kado-title{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    color:#c8ae78;
+
+    font-size:24px;
+
+    font-weight:500;
+
+    text-align:center;
+}
+
+.gift-kado-title span{
+
+    font-size:20px;
+
+    animation:
+    giftFloat 2s ease-in-out infinite;
+}
+
+
+/* ANIMASI */
+
+@keyframes giftFloat{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-3px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+}
