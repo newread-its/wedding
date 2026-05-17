@@ -414,19 +414,50 @@
 </div>
 
 <div id="giftContent2" class="gift-content">
+
   <div class="gift-card address-card">
+
     <h3>Kehadiran</h3>
+
     <form id="rsvpForm">
-      <input type="text" name="nama" placeholder="Nama" required>
+
+      <input
+        type="text"
+        name="nama"
+        placeholder="Nama"
+        required
+      >
+
       <select name="hadir">
         <option>Hadir</option>
         <option>Tidak Hadir</option>
       </select>
-      <input type="text" name="jumlah" placeholder="Pesan">
-      <button type="submit">Kirim</button>
+      <textarea
+        name="pesan"
+        placeholder="Tulis pesan..."
+        rows="4"
+        required
+      ></textarea>
+      <button type="submit">
+        Kirim
+      </button>
     </form>
+
+    <div id="status"></div>
+
+    <!-- WISHES -->
+    <div class="wish-header">
+      <h4>Wishes</h4>
+      <button id="refreshWish">
+        ↻
+      </button>
+    </div>
+    <div id="wishList" class="wish-list">
+      Loading...
+    </div>
   </div>
 </div>
+  
 </section>
 
 </div>
