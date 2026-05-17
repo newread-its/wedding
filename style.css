@@ -1781,8 +1781,11 @@ body.gift-lock .gift:not(.active){
 .wish-item{
     position:relative;
     overflow:hidden;
-    padding:10px 14px 6px;
-    border-radius:20px;
+    display:block;
+    height:auto;
+    min-height:0;
+    padding:10px 14px 5px;
+    border-radius:18px;
     background:
     linear-gradient(
         135deg,
@@ -1925,13 +1928,10 @@ body.gift-lock .gift:not(.active){
 /* MESSAGE */
 
 .wish-message{
-    margin-top:0;
-    padding-top:5px;
+    margin:0;
+    padding-top:2px;
     padding-bottom:0;
-    border-top:
-    1px solid rgba(255,255,255,0.05);
-    color:#f3f3f3;
-    line-height:1.45;
+    line-height:1.35;
     font-size:13px;
     text-align:left;
     white-space:pre-line;
