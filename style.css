@@ -1779,29 +1779,20 @@ body.gift-lock .gift:not(.active){
 ========================= */
 
 .wish-item{
-
     position:relative;
-
     overflow:hidden;
-
-    padding:14px 15px;
-
+    padding:12px 14px;
     border-radius:20px;
-
     background:
     linear-gradient(
         135deg,
         rgba(255,255,255,0.10),
         rgba(255,255,255,0.03)
     );
-
     border:1px solid rgba(255,255,255,0.06);
-
     backdrop-filter:blur(12px);
-
     box-shadow:
     0 5px 18px rgba(0,0,0,0.12);
-
     transition:0.3s;
 }
 
@@ -1837,104 +1828,78 @@ body.gift-lock .gift:not(.active){
 ========================= */
 
 .wish-top{
-
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
     gap:10px;
-
-    margin-bottom:10px;
+    margin-bottom:8px;
 }
 
 
 /* PROFILE */
 
 .wish-profile{
-
     display:flex;
-
     align-items:center;
-
     gap:10px;
+    flex:1;
 }
 
 .wish-avatar{
-
-    width:40px;
-    height:40px;
-
+    width:38px;
+    height:38px;
     border-radius:50%;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
-    font-size:16px;
-
+    font-size:15px;
     font-weight:600;
-
     color:#fff;
-
+    flex-shrink:0;
     background:
     linear-gradient(
         135deg,
         rgba(255,255,255,0.20),
         rgba(255,255,255,0.06)
     );
-
     border:1px solid rgba(255,255,255,0.08);
 }
+
 
 .wish-info{
     display:flex;
     flex-direction:column;
+    align-items:flex-start;
+    justify-content:center;
 }
 
 .wish-name{
-
     color:#fff;
-
     font-size:14px;
-
     font-weight:600;
-
-    line-height:1.2;
+    line-height:1.1;
+    text-align:left;
 }
 
 .wish-date{
-
     color:#cfcfcf;
-
     font-size:11px;
-
     margin-top:2px;
+    text-align:left;
 }
 
 
 /* STATUS */
 
 .wish-status{
-
     width:28px;
     height:28px;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
     border-radius:50%;
-
     font-size:13px;
-
     font-weight:600;
-
     flex-shrink:0;
 }
 
@@ -1960,13 +1925,14 @@ body.gift-lock .gift:not(.active){
 /* MESSAGE */
 
 .wish-message{
-    text-align:left;
-    padding-top:10px;
+    margin-top:6px;
+    padding-top:8px;
     border-top:
     1px solid rgba(255,255,255,0.05);
     color:#f3f3f3;
-    line-height:1.55;
+    line-height:1.45;
     font-size:13px;
+    text-align:left;
     white-space:pre-line;
     word-break:break-word;
 }
