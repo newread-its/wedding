@@ -179,10 +179,6 @@ async function loadWishes(){
 
                 <div class="wish-message">${item.pesan || "-"}</div>
 
-                    ${item.pesan || "-"}
-
-                </div>
-
             `;
 
             wishList.appendChild(div);
