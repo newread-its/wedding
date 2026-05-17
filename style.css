@@ -1960,3 +1960,12 @@ body.gift-lock .gift:not(.active){
     }
 
 }
+
+#rsvpForm button:disabled{
+
+    opacity:0.7;
+
+    cursor:not-allowed;
+
+    transform:none;
+}
