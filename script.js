@@ -172,7 +172,6 @@ async function loadWishes(){
                     <div class="wish-status ${hadirClass}">
 
                         ${hadirIcon}
-                        ${item.hadir}
 
                     </div>
 
