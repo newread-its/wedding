@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0", maximum-scale=1.0, user-scalable=no>
+<meta name="theme-color" content="#111111">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Wedding</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet"> 
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400&family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="sparkle"></div>
+  <div class="content">
+
+    <p class="top-text">THE WEDDING OF</p>
+
+    <h1 class="name">Ridho</h1>
+    <div class="and">&</div>
+    <h1 class="name">Eliana</h1>
+
+    <div class="date-line">
+      <span></span>
+      <p>13 • 06 • 2026</p>
+      <span></span>
+    </div>
+
+    <p class="quote">
+      "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan
+      untukmu pasangan hidup dari jenismu sendiri, supaya kamu
+      cenderung dan merasa tenteram kepadanya."
+    </p>
+
+    <p class="source">— QS. Ar-Rum: 21</p>
+
+    <button class="btn" onclick="openInvite()">LIHAT UNDANGAN</button>
+
+  </div>
+</section>
+
+<audio id="music" loop>
+  <source src="music.mp3">
+</audio>
+
+<div id="content" class="hidden">
+
+<!-- BUTTERFLY 
+    <div class="butterfly b1">
+    <div class="wing left"></div>
+    <div class="wing right"></div>
+    <div class="body"></div>
+  </div>
+
+  <div class="butterfly b2">
+    <div class="wing left"></div>
+    <div class="wing right"></div>
+    <div class="body"></div>
+  </div>
+
+  <div class="butterfly b3">
+    <div class="wing left"></div>
+    <div class="wing right"></div>
+    <div class="body"></div>
+  </div>
+
+  <div class="butterfly b4">
+    <div class="wing left"></div>
+    <div class="wing right"></div>
+    <div class="body"></div>
+  </div>
+
+  <div class="butterfly b5">
+    <div class="wing left"></div>
+    <div class="wing right"></div>
+    <div class="body"></div>
+  </div>
+
+  <div class="butterfly b6">
+    <div class="wing left"></div>
+    <div class="wing right"></div>
+    <div class="body"></div>
+  </div>  
+-->
+<section class="hero">
+  <h3>بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</h3>
+  <div class="divider">
+    <span></span>
+    <p>♦</p>
+    <span></span>
+    </div>
+  <p class="quote1">
+      Dengan memohon rahmat dan ridho Allah S.W.T.,
+      kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri
+      acara pernikahan putra-putri kami.
+    </p>
+</section>
+
+<section class="couple-section">
+  <div class="couple-container section-flip">
+    <!-- RIDHO -->
+    <div class="couple-card">
+
+        <div class="photo-wrapper reveal">
+            <img src="foto/ridho_tp2.png" alt="Ridho">
+        </div>
+
+        <div class="text-content">
+            <div class="nama_pengantin">
+              M. Ainur Ridho
+            </div>
+            <div class="status_anak">
+              Putra kedua dari
+            </div>
+            <div class="ortu">
+              Alm. Bpk. Hapi & Ibu Laila
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- LOVE -->
+    <div class="love-icon">
+        ♥
+    </div>
+
+
+    <!-- LELA -->
+    <div class="couple-card">
+        <div class="photo-wrapper reveal">
+            <img src="foto/lela_tp2.png" alt="Lela">
+        </div>
+
+        <div class="text-content">
+            <div class="nama_pengantin">
+              Lela Eliana
+            </div>
+            <div class="status_anak">
+              Putri pertama dari
+            </div>
+            <div class="ortu">
+              Bpk. Suwarno & Ibu Nur Dianah
+            </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="schedule-wrapper">  
+   <div class="schedule-bg"></div>
+  <section class="schedule-section">
+  <p class="schedule-subtitle">RANGKAIAN ACARA</p>
+  <p style="margin-bottom:30px;"></p>
+  <div class="schedule-card">
+    
+    <div class="schedule-icon">
+      <svg width="42" height="42" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M12 20.5
+             C12 20.5 4 15 4 9.5
+             C4 6.5 6 4.5 8.8 4.5
+             C10.5 4.5 11.5 5.4 12 6.3
+             C12.5 5.4 13.5 4.5 15.2 4.5
+             C18 4.5 20 6.5 20 9.5
+             C20 15 12 20.5 12 20.5Z"
+          stroke="#C8AE78"
+          stroke-width="1.7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </div>
+
+    <p class="event-type">AKAD NIKAH</p>
+
+    <h3 class="event-date">Jum'at, 12 Juni 2026</h3>
+
+    <p class="event-time">07.30 – 09.30 WIB</p>
+
+    <div class="event-location">
+      <p>Masjid Agung Lumajang</p>
+      <p>Jl. Alun - Alun Barat</p>
+      <p>Lumajang</p>
+    </div>
+
+    <a href="https://maps.app.goo.gl/LsykqYvSHXrjYNeh8" class="map-button">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M12 21C16 17 19 14 19 10.5C19 6.91 15.87 4 12 4C8.13 4 5 6.91 5 10.5C5 14 8 17 12 21Z"
+          stroke="#C8AE78" stroke-width="1.8"/>
+        <circle cx="12" cy="10.5" r="2.5"
+          stroke="#C8AE78" stroke-width="1.8"/>
+      </svg>
+
+      <span>Lihat Peta</span>
+    </a>
+  </div>
+
+  <div class="schedule-card">
+    <div class="schedule-icon">
+      <svg width="42" height="42" viewBox="0 0 24 24" fill="none">
+        <path d="M12 3L22 8L12 13L2 8L12 3Z" stroke="#C8AE78" stroke-width="1.5"/>
+        <path d="M4 11L12 16L20 11" stroke="#C8AE78" stroke-width="1.5"/>
+        <path d="M4 15L12 20L20 15" stroke="#C8AE78" stroke-width="1.5"/>
+      </svg>
+    </div>
+
+    <p class="event-type">RESEPSI</p>
+
+    <h3 class="event-date">Sabtu, 13 Juni 2026</h3>
+
+    <p class="event-time">12.30 – 16.00 WIB</p>
+
+    <div class="event-location">
+      <p>Kediaman Mempelai Pria</p>
+      <p>Dusun Kembang RT22/RW08 Tekung</p>
+      <p>Lumajang</p>
+    </div>
+
+    <a href="https://maps.app.goo.gl/n5YVLbPgTpNigAPL8" class="map-button">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M12 21C16 17 19 14 19 10.5C19 6.91 15.87 4 12 4C8.13 4 5 6.91 5 10.5C5 14 8 17 12 21Z"
+          stroke="#C8AE78" stroke-width="1.8"/>
+        <circle cx="12" cy="10.5" r="2.5"
+          stroke="#C8AE78" stroke-width="1.8"/>
+      </svg>
+
+      <span>Lihat Peta</span>
+    </a>
+  </div>
+  
+  </section>
+</section>
+
+<section class="love-story-section">
+  <div class="couple-container section-flip">
+  <div class="floating-love-container"></div>
+    <div class="love-story-content">
+
+        <div class="love-story-title">
+            Love Story
+        </div>
+
+        <div class="love-story-text">
+
+            <p>
+                Tidak semua pertemuan datang di waktu yang kita rencanakan.<br><br>
+
+                Ada masa di mana kami berjalan sendiri-sendiri, belajar memahami hidup, memperbaiki diri, dan memantaskan hati.<br><br>
+
+                Kami percaya, jodoh bukan sekadar ditemukan, tetapi dipersiapkan.
+                Dalam setiap doa yang diam-diam kami panjatkan, ada harapan agar dipertemukan dengan seseorang yang baik dan juga sedang berusaha menjadi baik.<br><br>
+
+                Hingga akhirnya, tanpa banyak kebetulan yang rumit, Allah mempertemukan kami di waktu yang terasa tepat.
+                Bukan karena kami sudah sempurna, tetapi karena kami sama-sama sedang berproses untuk menjadi lebih pantas.<br><br>
+
+                Kami memilih untuk melangkah bukan karena telah menemukan sosok yang sempurna,
+                melainkan karena menemukan seseorang yang ingin terus belajar, bertumbuh, dan berjalan bersama menuju ridha-Nya.<br><br>
+
+                Karena pada akhirnya,
+                jodoh adalah cerminan dari diri kita sendiri.
+                Dan sebaik-baiknya perjalanan, adalah perjalanan memperbaiki diri hingga dipertemukan dengan yang sepadan.<br><br>
+
+                Kini, dengan penuh syukur, kami melangkah ke jenjang yang lebih serius,
+                memulai kisah baru dalam ikatan suci pernikahan.<br><br>
+
+                Semoga langkah ini senantiasa diberkahi,
+                dan menjadi awal dari perjalanan panjang yang penuh kebaikan.<br><br>
+
+                ttd,<br>
+                Ridho & Eliana<br>
+                31 Okt 2025
+            </p>
+
+        </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="luxury-countdown" data-aos="fade-up">
+
+  <div class="ornament top"></div>
+
+  <p class="mini-title">Menuju Hari Bahagia</p>
+  <p style="margin-bottom:50px;"></p>
+
+  <div class="countdown-wrapper">
+
+    <div class="lux-card">
+      <div class="glass"></div>
+      <div class="shine"></div>
+      <div class="number" id="days">00</div>
+      <div class="label">Hari</div>
+    </div>
+
+    <div class="lux-card">
+      <div class="glass"></div>
+      <div class="shine"></div>
+      <div class="number" id="hours">00</div>
+      <div class="label">Jam</div>
+    </div>
+
+    <div class="lux-card">
+      <div class="glass"></div>
+      <div class="shine"></div>
+      <div class="number" id="minutes">00</div>
+      <div class="label">Menit</div>
+    </div>
+
+    <div class="lux-card">
+      <div class="glass"></div>
+      <div class="shine"></div>
+      <div class="number" id="seconds">00</div>
+      <div class="label">Detik</div>
+    </div>
+
+  </div>
+
+  <div class="save-wrapper">
+  <a
+    class="save-date-btn"
+    href="wedding.ics"
+    download
+  >
+    <span>Save The Date</span>
+  </a>
+  </div>
+  
+  <div class="ornament bottom"></div>
+  
+</section>
+
+<!-- QRIS SECTION -->
+<section class="gift" data-aos="fade-up">
+  <div style="height:40px;"></div>
+  <h2 class="gift-title">
+  Send Gift & Wishes
+  </h2>
+ 
+  <!-- BUTTON -->
+<div class="save-wrapper">
+  <button class="save-date-btn" onclick="toggleGift('giftContent1', event)">
+    <span>SEND GIFT</span>
+  </button>
+</div>
+ 
+<!-- HIDE SHOW CONTENT -->
+<div id="giftContent1" class="gift-content">
+  <!-- QRIS -->
+  <div class="gift-card">
+    <h3>QRIS</h3>
+    <!-- GANTI DENGAN GAMBAR QRIS -->
+    <img src="foto/qris1.png" alt="QRIS" class="gift-image">
+    <button class="download-btn" onclick="downloadQRIS()">
+    Simpan QRIS
+    </button>
+  </div>
+
+   <!-- KARTU ATM BRI -->
+  <div class="gift-card bank-card">
+    <div class="atm-image-wrapper">
+    <!-- GAMBAR ATM -->
+    <img src="foto/BRI.png" alt="BCA" class="atm-image">
+    <!-- BUTTON COPY -->
+    <button class="copy-btn" onclick="copyRekening1()">
+      Salin
+    </button>
+    </div>
+  </div>
+  
+   <!-- KARTU ATM BCA -->
+  <div class="gift-card bank-card">
+    <div class="atm-image-wrapper">
+    <!-- GAMBAR ATM -->
+    <img src="foto/BCA.png" alt="BCA" class="atm-image">
+    <!-- BUTTON COPY -->
+    <button class="copy-btn" onclick="copyRekening2()">
+      Salin
+    </button>
+    </div>
+  </div>
+  
+  <!-- KARTU ALAMAT -->
+  <div class="gift-card address-card">
+    <h3 class="gift-kado-title">
+      <span>🎁</span>
+        Kirim Kado
+      <span>🎁</span>
+    </h3>
+    <div class="address-box">
+      <p class="address-name">M. Ainur Ridho</p>
+      <p class="address-text">
+        Dsn. Kembang RT22/RW08<br>
+        Desa Tekung Kec. Tekung<br>
+        Lumajang, Jawa Timur<br>
+        67381
+      </p>
+      <button class="copy-btn" onclick="copyRekening3()">
+      Salin
+      </button>
+    </div>
+  </div>
+</div>
+
+
+  
+<div class="save-wrapper">
+  <button class="save-date-btn" onclick="toggleGift('giftContent2', event)">
+    <span>WISHES</span>
+  </button>
+</div>
+
+<div id="giftContent2" class="gift-content">
+
+  <div class="gift-card address-card">
+
+    <h3>Kehadiran</h3>
+
+    <form id="rsvpForm">
+
+      <input
+        type="text"
+        name="nama"
+        placeholder="Nama"
+        required
+      >
+
+      <select name="hadir">
+        <option>Hadir</option>
+        <option>Tidak Hadir</option>
+      </select>
+      <textarea
+        name="pesan"
+        placeholder="Tulis pesan..."
+        rows="4"
+        required
+      ></textarea>
+      <button type="submit">
+        Kirim
+      </button>
+    </form>
+
+    <div id="status"></div>
+
+    <!-- WISHES -->
+    <div class="wish-header">
+      <h4>Wishes</h4>
+      <button id="refreshWish">
+        ↻
+      </button>
+    </div>
+    <div id="wishList" class="wish-list">
+      Loading...
+    </div>
+  </div>
+</div>
+<div style="height:60px;"></div> 
+</section>
+
+</div>
+
+<!-- POPUP -->
+<div id="copyPopup" class="copy-popup">
+  Berhasil Disalin
+</div>
+  
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
