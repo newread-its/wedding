@@ -78,38 +78,104 @@ button{
     text-align:center;
 }
 
+/* LOADING FULLSCREEN */
+
 #loading{
-    margin-top:10px;
-    font-size:14px;
-    opacity:.7;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    backdrop-filter:blur(5px);
+    z-index:9999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+
+    color:white;
+    font-size:15px;
 }
 
 .hidden{
-    display:none;
+    display:none !important;
 }
+
+/* SPINNER */
+
+.spinner{
+    width:55px;
+    height:55px;
+    border:5px solid rgba(255,255,255,.2);
+    border-top:5px solid white;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+    margin-bottom:15px;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* SEARCH RESULT */
 
 #result{
     margin-top:10px;
-    max-height:250px;
+    max-height:350px;
     overflow-y:auto;
 }
 
-.result-item{
+/* ITEM */
+
+.result-item,
+.member{
     background:#1f1f1f;
-    padding:12px;
-    border-radius:12px;
-    margin-bottom:8px;
+    color:white;
+
+    padding:14px 16px;
+    border-radius:14px;
+
+    margin-bottom:10px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
     cursor:pointer;
+
     transition:.2s;
 }
 
 .result-item:hover{
-    transform:scale(1.02);
+    transform:scale(1.01);
 }
 
-.member{
-    background:#2b2b2b;
-    padding:12px;
-    border-radius:12px;
-    margin-top:10px;
+/* TEXT */
+
+.item-text{
+    flex:1;
+    padding-right:10px;
+
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+/* BUTTON X */
+
+.remove-btn{
+    width:28px;
+    height:28px;
+
+    border:none;
+    border-radius:50%;
+
+    background:#ff4d4d;
+    color:white;
+
+    font-size:16px;
+    cursor:pointer;
+
+    flex-shrink:0;
 }
