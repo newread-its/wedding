@@ -83,14 +83,9 @@ function renderGuests(){
         </div>
 
         <button
-        class="remove-btn"
-        onclick="removeGuest('${guest.id_tamu}')"
-        >
-        <svg viewBox="0 0 24 24">
-        <path d="M18 6L6 18"/>
-        <path d="M6 6L18 18"/>
-        </svg>
-        </button>
+            class="remove-btn"
+            onclick="removeGuest('${guest.id_tamu}')"
+        ></button>
 `      ;
 
         selectedDiv.appendChild(div);
