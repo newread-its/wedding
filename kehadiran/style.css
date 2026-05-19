@@ -240,3 +240,14 @@ button{
     line-height:1.2;
     font-size:14px;
 }
+
+.qr-actions{
+    margin-top:15px;
+
+    display:flex;
+    gap:10px;
+}
+
+.qr-actions button{
+    flex:1;
+}
