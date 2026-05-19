@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kehadiran Tamu</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+  <h1>Kehadiran Tamu</h1>
+
+  <input type="text" id="search" placeholder="Cari nama tamu...">
+
+  <div id="result"></div>
+
+  <div class="card">
+    <h2>Daftar Kehadiran</h2>
+
+    <div id="selected"></div>
+
+    <button onclick="saveAttendance()">
+      SIMPAN KEHADIRAN
+    </button>
+  </div>
+
+  <div id="successCard" class="hidden">
+
+    <h2>Berhasil</h2>
+
+    <div id="qrcode"></div>
+
+    <p id="regId"></p>
+
+    <div id="memberList"></div>
+
+    <button onclick="downloadQR()">
+      SIMPAN QR
+    </button>
+
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
