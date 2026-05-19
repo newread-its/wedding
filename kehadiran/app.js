@@ -109,57 +109,110 @@ function removeGuest(id_tamu){
 
 }
 
+let isSaving = false;
+
 async function saveAttendance(){
 
+    if(isSaving) return;
+
     if(selectedGuests.length == 0){
-        alert("Belum ada tamu");
         return;
     }
+
+    isSaving = true;
 
     const btn = event.target;
 
     btn.disabled = true;
+
+    btn.classList.add("loading-btn");
+
     btn.innerText = "MENYIMPAN...";
 
-    const res = await fetch(API_URL,{
-        method:"POST",
-        body:JSON.stringify({
-            action:"save",
-            ids:selectedGuests.map(g => g.id_tamu)
-        })
-    });
+    try{
 
-    const data = await res.json();
+        const res = await fetch(API_URL,{
+            method:"POST",
+            body:JSON.stringify({
+                action:"save",
+                ids:selectedGuests.map(g => g.id_tamu)
+            })
+        });
 
-    btn.disabled = false;
-    btn.innerText = "SIMPAN KEHADIRAN";
+        const data = await res.json();
 
-    if(!data.success){
-        alert(data.message);
-        return;
+        if(!data.success){
+            alert("Terjadi kesalahan");
+            return;
+        }
+
+        selectedGuests = selectedGuests.map(g => {
+
+            if(data.failed_ids.includes(g.id_tamu)){
+
+                return {
+                    ...g,
+                    failed:true
+                };
+
+            }
+
+            return g;
+
+        });
+
+        selectedGuests =
+            selectedGuests.filter(
+                g => data.failed_ids.includes(g.id_tamu)
+            );
+
+        renderGuests();
+
+        if(data.success_ids.length > 0){
+
+            document
+                .getElementById("successCard")
+                .classList.remove("hidden");
+
+            document
+                .getElementById("regId")
+                .innerText = data.id_kelompok;
+
+            const qrDiv =
+                document.getElementById("qrcode");
+
+            qrDiv.innerHTML = "";
+
+            new QRCode(qrDiv,{
+                text:data.id_kelompok,
+                width:180,
+                height:180
+            });
+
+            const sukses =
+                allGuests.filter(g =>
+                    data.success_ids.includes(g.id_tamu)
+                );
+
+            document
+                .getElementById("memberList")
+                .innerHTML = sukses.map(m=>`
+                    <p>${m.nama} - ${m.asal}</p>
+                `).join("");
+
+        }
+
     }
+    finally{
 
-    document
-        .getElementById("successCard")
-        .classList.remove("hidden");
+        isSaving = false;
 
-    document
-        .getElementById("regId")
-        .innerText = data.id_kelompok;
+        btn.disabled = false;
 
-    const qrDiv = document.getElementById("qrcode");
+        btn.classList.remove("loading-btn");
 
-    qrDiv.innerHTML = "";
+        btn.innerText = "SIMPAN KEHADIRAN";
 
-    new QRCode(qrDiv,{
-        text:data.id_kelompok,
-        width:180,
-        height:180
-    });
-
-    document.getElementById("memberList").innerHTML =
-        selectedGuests.map((m,i)=>`
-            <p>${m.nama} - ${m.asal}</p>
-        `).join("");
+    }
 
 }
