@@ -194,11 +194,21 @@ async function saveAttendance(){
                     data.success_ids.includes(g.id_tamu)
                 );
 
-            document
-                .getElementById("memberList")
-                .innerHTML = sukses.map(m=>`
-                    <p>${m.nama} - ${m.asal}</p>
-                `).join("");
+           document
+            .getElementById("memberList")
+            .innerHTML = `
+
+            <div class="total-member">
+            Total ${sukses.length} Tamu
+            </div>
+
+            ${sukses.map(m=>`
+            <p class="member-line">
+                ${m.nama} - ${m.asal}
+            </p>
+        `    ).join("")}
+
+    `       ;
 
         }
 
@@ -214,5 +224,25 @@ async function saveAttendance(){
         btn.innerText = "SIMPAN KEHADIRAN";
 
     }
+
+}
+
+function downloadQR(){
+
+    const card =
+        document.getElementById("successCard");
+
+    html2canvas(card).then(canvas => {
+
+        const link = document.createElement("a");
+
+        link.download =
+            document.getElementById("regId").innerText + ".png";
+
+        link.href = canvas.toDataURL();
+
+        link.click();
+
+    });
 
 }
