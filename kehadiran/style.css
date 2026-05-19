@@ -165,17 +165,44 @@ button{
 /* BUTTON X */
 
 .remove-btn{
-    width:28px;
-    height:28px;
+    width:26px;
+    height:26px;
 
     border:none;
+    outline:none;
+
     border-radius:50%;
 
-    background:#ff4d4d;
-    color:white;
+    background:rgba(255,255,255,.08);
 
-    font-size:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
     cursor:pointer;
 
+    transition:.2s;
+
     flex-shrink:0;
+}
+
+.remove-btn:hover{
+    background:#ff4d4d;
+    transform:scale(1.08);
+}
+
+.remove-btn svg{
+    width:14px;
+    height:14px;
+
+    stroke:white;
+    stroke-width:2.5;
+
+    fill:none;
+}
+
+.failed-text{
+    font-size:12px;
+    color:#ff6b6b;
+    margin-top:4px;
 }
