@@ -77,3 +77,39 @@ button{
     border-radius:20px;
     text-align:center;
 }
+
+#loading{
+    margin-top:10px;
+    font-size:14px;
+    opacity:.7;
+}
+
+.hidden{
+    display:none;
+}
+
+#result{
+    margin-top:10px;
+    max-height:250px;
+    overflow-y:auto;
+}
+
+.result-item{
+    background:#1f1f1f;
+    padding:12px;
+    border-radius:12px;
+    margin-bottom:8px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.result-item:hover{
+    transform:scale(1.02);
+}
+
+.member{
+    background:#2b2b2b;
+    padding:12px;
+    border-radius:12px;
+    margin-top:10px;
+}
