@@ -30,9 +30,15 @@ searchInput.addEventListener("input", ()=>{
 
     if(q.length < 1) return;
 
-    const filtered = allGuests.filter(g =>
-        g.nama.toLowerCase().includes(q)
-    );
+    const filtered = allGuests.filter(g => {
+    const cocokNama =
+        g.nama.toLowerCase().includes(q);
+        const belumDipilih =
+        !selectedGuests.find(
+            s => s.id_tamu == g.id_tamu
+        );
+    return cocokNama && belumDipilih;
+    });
 
     filtered.forEach(item => {
 
@@ -55,19 +61,10 @@ searchInput.addEventListener("input", ()=>{
 });
 
 function addGuest(item){
-
-    if(selectedGuests.find(g => g.id_tamu == item.id_tamu)){
-        alert("Tamu sudah ditambahkan");
-        return;
-    }
-
     selectedGuests.push(item);
-
     renderGuests();
-
     searchInput.value = "";
     resultDiv.innerHTML = "";
-
 }
 
 function renderGuests(){
@@ -86,10 +83,13 @@ function renderGuests(){
         </div>
 
         <button
-            class="remove-btn"
-            onclick="removeGuest('${guest.id_tamu}')"
+        class="remove-btn"
+        onclick="removeGuest('${guest.id_tamu}')"
         >
-        ×
+        <svg viewBox="0 0 24 24">
+        <path d="M18 6L6 18"/>
+        <path d="M6 6L18 18"/>
+        </svg>
         </button>
 `      ;
 
