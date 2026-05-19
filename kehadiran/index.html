@@ -34,18 +34,32 @@
 
   <div id="successCard" class="hidden">
 
-    <h2>Berhasil</h2>
+    <div id="qrCapture">
 
-    <div id="qrcode"></div>
+        <h2>Berhasil</h2>
 
-    <p id="regId"></p>
+        <div id="qrcode"></div>
 
-    <div id="memberList"></div>
+        <p id="regId"></p>
 
-    <button onclick="downloadQR()">
-      SIMPAN QR
-    </button>
+        <div id="memberList"></div>
 
+    </div>
+
+    <div class="qr-actions">
+
+        <button onclick="downloadQR()">
+            SIMPAN QR
+        </button>
+
+        <button onclick="printQR()">
+            PRINT
+        </button>
+
+        <button onclick="closeQR()">
+            CLOSE
+        </button>
+    </div>
   </div>
 
 </div>
