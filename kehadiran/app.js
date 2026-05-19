@@ -225,7 +225,7 @@ async function saveAttendance(){
 function downloadQR(){
 
     const card =
-        document.getElementById("successCard");
+        document.getElementById("qrCapture");
 
     html2canvas(card).then(canvas => {
 
@@ -239,5 +239,109 @@ function downloadQR(){
         link.click();
 
     });
+
+}
+
+function printQR(){
+
+    const content =
+        document.getElementById("qrCapture").innerHTML;
+
+    const win = window.open("", "_blank");
+
+    win.document.write(`
+
+        <html>
+
+        <head>
+
+            <title>Print QR</title>
+
+            <style>
+
+                @page{
+                    size:58mm auto;
+                    margin:0;
+                }
+
+                body{
+
+                    width:58mm;
+
+                    margin:0 auto;
+
+                    padding:4mm;
+
+                    box-sizing:border-box;
+
+                    font-family:monospace;
+
+                    text-align:center;
+
+                }
+
+                h2{
+                    font-size:18px;
+                    margin:0 0 8px 0;
+                }
+
+                #qrcode{
+
+                    display:flex;
+                    justify-content:center;
+
+                    margin-bottom:8px;
+                }
+
+                #qrcode img{
+                    width:170px !important;
+                    height:170px !important;
+                }
+
+                #regId{
+                    font-size:18px;
+                    font-weight:bold;
+                    margin:8px 0 12px 0;
+                }
+
+                .total-member{
+                    font-size:14px;
+                    font-weight:bold;
+                    margin-bottom:6px;
+                }
+
+                .member-line{
+                    font-size:13px;
+                    line-height:1.2;
+                    margin:2px 0;
+
+                    text-align:left;
+
+                    word-break:break-word;
+                }
+
+            </style>
+
+        </head>
+
+        <body>
+
+            ${content}
+
+        </body>
+
+        </html>
+
+    `);
+
+    win.document.close();
+
+    win.focus();
+
+    setTimeout(()=>{
+
+        win.print();
+
+    },700);
 
 }
