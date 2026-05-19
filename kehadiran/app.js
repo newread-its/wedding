@@ -34,7 +34,7 @@ searchInput.addEventListener("input", ()=>{
         g.nama.toLowerCase().includes(q)
     );
 
-    filtered.slice(0,20).forEach(item => {
+    filtered.forEach(item => {
 
         const div = document.createElement("div");
 
