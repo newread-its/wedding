@@ -3,25 +3,38 @@ const API_URL = "https://script.google.com/macros/s/AKfycbyhbYegFWLHDstH4vxPfFDr
 const searchInput = document.getElementById("search");
 const resultDiv = document.getElementById("result");
 const selectedDiv = document.getElementById("selected");
+const loading = document.getElementById("loading");
 
+let allGuests = [];
 let selectedGuests = [];
 
-searchInput.addEventListener("input", async () => {
+loadGuests();
 
-    const q = searchInput.value.trim();
+async function loadGuests(){
 
-    if(q.length < 2){
-        resultDiv.innerHTML = "";
-        return;
-    }
+    loading.classList.remove("hidden");
 
-    const res = await fetch(`${API_URL}?action=search&q=${q}`);
+    const res = await fetch(`${API_URL}?action=all`);
 
-    const data = await res.json();
+    allGuests = await res.json();
+
+    loading.classList.add("hidden");
+
+}
+
+searchInput.addEventListener("input", ()=>{
+
+    const q = searchInput.value.trim().toLowerCase();
 
     resultDiv.innerHTML = "";
 
-    data.forEach(item => {
+    if(q.length < 1) return;
+
+    const filtered = allGuests.filter(g =>
+        g.nama.toLowerCase().includes(q)
+    );
+
+    filtered.slice(0,20).forEach(item => {
 
         const div = document.createElement("div");
 
@@ -32,7 +45,7 @@ searchInput.addEventListener("input", async () => {
             ${item.asal}
         `;
 
-        div.onclick = () => selectGuest(item);
+        div.onclick = () => addGuest(item);
 
         resultDiv.appendChild(div);
 
@@ -40,7 +53,7 @@ searchInput.addEventListener("input", async () => {
 
 });
 
-async function selectGuest(item){
+function addGuest(item){
 
     if(selectedGuests.find(g => g.id_tamu == item.id_tamu)){
         alert("Tamu sudah ditambahkan");
@@ -49,14 +62,14 @@ async function selectGuest(item){
 
     selectedGuests.push(item);
 
-    renderMembers();
+    renderGuests();
 
     searchInput.value = "";
     resultDiv.innerHTML = "";
 
 }
 
-function renderMembers(){
+function renderGuests(){
 
     selectedDiv.innerHTML = "";
 
@@ -70,7 +83,7 @@ function renderMembers(){
             <b>${guest.nama}</b><br>
             ${guest.asal}
 
-            <button onclick="removeGuest('${guest.id_tamu}')" style="margin-top:10px;">
+            <button onclick="removeGuest('${guest.id_tamu}')">
                 HAPUS
             </button>
         `;
@@ -83,20 +96,27 @@ function renderMembers(){
 
 function removeGuest(id_tamu){
 
-    selectedGuests = selectedGuests.filter(g => g.id_tamu != id_tamu);
+    selectedGuests = selectedGuests.filter(
+        g => g.id_tamu != id_tamu
+    );
 
-    renderMembers();
+    renderGuests();
 
 }
 
 async function saveAttendance(){
 
     if(selectedGuests.length == 0){
-        alert("Pilih tamu dulu");
+        alert("Belum ada tamu");
         return;
     }
 
-    const res = await fetch(API_URL, {
+    const btn = event.target;
+
+    btn.disabled = true;
+    btn.innerText = "MENYIMPAN...";
+
+    const res = await fetch(API_URL,{
         method:"POST",
         body:JSON.stringify({
             action:"save",
@@ -106,42 +126,35 @@ async function saveAttendance(){
 
     const data = await res.json();
 
+    btn.disabled = false;
+    btn.innerText = "SIMPAN KEHADIRAN";
+
     if(!data.success){
         alert(data.message);
         return;
     }
 
-    document.getElementById("successCard").classList.remove("hidden");
+    document
+        .getElementById("successCard")
+        .classList.remove("hidden");
 
-    document.getElementById("regId").innerText = data.id_daftar;
+    document
+        .getElementById("regId")
+        .innerText = data.id_kelompok;
 
-    let html = "";
+    const qrDiv = document.getElementById("qrcode");
 
-    document.getElementById("memberList").innerHTML = selectedGuests.map((m,i)=>`
-        <p>${i+1}. ${m.nama} - ${m.asal}</p>
-    `).join("");
+    qrDiv.innerHTML = "";
 
-    document.getElementById("qrcode").innerHTML = "";
-
-    new QRCode(document.getElementById("qrcode"), {
-        text: data.id_daftar,
-        width: 220,
-        height: 220
+    new QRCode(qrDiv,{
+        text:data.id_kelompok,
+        width:180,
+        height:180
     });
 
-}
-
-function downloadQR(){
-
-    const img = document.querySelector("#qrcode img");
-
-    if(!img) return;
-
-    const a = document.createElement("a");
-
-    a.href = img.src;
-    a.download = "qr-kehadiran.png";
-
-    a.click();
+    document.getElementById("memberList").innerHTML =
+        selectedGuests.map((m,i)=>`
+            <p>${m.nama} - ${m.asal}</p>
+        `).join("");
 
 }
