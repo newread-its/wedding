@@ -206,3 +206,8 @@ button{
     color:#ff6b6b;
     margin-top:4px;
 }
+
+.loading-btn{
+    opacity:.7;
+    pointer-events:none;
+}
