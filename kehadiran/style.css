@@ -165,25 +165,21 @@ button{
 /* BUTTON X */
 
 .remove-btn{
-    width:26px;
-    height:26px;
+    width:24px;
+    height:24px;
 
     border:none;
-    outline:none;
-
     border-radius:50%;
 
-    background:rgba(255,255,255,.08);
+    background:rgba(255,255,255,.12);
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    position:relative;
 
     cursor:pointer;
 
-    transition:.2s;
-
     flex-shrink:0;
+
+    transition:.2s;
 }
 
 .remove-btn:hover{
@@ -191,14 +187,33 @@ button{
     transform:scale(1.08);
 }
 
-.remove-btn svg{
-    width:14px;
-    height:14px;
+/* GARIS X */
 
-    stroke:white;
-    stroke-width:2.5;
+.remove-btn::before,
+.remove-btn::after{
 
-    fill:none;
+    content:"";
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    width:11px;
+    height:2px;
+
+    background:white;
+
+    border-radius:10px;
+
+}
+
+.remove-btn::before{
+    transform:translate(-50%,-50%) rotate(45deg);
+}
+
+.remove-btn::after{
+    transform:translate(-50%,-50%) rotate(-45deg);
 }
 
 .failed-text{
