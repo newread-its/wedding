@@ -41,8 +41,9 @@ searchInput.addEventListener("input", ()=>{
         div.className = "result-item";
 
         div.innerHTML = `
-            <b>${item.nama}</b><br>
-            ${item.asal}
+            <div class="item-text">
+                ${item.nama} - ${item.asal}
+            </div>
         `;
 
         div.onclick = () => addGuest(item);
@@ -80,13 +81,17 @@ function renderGuests(){
         div.className = "member";
 
         div.innerHTML = `
-            <b>${guest.nama}</b><br>
-            ${guest.asal}
+        <div class="item-text">
+            ${guest.nama} - ${guest.asal}
+        </div>
 
-            <button onclick="removeGuest('${guest.id_tamu}')">
-                HAPUS
-            </button>
-        `;
+        <button
+            class="remove-btn"
+            onclick="removeGuest('${guest.id_tamu}')"
+        >
+        ×
+        </button>
+`      ;
 
         selectedDiv.appendChild(div);
 
