@@ -345,3 +345,12 @@ function printQR(){
     },700);
 
 }
+
+function closeQR(){
+
+    const card =
+        document.getElementById("successCard");
+
+    card.style.display = "none";
+
+}
