@@ -211,3 +211,17 @@ button{
     opacity:.7;
     pointer-events:none;
 }
+
+.total-member{
+    margin-top:15px;
+    margin-bottom:8px;
+
+    font-weight:bold;
+    font-size:15px;
+}
+
+.member-line{
+    margin:2px 0;
+    line-height:1.2;
+    font-size:14px;
+}
