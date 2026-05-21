@@ -251,3 +251,28 @@ button{
 .qr-actions button{
     flex:1;
 }
+.add-btn{
+
+    border:none;
+
+    background:#3b82f6;
+
+    color:white;
+
+    padding:7px 14px;
+
+    border-radius:999px;
+
+    font-size:12px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    flex-shrink:0;
+
+    transition:.2s;
+}
+
+.add-btn:hover{
+    transform:scale(1.05);
+}
