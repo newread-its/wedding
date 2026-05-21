@@ -25,7 +25,41 @@ async function loadGuests(){
 
 searchInput.addEventListener("input", ()=>{
 
-    const q = searchInput.value.trim().toLowerCase();
+    const q =
+        searchInput.value.trim().toLowerCase();
+
+    renderSearch(q);
+
+});
+
+    filtered.forEach(item => {
+
+        const div = document.createElement("div");
+
+        div.className = "result-item";
+
+        div.innerHTML = `
+            <div class="item-text">
+                ${item.nama} - ${item.asal}
+            </div>
+        <button
+            class="add-btn"
+            onclick="event.stopPropagation(); addGuestById('${item.id_tamu}')"
+            >
+            ADD
+        </button>
+
+`;
+
+        div.onclick = () => addGuest(item);
+
+        resultDiv.appendChild(div);
+
+    });
+
+});
+
+function renderSearch(q){
 
     resultDiv.innerHTML = "";
 
@@ -52,18 +86,25 @@ searchInput.addEventListener("input", ()=>{
         div.className = "result-item";
 
         div.innerHTML = `
+
             <div class="item-text">
                 ${item.nama} - ${item.asal}
             </div>
-        `;
 
-        div.onclick = () => addGuest(item);
+            <button
+                class="add-btn"
+                onclick="event.stopPropagation(); addGuestById('${item.id_tamu}')"
+            >
+                ADD
+            </button>
+
+        `;
 
         resultDiv.appendChild(div);
 
     });
 
-});
+}
 
 function addGuest(item){
 
@@ -74,6 +115,22 @@ function addGuest(item){
     searchInput.value = "";
 
     resultDiv.innerHTML = "";
+
+}
+
+function addGuestById(id_tamu){
+
+    const item =
+        allGuests.find(g => g.id_tamu == id_tamu);
+
+    if(!item) return;
+
+    addGuest(item);
+
+    const q =
+        searchInput.value.trim().toLowerCase();
+
+    renderSearch(q);
 
 }
 
