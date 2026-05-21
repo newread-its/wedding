@@ -524,68 +524,95 @@ function downloadQR(){
 
 function printQR(){
 
-    const content =
+    const card =
         document.getElementById(
             "qrCapture"
-        ).innerHTML;
-
-    const win =
-        window.open(
-            "",
-            "_blank"
         );
 
-    win.document.write(`
+    html2canvas(card,{
 
-        <html>
+        scale:3,
 
-        <head>
+        useCORS:true,
 
-            <title>Print QR</title>
+        backgroundColor:"#ffffff"
 
-            <style>
+    }).then(canvas => {
 
-                body{
+        const image =
+            canvas.toDataURL(
+                "image/png"
+            );
 
-                    font-family:Arial;
+        const win =
+            window.open(
+                "",
+                "_blank"
+            );
 
-                    text-align:center;
+        win.document.write(`
 
-                    padding:20px;
+            <html>
 
-                }
+            <head>
 
-                #qrcode{
+                <title>Print QR</title>
 
-                    display:flex;
+                <style>
 
-                    justify-content:center;
+                    @page{
 
-                    margin:20px 0;
+                        size:58mm auto;
 
-                }
+                        margin:0;
 
-            </style>
+                    }
 
-        </head>
+                    body{
 
-        <body>
+                        margin:0;
 
-            ${content}
+                        padding:0;
 
-        </body>
+                        text-align:center;
 
-        </html>
+                        background:white;
 
-    `);
+                    }
 
-    win.document.close();
+                    img{
 
-    setTimeout(() => {
+                        width:58mm;
 
-        win.print();
+                        display:block;
 
-    },500);
+                    }
+
+                </style>
+
+            </head>
+
+            <body>
+
+                <img src="${image}">
+
+            </body>
+
+            </html>
+
+        `);
+
+        win.document.close();
+
+        setTimeout(() => {
+
+            win.focus();
+
+            win.print();
+
+        },1200);
+
+    });
 
 }
 
