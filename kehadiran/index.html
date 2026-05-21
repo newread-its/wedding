@@ -30,11 +30,9 @@
 
     <div class="container">
 
-        <!-- TOP AREA STICKY -->
+        <!-- TOP HOLD -->
 
         <div class="top-area">
-
-            <!-- HEADER -->
 
             <div class="header">
 
@@ -47,8 +45,6 @@
                 </p>
 
             </div>
-
-            <!-- SEARCH -->
 
             <div class="search-box">
 
@@ -63,89 +59,87 @@
 
         </div>
 
-        <!-- LOADING -->
+        <!-- SCROLL AREA -->
 
-        <div
-            id="loading"
-            class="hidden"
-        >
+        <div class="content-scroll">
 
-            <div class="spinner"></div>
+            <!-- LOADING -->
 
-            <span>
-                Memuat data tamu...
-            </span>
+            <div
+                id="loading"
+                class="hidden"
+            >
 
-        </div>
+                <div class="spinner"></div>
 
-        <!-- SEARCH RESULT -->
-
-        <div id="result"></div>
-
-        <!-- SELECTED CARD -->
-
-        <div class="card">
-
-            <div class="card-title">
-
-                Daftar Kehadiran
+                <span>
+                    Memuat data tamu...
+                </span>
 
             </div>
 
-            <div id="selected"></div>
+            <!-- RESULT -->
 
-            <button
-                id="saveBtn"
-                onclick="saveAttendance()"
-            >
-                SIMPAN KEHADIRAN
-            </button>
+            <div id="result"></div>
 
-        </div>
+            <!-- CARD -->
 
-        <!-- SUCCESS -->
+            <div class="card">
 
-        <div id="successCard">
+                <div class="card-title">
 
-            <div id="qrCapture">
+                    Daftar Kehadiran
 
-                <div class="success-icon">
-                    ✓
                 </div>
 
-                <h2>
-                    Berhasil Disimpan
-                </h2>
+                <div id="selected"></div>
 
-                <!-- QR -->
-
-                <div id="qrcode"></div>
-
-                <!-- ID -->
-
-                <div id="regId"></div>
-
-                <!-- MEMBER -->
-
-                <div id="memberList"></div>
+                <button
+                    id="saveBtn"
+                    onclick="saveAttendance()"
+                >
+                    SIMPAN KEHADIRAN
+                </button>
 
             </div>
 
-            <!-- ACTION -->
+            <!-- SUCCESS -->
 
-            <div class="qr-actions">
+            <div id="successCard">
 
-                <button onclick="downloadQR()">
-                    SIMPAN
-                </button>
+                <div id="qrCapture">
 
-                <button onclick="printQR()">
-                    PRINT
-                </button>
+                    <div class="print-header">
 
-                <button onclick="closeQR()">
-                    CLOSE
-                </button>
+                        <h2>
+                            DATA CHECK-IN
+                        </h2>
+
+                        <div id="regId"></div>
+
+                    </div>
+
+                    <div id="qrcode"></div>
+
+                    <div id="memberList"></div>
+
+                </div>
+
+                <div class="qr-actions">
+
+                    <button onclick="downloadQR()">
+                        SIMPAN
+                    </button>
+
+                    <button onclick="printQR()">
+                        PRINT
+                    </button>
+
+                    <button onclick="closeQR()">
+                        CLOSE
+                    </button>
+
+                </div>
 
             </div>
 
@@ -154,9 +148,11 @@
     </div>
 
     <!-- TOAST -->
+
     <div id="toast"></div>
 
     <!-- HTML2CANVAS -->
+
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
     <!-- APP -->
