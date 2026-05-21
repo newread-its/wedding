@@ -305,6 +305,10 @@ async function saveAttendance(){
 
         isSaving = true;
 
+        document
+        .getElementById("saveLoading")
+        .classList.remove("hidden");
+
         saveBtn.disabled = true;
 
         saveBtn.classList.add(
@@ -467,6 +471,10 @@ async function saveAttendance(){
 
         isSaving = false;
 
+        document
+        .getElementById("saveLoading")
+        .classList.add("hidden");
+        
         saveBtn.disabled = false;
 
         saveBtn.classList.remove(
