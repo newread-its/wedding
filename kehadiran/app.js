@@ -23,39 +23,18 @@ async function loadGuests(){
 
 }
 
-searchInput.addEventListener("input", ()=>{
+/* =========================
+   SEARCH
+========================= */
+
+searchInput.addEventListener("input", () => {
 
     const q =
-        searchInput.value.trim().toLowerCase();
+        searchInput.value
+            .trim()
+            .toLowerCase();
 
     renderSearch(q);
-
-});
-
-    filtered.forEach(item => {
-
-        const div = document.createElement("div");
-
-        div.className = "result-item";
-
-        div.innerHTML = `
-            <div class="item-text">
-                ${item.nama} - ${item.asal}
-            </div>
-        <button
-            class="add-btn"
-            onclick="event.stopPropagation(); addGuestById('${item.id_tamu}')"
-            >
-            ADD
-        </button>
-
-`;
-
-        div.onclick = () => addGuest(item);
-
-        resultDiv.appendChild(div);
-
-    });
 
 });
 
@@ -81,7 +60,8 @@ function renderSearch(q){
 
     filtered.forEach(item => {
 
-        const div = document.createElement("div");
+        const div =
+            document.createElement("div");
 
         div.className = "result-item";
 
@@ -106,41 +86,50 @@ function renderSearch(q){
 
 }
 
-function addGuest(item){
-
-    selectedGuests.push(item);
-
-    renderGuests();
-
-    searchInput.value = "";
-
-    resultDiv.innerHTML = "";
-
-}
+/* =========================
+   ADD GUEST
+========================= */
 
 function addGuestById(id_tamu){
 
     const item =
-        allGuests.find(g => g.id_tamu == id_tamu);
+        allGuests.find(
+            g => g.id_tamu == id_tamu
+        );
 
     if(!item) return;
 
     addGuest(item);
 
     const q =
-        searchInput.value.trim().toLowerCase();
+        searchInput.value
+            .trim()
+            .toLowerCase();
 
     renderSearch(q);
 
 }
 
+function addGuest(item){
+
+    selectedGuests.push(item);
+
+    renderGuests();
+
+}
+
+/* =========================
+   RENDER SELECTED
+========================= */
+
 function renderGuests(){
 
     selectedDiv.innerHTML = "";
 
-    selectedGuests.forEach((guest,index) => {
+    selectedGuests.forEach(guest => {
 
-        const div = document.createElement("div");
+        const div =
+            document.createElement("div");
 
         div.className = "member";
 
@@ -175,15 +164,31 @@ function renderGuests(){
 
 }
 
+/* =========================
+   REMOVE
+========================= */
+
 function removeGuest(id_tamu){
 
-    selectedGuests = selectedGuests.filter(
-        g => g.id_tamu != id_tamu
-    );
+    selectedGuests =
+        selectedGuests.filter(
+            g => g.id_tamu != id_tamu
+        );
 
     renderGuests();
 
+    const q =
+        searchInput.value
+            .trim()
+            .toLowerCase();
+
+    renderSearch(q);
+
 }
+
+/* =========================
+   SAVE
+========================= */
 
 async function saveAttendance(){
 
@@ -195,7 +200,8 @@ async function saveAttendance(){
 
     isSaving = true;
 
-    const btn = event.target;
+    const btn =
+        document.getElementById("saveBtn");
 
     btn.disabled = true;
 
@@ -206,11 +212,19 @@ async function saveAttendance(){
     try{
 
         const res = await fetch(API_URL,{
+
             method:"POST",
+
             body:JSON.stringify({
+
                 action:"save",
-                ids:selectedGuests.map(g => g.id_tamu)
+
+                ids:selectedGuests.map(
+                    g => g.id_tamu
+                )
+
             })
+
         });
 
         const data = await res.json();
@@ -222,6 +236,8 @@ async function saveAttendance(){
             return;
 
         }
+
+        /* TANDAI GAGAL */
 
         selectedGuests = selectedGuests.map(g => {
 
@@ -238,12 +254,16 @@ async function saveAttendance(){
 
         });
 
+        /* SISAKAN YANG GAGAL */
+
         selectedGuests =
             selectedGuests.filter(
                 g => data.failed_ids.includes(g.id_tamu)
             );
 
         renderGuests();
+
+        /* QR */
 
         if(data.success_ids.length > 0){
 
@@ -285,9 +305,12 @@ async function saveAttendance(){
             qrDiv.innerHTML = "";
 
             new QRCode(qrDiv,{
+
                 text:data.id_kelompok,
+
                 width:180,
                 height:180
+
             });
 
         }
@@ -307,6 +330,10 @@ async function saveAttendance(){
 
 }
 
+/* =========================
+   DOWNLOAD QR
+========================= */
+
 function downloadQR(){
 
     const card =
@@ -314,12 +341,15 @@ function downloadQR(){
 
     html2canvas(card).then(canvas => {
 
-        const link = document.createElement("a");
+        const link =
+            document.createElement("a");
 
         link.download =
-            document.getElementById("regId").innerText + ".png";
+            document.getElementById("regId")
+                .innerText + ".png";
 
-        link.href = canvas.toDataURL();
+        link.href =
+            canvas.toDataURL();
 
         link.click();
 
@@ -327,12 +357,18 @@ function downloadQR(){
 
 }
 
+/* =========================
+   PRINT
+========================= */
+
 function printQR(){
 
     const content =
-        document.getElementById("qrCapture").innerHTML;
+        document.getElementById("qrCapture")
+            .innerHTML;
 
-    const win = window.open("", "_blank");
+    const win =
+        window.open("", "_blank");
 
     win.document.write(`
 
@@ -430,6 +466,10 @@ function printQR(){
     },700);
 
 }
+
+/* =========================
+   CLOSE QR
+========================= */
 
 function closeQR(){
 
