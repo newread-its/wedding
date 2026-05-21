@@ -2,112 +2,164 @@
 <html lang="id">
 <head>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-  <title>Check-In Tamu</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-  <link rel="stylesheet" href="style.css">
+    <title>Check-In Tamu</title>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 </head>
 <body>
 
-<div class="bg-blur one"></div>
-<div class="bg-blur two"></div>
+    <!-- BACKGROUND -->
 
-<div class="container">
+    <div class="bg-blur one"></div>
+    <div class="bg-blur two"></div>
 
-    <div class="header">
+    <!-- CONTAINER -->
 
-        <h1>Check-In Tamu</h1>
+    <div class="container">
 
-        <p>
-            Cari nama tamu lalu simpan kehadiran
-        </p>
+        <!-- TOP AREA STICKY -->
 
-    </div>
+        <div class="top-area">
 
-    <div class="search-box">
+            <!-- HEADER -->
 
-        <input
-            type="text"
-            id="search"
-            placeholder="Cari nama tamu..."
-        >
+            <div class="header">
 
-    </div>
+                <h1>
+                    Check-In Tamu
+                </h1>
 
-    <div id="loading" class="hidden">
+                <p>
+                    Cari nama tamu lalu simpan kehadiran
+                </p>
 
-        <div class="spinner"></div>
-
-        <span>Memuat data tamu...</span>
-
-    </div>
-
-    <div id="result"></div>
-
-    <div class="card">
-
-        <div class="card-title">
-
-            Daftar Kehadiran
-
-        </div>
-
-        <div id="selected"></div>
-
-        <button
-            id="saveBtn"
-            onclick="saveAttendance()"
-        >
-            SIMPAN KEHADIRAN
-        </button>
-
-    </div>
-
-    <div id="successCard">
-
-        <div id="qrCapture">
-
-            <div class="success-icon">
-                ✓
             </div>
 
-            <h2>Berhasil Disimpan</h2>
+            <!-- SEARCH -->
 
-            <div id="qrcode"></div>
+            <div class="search-box">
 
-            <div id="regId"></div>
+                <input
+                    type="text"
+                    id="search"
+                    placeholder="Cari nama tamu..."
+                    autocomplete="off"
+                >
 
-            <div id="memberList"></div>
+            </div>
 
         </div>
 
-        <div class="qr-actions">
+        <!-- LOADING -->
 
-            <button onclick="downloadQR()">
-                SIMPAN
+        <div
+            id="loading"
+            class="hidden"
+        >
+
+            <div class="spinner"></div>
+
+            <span>
+                Memuat data tamu...
+            </span>
+
+        </div>
+
+        <!-- SEARCH RESULT -->
+
+        <div id="result"></div>
+
+        <!-- SELECTED CARD -->
+
+        <div class="card">
+
+            <div class="card-title">
+
+                Daftar Kehadiran
+
+            </div>
+
+            <div id="selected"></div>
+
+            <button
+                id="saveBtn"
+                onclick="saveAttendance()"
+            >
+                SIMPAN KEHADIRAN
             </button>
 
-            <button onclick="printQR()">
-                PRINT
-            </button>
+        </div>
 
-            <button onclick="closeQR()">
-                CLOSE
-            </button>
+        <!-- SUCCESS -->
+
+        <div id="successCard">
+
+            <div id="qrCapture">
+
+                <div class="success-icon">
+                    ✓
+                </div>
+
+                <h2>
+                    Berhasil Disimpan
+                </h2>
+
+                <!-- QR -->
+
+                <div id="qrcode"></div>
+
+                <!-- ID -->
+
+                <div id="regId"></div>
+
+                <!-- MEMBER -->
+
+                <div id="memberList"></div>
+
+            </div>
+
+            <!-- ACTION -->
+
+            <div class="qr-actions">
+
+                <button onclick="downloadQR()">
+                    SIMPAN
+                </button>
+
+                <button onclick="printQR()">
+                    PRINT
+                </button>
+
+                <button onclick="closeQR()">
+                    CLOSE
+                </button>
+
+            </div>
 
         </div>
 
     </div>
 
-</div>
+    <!-- HTML2CANVAS -->
 
-<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-<script src="app.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+    <!-- APP -->
+
+    <script src="app.js"></script>
 
 </body>
 </html>
