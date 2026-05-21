@@ -7,6 +7,7 @@ const loading = document.getElementById("loading");
 
 let allGuests = [];
 let selectedGuests = [];
+let isSaving = false;
 
 loadGuests();
 
@@ -31,13 +32,17 @@ searchInput.addEventListener("input", ()=>{
     if(q.length < 1) return;
 
     const filtered = allGuests.filter(g => {
-    const cocokNama =
-        g.nama.toLowerCase().includes(q);
+
+        const cocokNama =
+            g.nama.toLowerCase().includes(q);
+
         const belumDipilih =
-        !selectedGuests.find(
-            s => s.id_tamu == g.id_tamu
-        );
-    return cocokNama && belumDipilih;
+            !selectedGuests.find(
+                s => s.id_tamu == g.id_tamu
+            );
+
+        return cocokNama && belumDipilih;
+
     });
 
     filtered.forEach(item => {
@@ -61,10 +66,15 @@ searchInput.addEventListener("input", ()=>{
 });
 
 function addGuest(item){
+
     selectedGuests.push(item);
+
     renderGuests();
+
     searchInput.value = "";
+
     resultDiv.innerHTML = "";
+
 }
 
 function renderGuests(){
@@ -78,15 +88,29 @@ function renderGuests(){
         div.className = "member";
 
         div.innerHTML = `
-        <div class="item-text">
-            ${guest.nama} - ${guest.asal}
-        </div>
 
-        <button
-            class="remove-btn"
-            onclick="removeGuest('${guest.id_tamu}')"
-        ></button>
-`      ;
+            <div class="item-text">
+
+                ${guest.nama} - ${guest.asal}
+
+                ${
+                    guest.failed
+                    ? `
+                        <div class="failed-text">
+                            Sudah terdaftar
+                        </div>
+                    `
+                    : ""
+                }
+
+            </div>
+
+            <button
+                class="remove-btn"
+                onclick="removeGuest('${guest.id_tamu}')"
+            ></button>
+
+        `;
 
         selectedDiv.appendChild(div);
 
@@ -103,8 +127,6 @@ function removeGuest(id_tamu){
     renderGuests();
 
 }
-
-let isSaving = false;
 
 async function saveAttendance(){
 
@@ -137,8 +159,11 @@ async function saveAttendance(){
         const data = await res.json();
 
         if(!data.success){
+
             alert("Terjadi kesalahan");
+
             return;
+
         }
 
         selectedGuests = selectedGuests.map(g => {
@@ -165,13 +190,37 @@ async function saveAttendance(){
 
         if(data.success_ids.length > 0){
 
-            document
-                .getElementById("successCard")
-                .classList.remove("hidden");
+            const successCard =
+                document.getElementById("successCard");
+
+            successCard.style.display = "block";
 
             document
                 .getElementById("regId")
                 .innerText = data.id_kelompok;
+
+            const sukses =
+                allGuests.filter(g =>
+                    data.success_ids.includes(
+                        String(g.id_tamu)
+                    )
+                );
+
+            document
+                .getElementById("memberList")
+                .innerHTML = `
+
+                    <div class="total-member">
+                        Total ${sukses.length} Tamu
+                    </div>
+
+                    ${sukses.map(m=>`
+                        <p class="member-line">
+                            ${m.nama} - ${m.asal}
+                        </p>
+                    `).join("")}
+
+                `;
 
             const qrDiv =
                 document.getElementById("qrcode");
@@ -183,27 +232,6 @@ async function saveAttendance(){
                 width:180,
                 height:180
             });
-
-            const sukses =
-                allGuests.filter(g =>
-                    data.success_ids.includes(g.id_tamu)
-                );
-
-           document
-            .getElementById("memberList")
-            .innerHTML = `
-
-            <div class="total-member">
-            Total ${sukses.length} Tamu
-            </div>
-
-            ${sukses.map(m=>`
-            <p class="member-line">
-                ${m.nama} - ${m.asal}
-            </p>
-        `    ).join("")}
-
-    `       ;
 
         }
 
@@ -348,9 +376,12 @@ function printQR(){
 
 function closeQR(){
 
-    const card =
-        document.getElementById("successCard");
+    document
+        .getElementById("successCard")
+        .style.display = "none";
 
-    card.style.display = "none";
+    document
+        .getElementById("qrcode")
+        .innerHTML = "";
 
 }
