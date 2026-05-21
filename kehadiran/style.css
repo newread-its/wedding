@@ -6,9 +6,7 @@
 
 body{
 
-    height:100vh;
-
-    overflow:hidden;
+    min-height:100vh;
 
     padding:20px;
 
@@ -24,6 +22,8 @@ body{
             #1e1b4b,
             #312e81
         );
+
+    overflow-x:hidden;
 
     color:white;
 }
@@ -71,41 +71,33 @@ body{
 
     max-width:650px;
 
-    height:100%;
-
     margin:auto;
-
-    display:flex;
-
-    flex-direction:column;
 }
 
-/* TOP HOLD */
+/* STICKY TOP */
 
 .top-area{
-
-    flex-shrink:0;
 
     position:sticky;
 
     top:0;
 
-    z-index:50;
+    z-index:999;
 
     padding-top:10px;
 
-    padding-bottom:12px;
+    padding-bottom:14px;
+
+    backdrop-filter:blur(18px);
 
     background:
         linear-gradient(
             180deg,
-            rgba(15,23,42,.98),
+            rgba(15,23,42,.97),
             rgba(15,23,42,.92),
-            rgba(15,23,42,.7),
+            rgba(15,23,42,.72),
             transparent
         );
-
-    backdrop-filter:blur(18px);
 }
 
 /* HEADER */
@@ -178,15 +170,11 @@ body{
     color:rgba(255,255,255,.5);
 }
 
-/* CONTENT */
+/* RESULT */
 
-.content-scroll{
+#result{
 
-    flex:1;
-
-    overflow-y:auto;
-
-    padding-bottom:40px;
+    margin-bottom:20px;
 }
 
 /* CARD */
@@ -217,12 +205,7 @@ body{
     margin-bottom:16px;
 }
 
-/* RESULT */
-
-#result{
-
-    margin-bottom:20px;
-}
+/* ITEM */
 
 .result-item,
 .member{
@@ -509,9 +492,16 @@ body{
         );
 }
 
-/* LOADING */
+/* LOADING OVERLAY */
 
-#loading{
+#loading,
+#saveLoading{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:99999;
 
     display:flex;
 
@@ -521,27 +511,35 @@ body{
 
     flex-direction:column;
 
-    padding:20px;
+    gap:14px;
+
+    background:rgba(15,23,42,.6);
+
+    backdrop-filter:blur(12px);
+
+    color:white;
+
+    font-weight:600;
 }
 
 .hidden{
     display:none !important;
 }
 
+/* SPINNER */
+
 .spinner{
 
-    width:55px;
-    height:55px;
+    width:65px;
+    height:65px;
 
     border-radius:50%;
 
-    border:5px solid rgba(255,255,255,.1);
+    border:5px solid rgba(255,255,255,.15);
 
     border-top:5px solid white;
 
-    animation:spin 1s linear infinite;
-
-    margin-bottom:15px;
+    animation:spin .8s linear infinite;
 }
 
 @keyframes spin{
@@ -592,7 +590,7 @@ body{
 
     text-align:center;
 
-    z-index:99999;
+    z-index:999999;
 
     opacity:0;
 
