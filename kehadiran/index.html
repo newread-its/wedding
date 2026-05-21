@@ -30,7 +30,7 @@
 
     <div class="container">
 
-        <!-- TOP HOLD -->
+        <!-- STICKY TOP -->
 
         <div class="top-area">
 
@@ -59,91 +59,100 @@
 
         </div>
 
-        <!-- SCROLL AREA -->
+        <!-- LOADING -->
 
-        <div class="content-scroll">
+        <div
+            id="loading"
+            class="hidden"
+        >
 
-            <!-- LOADING -->
+            <div class="spinner"></div>
 
-            <div
-                id="loading"
-                class="hidden"
-            >
+            <span>
+                Memuat data tamu...
+            </span>
 
-                <div class="spinner"></div>
+        </div>
 
-                <span>
-                    Memuat data tamu...
-                </span>
+        <!-- RESULT -->
+
+        <div id="result"></div>
+
+        <!-- CARD -->
+
+        <div class="card">
+
+            <div class="card-title">
+
+                Daftar Kehadiran
 
             </div>
 
-            <!-- RESULT -->
+            <div id="selected"></div>
 
-            <div id="result"></div>
+            <button
+                id="saveBtn"
+                onclick="saveAttendance()"
+            >
+                SIMPAN KEHADIRAN
+            </button>
 
-            <!-- CARD -->
+        </div>
 
-            <div class="card">
+        <!-- SUCCESS -->
 
-                <div class="card-title">
+        <div id="successCard">
 
-                    Daftar Kehadiran
+            <div id="qrCapture">
+
+                <div class="print-header">
+
+                    <h2>
+                        DATA CHECK-IN
+                    </h2>
+
+                    <div id="regId"></div>
 
                 </div>
 
-                <div id="selected"></div>
+                <div id="qrcode"></div>
 
-                <button
-                    id="saveBtn"
-                    onclick="saveAttendance()"
-                >
-                    SIMPAN KEHADIRAN
+                <div id="memberList"></div>
+
+            </div>
+
+            <div class="qr-actions">
+
+                <button onclick="downloadQR()">
+                    SIMPAN
+                </button>
+
+                <button onclick="printQR()">
+                    PRINT
+                </button>
+
+                <button onclick="closeQR()">
+                    CLOSE
                 </button>
 
             </div>
 
-            <!-- SUCCESS -->
-
-            <div id="successCard">
-
-                <div id="qrCapture">
-
-                    <div class="print-header">
-
-                        <h2>
-                            DATA CHECK-IN
-                        </h2>
-
-                        <div id="regId"></div>
-
-                    </div>
-
-                    <div id="qrcode"></div>
-
-                    <div id="memberList"></div>
-
-                </div>
-
-                <div class="qr-actions">
-
-                    <button onclick="downloadQR()">
-                        SIMPAN
-                    </button>
-
-                    <button onclick="printQR()">
-                        PRINT
-                    </button>
-
-                    <button onclick="closeQR()">
-                        CLOSE
-                    </button>
-
-                </div>
-
-            </div>
-
         </div>
+
+    </div>
+
+    <!-- SAVE LOADING -->
+
+    <div
+        id="saveLoading"
+        class="hidden"
+    >
+
+        <div class="spinner"></div>
+
+        <span>
+            Menyimpan data...
+        </span>
 
     </div>
 
