@@ -47,8 +47,9 @@ async function loadGuests(){
 
         console.error(err);
 
-        alert(
-            "Gagal memuat data tamu"
+        showToast(
+        "Gagal memuat data tamu",
+        "error"
         );
 
     }
@@ -291,8 +292,9 @@ async function saveAttendance(){
 
     if(selectedGuests.length < 1){
 
-        alert(
-            "Pilih tamu terlebih dahulu"
+        showToast(
+            "Pilih tamu terlebih dahulu",
+            "warning"
         );
 
         return;
@@ -334,8 +336,9 @@ async function saveAttendance(){
 
         if(!data.success){
 
-            alert(
-                "Gagal menyimpan"
+            showToast(
+                "Gagal menyimpan data",
+                "error"
             );
 
             return;
@@ -380,6 +383,11 @@ async function saveAttendance(){
 
         if(data.success_ids.length > 0){
 
+            showToast(
+                "Kehadiran berhasil disimpan",
+                "success"
+            );
+            
             const sukses =
                 allGuests.filter(g =>
                     data.success_ids.includes(
@@ -449,8 +457,9 @@ async function saveAttendance(){
 
         console.error(err);
 
-        alert(
-            "Terjadi kesalahan server"
+        showToast(
+            "Terjadi kesalahan server",
+            "error"
         );
 
     }
@@ -621,3 +630,45 @@ style.innerHTML = `
 `;
 
 document.head.appendChild(style);
+
+
+/* =========================
+   TOAST
+========================= */
+
+function showToast(
+    message,
+    type = "success"
+){
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+    toast.className = "";
+
+    toast.classList.add(
+        `toast-${type}`
+    );
+
+    toast.classList.add(
+        "show"
+    );
+
+    toast.innerText = message;
+
+    clearTimeout(
+        toast.timer
+    );
+
+    toast.timer =
+        setTimeout(() => {
+
+            toast.classList.remove(
+                "show"
+            );
+
+        },2500);
+
+}
