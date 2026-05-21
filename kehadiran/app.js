@@ -1,25 +1,64 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbyhbYegFWLHDstH4vxPfFDrlRPYyzkwSTKSTHsGbx2xhcZRaW0WzxCz75OQ3f2ZWy08/exec";
+const API_URL =
+"https://script.google.com/macros/s/AKfycbyhbYegFWLHDstH4vxPfFDrlRPYyzkwSTKSTHsGbx2xhcZRaW0WzxCz75OQ3f2ZWy08/exec";
 
-const searchInput = document.getElementById("search");
-const resultDiv = document.getElementById("result");
-const selectedDiv = document.getElementById("selected");
-const loading = document.getElementById("loading");
+const searchInput =
+    document.getElementById("search");
+
+const resultDiv =
+    document.getElementById("result");
+
+const selectedDiv =
+    document.getElementById("selected");
+
+const loading =
+    document.getElementById("loading");
+
+const saveBtn =
+    document.getElementById("saveBtn");
 
 let allGuests = [];
+
 let selectedGuests = [];
+
 let isSaving = false;
+
+/* =========================
+   LOAD DATA
+========================= */
 
 loadGuests();
 
 async function loadGuests(){
 
-    loading.classList.remove("hidden");
+    try{
 
-    const res = await fetch(`${API_URL}?action=all`);
+        loading.classList.remove("hidden");
 
-    allGuests = await res.json();
+        const res =
+            await fetch(
+                `${API_URL}?action=all`
+            );
 
-    loading.classList.add("hidden");
+        allGuests =
+            await res.json();
+
+    }
+    catch(err){
+
+        console.error(err);
+
+        alert(
+            "Gagal memuat data tamu"
+        );
+
+    }
+    finally{
+
+        loading.classList.add(
+            "hidden"
+        );
+
+    }
 
 }
 
@@ -27,53 +66,88 @@ async function loadGuests(){
    SEARCH
 ========================= */
 
-searchInput.addEventListener("input", () => {
+searchInput.addEventListener(
+    "input",
+    () => {
 
-    const q =
-        searchInput.value
-            .trim()
-            .toLowerCase();
+        const q =
+            searchInput.value
+                .trim()
+                .toLowerCase();
 
-    renderSearch(q);
+        renderSearch(q);
 
-});
+    }
+);
 
 function renderSearch(q){
 
     resultDiv.innerHTML = "";
 
-    if(q.length < 1) return;
+    if(q.length < 1){
+        return;
+    }
 
-    const filtered = allGuests.filter(g => {
+    const filtered =
+        allGuests.filter(g => {
 
-        const cocokNama =
-            g.nama.toLowerCase().includes(q);
+            const cocok =
+                g.nama
+                    .toLowerCase()
+                    .includes(q);
 
-        const belumDipilih =
-            !selectedGuests.find(
-                s => s.id_tamu == g.id_tamu
-            );
+            const belumDipilih =
+                !selectedGuests.find(
+                    s =>
+                        s.id_tamu ==
+                        g.id_tamu
+                );
 
-        return cocokNama && belumDipilih;
+            return cocok && belumDipilih;
 
-    });
+        });
+
+    if(filtered.length < 1){
+
+        resultDiv.innerHTML = `
+
+            <div class="empty-state">
+                Tamu tidak ditemukan
+            </div>
+
+        `;
+
+        return;
+
+    }
 
     filtered.forEach(item => {
 
         const div =
             document.createElement("div");
 
-        div.className = "result-item";
+        div.className =
+            "result-item";
 
         div.innerHTML = `
 
             <div class="item-text">
-                ${item.nama} - ${item.asal}
+
+                <strong>
+                    ${item.nama}
+                </strong>
+
+                <br>
+
+                <span>
+                    ${item.asal}
+                </span>
+
             </div>
 
             <button
                 class="add-btn"
-                onclick="event.stopPropagation(); addGuestById('${item.id_tamu}')"
+                onclick="addGuestById('${item.id_tamu}')"
             >
                 ADD
             </button>
@@ -94,12 +168,15 @@ function addGuestById(id_tamu){
 
     const item =
         allGuests.find(
-            g => g.id_tamu == id_tamu
+            g =>
+                g.id_tamu == id_tamu
         );
 
     if(!item) return;
 
-    addGuest(item);
+    selectedGuests.push(item);
+
+    renderGuests();
 
     const q =
         searchInput.value
@@ -107,14 +184,6 @@ function addGuestById(id_tamu){
             .toLowerCase();
 
     renderSearch(q);
-
-}
-
-function addGuest(item){
-
-    selectedGuests.push(item);
-
-    renderGuests();
 
 }
 
@@ -126,27 +195,52 @@ function renderGuests(){
 
     selectedDiv.innerHTML = "";
 
+    if(selectedGuests.length < 1){
+
+        selectedDiv.innerHTML = `
+
+            <div class="empty-state">
+                Belum ada tamu dipilih
+            </div>
+
+        `;
+
+        return;
+
+    }
+
     selectedGuests.forEach(guest => {
 
         const div =
             document.createElement("div");
 
-        div.className = "member";
+        div.className =
+            "member";
 
         div.innerHTML = `
 
             <div class="item-text">
 
-                ${guest.nama} - ${guest.asal}
+                <strong>
+                    ${guest.nama}
+                </strong>
+
+                <br>
+
+                <span>
+                    ${guest.asal}
+                </span>
 
                 ${
                     guest.failed
-                    ? `
+                    ?
+                    `
                         <div class="failed-text">
                             Sudah terdaftar
                         </div>
                     `
-                    : ""
+                    :
+                    ""
                 }
 
             </div>
@@ -172,7 +266,8 @@ function removeGuest(id_tamu){
 
     selectedGuests =
         selectedGuests.filter(
-            g => g.id_tamu != id_tamu
+            g =>
+                g.id_tamu != id_tamu
         );
 
     renderGuests();
@@ -194,87 +289,96 @@ async function saveAttendance(){
 
     if(isSaving) return;
 
-    if(selectedGuests.length == 0){
+    if(selectedGuests.length < 1){
+
+        alert(
+            "Pilih tamu terlebih dahulu"
+        );
+
         return;
+
     }
-
-    isSaving = true;
-
-    const btn =
-        document.getElementById("saveBtn");
-
-    btn.disabled = true;
-
-    btn.classList.add("loading-btn");
-
-    btn.innerText = "MENYIMPAN...";
 
     try{
 
-        const res = await fetch(API_URL,{
+        isSaving = true;
 
-            method:"POST",
+        saveBtn.disabled = true;
 
-            body:JSON.stringify({
+        saveBtn.classList.add(
+            "loading-btn"
+        );
 
-                action:"save",
+        saveBtn.innerText =
+            "MENYIMPAN...";
 
-                ids:selectedGuests.map(
-                    g => g.id_tamu
-                )
+        const res =
+            await fetch(API_URL, {
 
-            })
+                method:"POST",
 
-        });
+                body:JSON.stringify({
 
-        const data = await res.json();
+                    action:"save",
+
+                    ids:selectedGuests.map(
+                        g => g.id_tamu
+                    )
+
+                })
+
+            });
+
+        const data =
+            await res.json();
 
         if(!data.success){
 
-            alert("Terjadi kesalahan");
+            alert(
+                "Gagal menyimpan"
+            );
 
             return;
 
         }
 
-        /* TANDAI GAGAL */
+        /* FAILED */
 
-        selectedGuests = selectedGuests.map(g => {
+        selectedGuests =
+            selectedGuests.map(g => {
 
-            if(data.failed_ids.includes(g.id_tamu)){
+                if(
+                    data.failed_ids.includes(
+                        String(g.id_tamu)
+                    )
+                ){
 
-                return {
-                    ...g,
-                    failed:true
-                };
+                    return {
+                        ...g,
+                        failed:true
+                    };
 
-            }
+                }
 
-            return g;
+                return g;
 
-        });
+            });
 
-        /* SISAKAN YANG GAGAL */
+        /* SISAKAN FAILED */
 
         selectedGuests =
             selectedGuests.filter(
-                g => data.failed_ids.includes(g.id_tamu)
+                g =>
+                    data.failed_ids.includes(
+                        String(g.id_tamu)
+                    )
             );
 
         renderGuests();
 
-        /* QR */
+        /* SUCCESS */
 
         if(data.success_ids.length > 0){
-
-            const successCard =
-                document.getElementById("successCard");
-
-            successCard.style.display = "block";
-
-            document
-                .getElementById("regId")
-                .innerText = data.id_kelompok;
 
             const sukses =
                 allGuests.filter(g =>
@@ -284,23 +388,47 @@ async function saveAttendance(){
                 );
 
             document
-                .getElementById("memberList")
+                .getElementById(
+                    "successCard"
+                )
+                .style.display =
+                    "block";
+
+            document
+                .getElementById(
+                    "regId"
+                )
+                .innerText =
+                    data.id_kelompok;
+
+            document
+                .getElementById(
+                    "memberList"
+                )
                 .innerHTML = `
 
                     <div class="total-member">
                         Total ${sukses.length} Tamu
                     </div>
 
-                    ${sukses.map(m=>`
-                        <p class="member-line">
-                            ${m.nama} - ${m.asal}
-                        </p>
+                    ${sukses.map(m => `
+
+                        <div class="member-line">
+
+                            ${m.nama}
+                            -
+                            ${m.asal}
+
+                        </div>
+
                     `).join("")}
 
                 `;
 
             const qrDiv =
-                document.getElementById("qrcode");
+                document.getElementById(
+                    "qrcode"
+                );
 
             qrDiv.innerHTML = "";
 
@@ -309,6 +437,7 @@ async function saveAttendance(){
                 text:data.id_kelompok,
 
                 width:180,
+
                 height:180
 
             });
@@ -316,15 +445,27 @@ async function saveAttendance(){
         }
 
     }
+    catch(err){
+
+        console.error(err);
+
+        alert(
+            "Terjadi kesalahan server"
+        );
+
+    }
     finally{
 
         isSaving = false;
 
-        btn.disabled = false;
+        saveBtn.disabled = false;
 
-        btn.classList.remove("loading-btn");
+        saveBtn.classList.remove(
+            "loading-btn"
+        );
 
-        btn.innerText = "SIMPAN KEHADIRAN";
+        saveBtn.innerText =
+            "SIMPAN KEHADIRAN";
 
     }
 
@@ -337,7 +478,9 @@ async function saveAttendance(){
 function downloadQR(){
 
     const card =
-        document.getElementById("qrCapture");
+        document.getElementById(
+            "qrCapture"
+        );
 
     html2canvas(card).then(canvas => {
 
@@ -345,7 +488,8 @@ function downloadQR(){
             document.createElement("a");
 
         link.download =
-            document.getElementById("regId")
+            document
+                .getElementById("regId")
                 .innerText + ".png";
 
         link.href =
@@ -358,17 +502,21 @@ function downloadQR(){
 }
 
 /* =========================
-   PRINT
+   PRINT QR
 ========================= */
 
 function printQR(){
 
     const content =
-        document.getElementById("qrCapture")
-            .innerHTML;
+        document.getElementById(
+            "qrCapture"
+        ).innerHTML;
 
     const win =
-        window.open("", "_blank");
+        window.open(
+            "",
+            "_blank"
+        );
 
     win.document.write(`
 
@@ -380,65 +528,24 @@ function printQR(){
 
             <style>
 
-                @page{
-                    size:58mm auto;
-                    margin:0;
-                }
-
                 body{
 
-                    width:58mm;
-
-                    margin:0 auto;
-
-                    padding:4mm;
-
-                    box-sizing:border-box;
-
-                    font-family:monospace;
+                    font-family:Arial;
 
                     text-align:center;
 
-                }
+                    padding:20px;
 
-                h2{
-                    font-size:18px;
-                    margin:0 0 8px 0;
                 }
 
                 #qrcode{
 
                     display:flex;
+
                     justify-content:center;
 
-                    margin-bottom:8px;
-                }
+                    margin:20px 0;
 
-                #qrcode img{
-                    width:170px !important;
-                    height:170px !important;
-                }
-
-                #regId{
-                    font-size:18px;
-                    font-weight:bold;
-                    margin:8px 0 12px 0;
-                }
-
-                .total-member{
-                    font-size:14px;
-                    font-weight:bold;
-                    margin-bottom:6px;
-                }
-
-                .member-line{
-                    font-size:13px;
-                    line-height:1.2;
-                    margin:2px 0;
-
-                    text-align:left;
-
-                    word-break:break-word;
                 }
 
             </style>
@@ -457,13 +564,11 @@ function printQR(){
 
     win.document.close();
 
-    win.focus();
-
-    setTimeout(()=>{
+    setTimeout(() => {
 
         win.print();
 
-    },700);
+    },500);
 
 }
 
@@ -474,11 +579,45 @@ function printQR(){
 function closeQR(){
 
     document
-        .getElementById("successCard")
+        .getElementById(
+            "successCard"
+        )
         .style.display = "none";
 
     document
-        .getElementById("qrcode")
+        .getElementById(
+            "qrcode"
+        )
         .innerHTML = "";
 
 }
+
+/* =========================
+   EMPTY STATE STYLE
+========================= */
+
+const style =
+document.createElement("style");
+
+style.innerHTML = `
+
+.empty-state{
+
+    text-align:center;
+
+    padding:20px;
+
+    opacity:.7;
+
+    background:
+        rgba(255,255,255,.05);
+
+    border-radius:16px;
+
+    margin-bottom:10px;
+
+}
+
+`;
+
+document.head.appendChild(style);
