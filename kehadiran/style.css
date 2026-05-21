@@ -461,6 +461,18 @@ body{
     font-size:14px;
 }
 
+.thanks-text{
+
+    margin-top:12px;
+
+    text-align:center;
+
+    color:black;
+
+    font-size:12px;
+
+}
+
 /* QR ACTION */
 
 .qr-actions{
