@@ -6,7 +6,9 @@
 
 body{
 
-    min-height:100vh;
+    height:100vh;
+
+    overflow:hidden;
 
     padding:20px;
 
@@ -22,8 +24,6 @@ body{
             #1e1b4b,
             #312e81
         );
-
-    overflow-x:hidden;
 
     color:white;
 }
@@ -71,7 +71,41 @@ body{
 
     max-width:650px;
 
+    height:100%;
+
     margin:auto;
+
+    display:flex;
+
+    flex-direction:column;
+}
+
+/* TOP HOLD */
+
+.top-area{
+
+    flex-shrink:0;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:50;
+
+    padding-top:10px;
+
+    padding-bottom:12px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(15,23,42,.98),
+            rgba(15,23,42,.92),
+            rgba(15,23,42,.7),
+            transparent
+        );
+
+    backdrop-filter:blur(18px);
 }
 
 /* HEADER */
@@ -80,7 +114,7 @@ body{
 
     text-align:center;
 
-    margin-bottom:24px;
+    margin-bottom:20px;
 }
 
 .header h1{
@@ -103,7 +137,7 @@ body{
 
 .search-box{
 
-    margin-bottom:20px;
+    margin-bottom:10px;
 }
 
 #search{
@@ -142,6 +176,17 @@ body{
 #search::placeholder{
 
     color:rgba(255,255,255,.5);
+}
+
+/* CONTENT */
+
+.content-scroll{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    padding-bottom:40px;
 }
 
 /* CARD */
@@ -355,37 +400,42 @@ body{
     margin-top:24px;
 
     display:none;
-
-    text-align:center;
 }
 
-.success-icon{
+/* QR */
 
-    width:70px;
-    height:70px;
+#qrCapture{
 
-    margin:auto;
+    background:white;
 
-    margin-bottom:16px;
+    color:black;
 
-    border-radius:50%;
+    padding:24px;
 
-    background:
-        linear-gradient(
-            135deg,
-            #22c55e,
-            #16a34a
-        );
+    border-radius:24px;
+}
 
-    display:flex;
+.print-header{
 
-    align-items:center;
+    text-align:center;
 
-    justify-content:center;
+    margin-bottom:18px;
+}
 
-    font-size:34px;
+.print-header h2{
 
-    font-weight:bold;
+    margin-bottom:10px;
+
+    color:black;
+}
+
+#regId{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:black;
 }
 
 #qrcode{
@@ -397,27 +447,31 @@ body{
     justify-content:center;
 }
 
-#regId{
+#memberList{
 
-    font-size:18px;
+    margin-top:20px;
 
-    font-weight:700;
-
-    margin-bottom:15px;
+    text-align:left;
 }
 
 .total-member{
 
-    margin-bottom:12px;
+    color:black;
 
-    font-weight:700;
+    margin-bottom:14px;
+
+    font-weight:bold;
 }
 
 .member-line{
 
-    margin:4px 0;
+    padding:8px 0;
 
-    opacity:.9;
+    border-bottom:1px dashed #ccc;
+
+    color:black;
+
+    font-size:14px;
 }
 
 /* QR ACTION */
@@ -508,24 +562,6 @@ body{
     color:#fca5a5;
 }
 
-/* MOBILE */
-
-@media(max-width:600px){
-
-    body{
-        padding:15px;
-    }
-
-    .header h1{
-        font-size:30px;
-    }
-
-    .card,
-    #successCard{
-        padding:18px;
-    }
-}
-
 /* TOAST */
 
 #toast{
@@ -568,8 +604,6 @@ body{
         0 10px 30px rgba(0,0,0,.25);
 }
 
-/* SHOW */
-
 #toast.show{
 
     opacity:1;
@@ -578,8 +612,6 @@ body{
         translateX(-50%)
         translateY(0);
 }
-
-/* TYPE */
 
 .toast-success{
 
@@ -609,4 +641,22 @@ body{
             #f59e0b,
             #d97706
         );
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    body{
+        padding:15px;
+    }
+
+    .header h1{
+        font-size:30px;
+    }
+
+    .card,
+    #successCard{
+        padding:18px;
+    }
 }
