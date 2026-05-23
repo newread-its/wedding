@@ -2091,6 +2091,76 @@ body.gift-lock .gift:not(.active){
     font-size:12px;
 }
 
+.guest{
+    margin-top: 28px;
 
+    font-size: 18px;
+
+    color: #f5e6c8;
+
+    line-height: 1.7;
+}
+
+.guest-highlight{
+    position: relative;
+
+    display: inline-block;
+
+    margin-top: 8px;
+
+    padding: 4px 14px;
+
+    border-radius: 999px;
+
+    font-weight: 600;
+
+    color: #fff4dc;
+
+    overflow: hidden;
+
+    background: rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(4px);
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    box-shadow:
+        0 0 10px rgba(255,215,120,0.15),
+        inset 0 0 10px rgba(255,255,255,0.05);
+}
+
+/* efek highlight jalan */
+.guest-highlight::before{
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.7),
+        transparent
+    );
+
+    transform: skewX(-25deg);
+
+    animation: shineGuest 3s infinite;
+}
+
+@keyframes shineGuest{
+    0%{
+        left: -120%;
+    }
+
+    100%{
+        left: 170%;
+    }
+}
 
 
