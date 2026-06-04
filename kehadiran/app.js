@@ -522,7 +522,42 @@ function downloadQR(){
    PRINT QR
 ========================= */
 
-function printQR(){
+async function printQR(){
+
+    const card =
+        document.getElementById(
+            "qrCapture"
+        );
+
+    const canvas =
+        await html2canvas(card,{
+
+            scale:3,
+
+            useCORS:true,
+
+            backgroundColor:"#ffffff"
+
+        });
+
+    const image =
+        canvas.toDataURL(
+            "image/png"
+        );
+
+    const rawbtUrl =
+        "rawbt:base64," +
+        image.replace(
+            /^data:image\/png;base64,/,
+            ""
+        );
+
+    location.href =
+        rawbtUrl;
+
+}
+
+function printQR1(){
 
     const card =
         document.getElementById(
