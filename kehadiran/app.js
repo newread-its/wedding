@@ -524,19 +524,86 @@ function downloadQR(){
 
 function printQR(){
 
-    const text =
-        "\x1B\x61\x01" +     // center
-        "\x1B\x45\x01" +     // bold on
-        "DATA CHECK-IN\n" +
-        "\x1B\x45\x00" +     // bold off
-        "\nID : TEST123\n\n" +
-        "TERIMA KASIH\n";
+    const regId =
+        document.getElementById("regId")
+        .innerText;
+
+    const members =
+        [...document.querySelectorAll(".member-line")]
+        .map(x => x.innerText);
+
+    let text = "";
+
+    // Reset
+    text += "\x1B\x40";
+
+    // ===== HEADER =====
+    text += "\x1B\x61\x01"; // center
+    text += "\x1B\x45\x01"; // bold
+    text += "\x1D\x21\x11"; // besar
+
+    text += "DATA CHECK-IN\n";
+
+    text += "\x1D\x21\x00";
+    text += "\x1B\x45\x00";
+
+    text += "------------------------------\n";
+
+    text += "\x1B\x45\x01";
+    text += "ID : " + regId + "\n";
+    text += "\x1B\x45\x00";
+
+    text += "------------------------------\n\n";
+
+    // ===== QR CODE =====
+
+    // ukuran QR (1-16)
+    text += "\x1D\x28\x6B\x03\x00\x31\x43\x08";
+
+    // error correction M
+    text += "\x1D\x28\x6B\x03\x00\x31\x45\x31";
+
+    const qr = regId;
+
+    const len = qr.length + 3;
+    const pL = len % 256;
+    const pH = Math.floor(len / 256);
+
+    // simpan data QR
+    text += "\x1D\x28\x6B";
+    text += String.fromCharCode(pL);
+    text += String.fromCharCode(pH);
+    text += "\x31\x50\x30";
+    text += qr;
+
+    // print QR
+    text += "\x1D\x28\x6B\x03\x00\x31\x51\x30";
+
+    text += "\n\n";
+
+    // ===== MEMBER =====
+    text += "\x1B\x61\x00";
+
+    members.forEach(m => {
+        text += m + "\n";
+    });
+
+    text += "\n";
+    text += "------------------------------\n";
+
+    text += "\x1B\x61\x01";
+
+    text += "Terima Kasih Atas\n";
+    text += "Kehadiran dan Do'a Restu\n";
+
+    text += "\n\n\n\n";
 
     location.href =
         "rawbt:" +
         encodeURIComponent(text);
 
 }
+
 function printQR2(){
 
     const regId =
