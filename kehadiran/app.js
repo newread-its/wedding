@@ -522,7 +522,7 @@ function downloadQR(){
    PRINT QR
 ========================= */
 
-async function printQR(){
+async function printQR1(){
 
     const card =
         document.getElementById(
@@ -557,7 +557,7 @@ async function printQR(){
 
 }
 
-function printQR1(){
+function printQR(){
 
     const card =
         document.getElementById(
