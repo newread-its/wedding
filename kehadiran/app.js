@@ -582,14 +582,14 @@ function printQR(){
     text += String.fromCharCode(pH);
     text += "\x31\x50\x30";
     text += qrData;
-
+    text += "\n";
     text += "\x1D\x28\x6B\x03\x00\x31\x51\x30";
     text += "------------------------------\n";
 
     // =========================
     // TOTAL TAMU (TAMBAH DI BAWAH QR)
     // =========================
-    text += "\n";
+    
     text += "\x1B\x61\x01";
     text += "\x1B\x45\x01";
 
