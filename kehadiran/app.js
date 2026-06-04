@@ -525,8 +525,10 @@ function downloadQR(){
 function printQR(){
 
     const regId =
-        document.getElementById("regId")
-        .innerText;
+        document.getElementById("regId").innerText;
+
+    const totalTamu =
+        document.querySelector(".total-member")?.innerText || "";
 
     const members =
         [...document.querySelectorAll(".member-line")]
@@ -534,70 +536,96 @@ function printQR(){
 
     let text = "";
 
-    // Reset
+    // =========================
+    // RESET
+    // =========================
     text += "\x1B\x40";
 
-    // ===== HEADER =====
-    text += "\x1B\x61\x01"; // center
-    text += "\x1B\x45\x01"; // bold
-    text += "\x1D\x21\x11"; // besar
+    // =========================
+    // HEADER
+    // =========================
+    text += "\x1B\x61\x01";
+    text += "\x1B\x45\x01";
+    text += "\x1D\x21\x11";
 
     text += "DATA CHECK-IN\n";
 
     text += "\x1D\x21\x00";
     text += "\x1B\x45\x00";
 
-    text += "------------------------------\n";
+    text += "------------------------------\n\n";
 
+    // =========================
+    // ID
+    // =========================
     text += "\x1B\x45\x01";
     text += "ID : " + regId + "\n";
     text += "\x1B\x45\x00";
 
-    text += "------------------------------\n\n";
+    text += "\n";
 
-    // ===== QR CODE =====
+    // =========================
+    // QR CODE
+    // =========================
 
-    // ukuran QR (1-16)
+    const qrData = regId;
+
     text += "\x1D\x28\x6B\x03\x00\x31\x43\x08";
-
-    // error correction M
     text += "\x1D\x28\x6B\x03\x00\x31\x45\x31";
 
-    const qr = regId;
-
-    const len = qr.length + 3;
+    const len = qrData.length + 3;
     const pL = len % 256;
     const pH = Math.floor(len / 256);
 
-    // simpan data QR
     text += "\x1D\x28\x6B";
     text += String.fromCharCode(pL);
     text += String.fromCharCode(pH);
     text += "\x31\x50\x30";
-    text += qr;
+    text += qrData;
 
-    // print QR
     text += "\x1D\x28\x6B\x03\x00\x31\x51\x30";
 
-    text += "\n\n";
+    text += "\n";
 
-    // ===== MEMBER =====
+    // =========================
+    // TOTAL TAMU (PINDAH KE BAWAH QR)
+    // =========================
+    text += "\x1B\x61\x01";   // center
+    text += "\x1B\x45\x01";   // bold
+
+    text += totalTamu + "\n";
+
+    text += "\x1B\x45\x00";
+
+    text += "------------------------------\n\n";
+
+    // =========================
+    // LIST TAMU
+    // =========================
     text += "\x1B\x61\x00";
 
     members.forEach(m => {
-        text += m + "\n";
+        text += "* " + m + "\n";
     });
 
     text += "\n";
-    text += "------------------------------\n";
+    text += "------------------------------\n\n";
 
+    // =========================
+    // FOOTER (KECIL)
+    // =========================
     text += "\x1B\x61\x01";
+    text += "\x1D\x21\x00";
 
     text += "Terima Kasih Atas\n";
     text += "Kehadiran dan Do'a Restu\n";
+    text += "Bapak / Ibu / Saudara / i\n";
 
     text += "\n\n\n\n";
 
+    // =========================
+    // PRINT
+    // =========================
     location.href =
         "rawbt:" +
         encodeURIComponent(text);
