@@ -559,10 +559,8 @@ function printQR(){
     // ID
     // =========================
     text += "\x1B\x45\x01";
-    text += "ID : " + regId + "\n";
+    text += "ID : " + regId + "\n\n";
     text += "\x1B\x45\x00";
-
-   // text += "\n\n\n\n";
 
     // =========================
     // QR CODE
