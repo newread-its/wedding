@@ -562,7 +562,7 @@ function printQR(){
     text += "ID : " + regId + "\n";
     text += "\x1B\x45\x00";
 
-    text += "\n";
+   // text += "\n";
 
     // =========================
     // QR CODE
@@ -582,8 +582,8 @@ function printQR(){
     text += String.fromCharCode(pH);
     text += "\x31\x50\x30";
     text += qrData;
-    text += "\n";
     text += "\x1D\x28\x6B\x03\x00\x31\x51\x30";
+    text += "\n";
     text += "------------------------------\n";
 
     // =========================
