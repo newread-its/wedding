@@ -524,6 +524,16 @@ function downloadQR(){
 
 function printQR(){
 
+    location.href =
+        "rawbt:" +
+        encodeURIComponent(
+            "{qr:TEST123}"
+        );
+
+}
+
+function printQR2(){
+
     const regId =
         document.getElementById("regId")
         .innerText;
