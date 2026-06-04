@@ -524,14 +524,19 @@ function downloadQR(){
 
 function printQR(){
 
+    const text =
+        "\x1B\x61\x01" +     // center
+        "\x1B\x45\x01" +     // bold on
+        "DATA CHECK-IN\n" +
+        "\x1B\x45\x00" +     // bold off
+        "\nID : TEST123\n\n" +
+        "TERIMA KASIH\n";
+
     location.href =
         "rawbt:" +
-        encodeURIComponent(
-            "{qr:TEST123}"
-        );
+        encodeURIComponent(text);
 
 }
-
 function printQR2(){
 
     const regId =
