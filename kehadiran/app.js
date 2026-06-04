@@ -522,42 +522,35 @@ function downloadQR(){
    PRINT QR
 ========================= */
 
-async function printQR1(){
+function printQR(){
 
-    const card =
-        document.getElementById(
-            "qrCapture"
-        );
+    const regId =
+        document.getElementById("regId")
+        .innerText;
 
-    const canvas =
-        await html2canvas(card,{
+    const members =
+        [...document.querySelectorAll(".member-line")]
+        .map(x => x.innerText)
+        .join("\n");
 
-            scale:3,
+    const text =
 
-            useCORS:true,
+`DATA CHECK-IN
 
-            backgroundColor:"#ffffff"
+ID: ${regId}
 
-        });
+${members}
 
-    const image =
-        canvas.toDataURL(
-            "image/png"
-        );
-
-    const rawbtUrl =
-        "rawbt:base64," +
-        image.replace(
-            /^data:image\/png;base64,/,
-            ""
-        );
+Terima kasih atas
+kehadiran dan doa restu`;
 
     location.href =
-        rawbtUrl;
+        "rawbt:" +
+        encodeURIComponent(text);
 
 }
 
-function printQR(){
+function printQR1(){
 
     const card =
         document.getElementById(
