@@ -585,22 +585,22 @@ function printQR(){
 
     text += "\x1D\x28\x6B\x03\x00\x31\x51\x30";
 
+    // =========================
+    // TOTAL TAMU (TAMBAH DI BAWAH QR)
+    // =========================
     text += "\n";
-
-    // =========================
-    // TOTAL TAMU (PINDAH KE BAWAH QR)
-    // =========================
-    text += "\x1B\x61\x01";   // center
-    text += "\x1B\x45\x01";   // bold
+    text += "\x1B\x61\x01";
+    text += "\x1B\x45\x01";
 
     text += totalTamu + "\n";
 
     text += "\x1B\x45\x00";
 
-    text += "------------------------------\n\n";
+    text += "\n";
+    text += "------------------------------\n";
 
     // =========================
-    // LIST TAMU
+    // LIST TAMU (BUANG SPASI BERLEBIH)
     // =========================
     text += "\x1B\x61\x00";
 
@@ -609,10 +609,10 @@ function printQR(){
     });
 
     text += "\n";
-    text += "------------------------------\n\n";
+    text += "------------------------------\n";
 
     // =========================
-    // FOOTER (KECIL)
+    // FOOTER (LEBIH RAPAT - HEMAT KERTAS)
     // =========================
     text += "\x1B\x61\x01";
     text += "\x1D\x21\x00";
@@ -621,11 +621,9 @@ function printQR(){
     text += "Kehadiran dan Do'a Restu\n";
     text += "Bapak / Ibu / Saudara / i\n";
 
-    text += "\n\n\n\n";
+    // cukup 2 line feed saja (hemat kertas)
+    text += "\n\n";
 
-    // =========================
-    // PRINT
-    // =========================
     location.href =
         "rawbt:" +
         encodeURIComponent(text);
