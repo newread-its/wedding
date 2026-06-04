@@ -553,7 +553,7 @@ function printQR(){
     text += "\x1D\x21\x00";
     text += "\x1B\x45\x00";
 
-    text += "------------------------------\n\n";
+    text += "------------------------------\n";
 
     // =========================
     // ID
@@ -584,6 +584,7 @@ function printQR(){
     text += qrData;
 
     text += "\x1D\x28\x6B\x03\x00\x31\x51\x30";
+    text += "------------------------------\n";
 
     // =========================
     // TOTAL TAMU (TAMBAH DI BAWAH QR)
@@ -597,7 +598,6 @@ function printQR(){
     text += "\x1B\x45\x00";
 
     text += "\n";
-    text += "------------------------------\n";
 
     // =========================
     // LIST TAMU (BUANG SPASI BERLEBIH)
@@ -608,7 +608,6 @@ function printQR(){
         text += "* " + m + "\n";
     });
 
-    text += "\n";
     text += "------------------------------\n";
 
     // =========================
@@ -621,8 +620,8 @@ function printQR(){
     text += "Kehadiran dan Do'a Restu\n";
     text += "Bapak / Ibu / Saudara / i\n";
 
-    // cukup 2 line feed saja (hemat kertas)
-    text += "\n\n";
+   
+    text += "\n";
 
     location.href =
         "rawbt:" +
