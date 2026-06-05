@@ -16,9 +16,20 @@
 
 <div class="container">
 
+    <div class="top-bar">
+
     <h2>Data Print</h2>
 
-    <input
+    <button
+        id="refreshBtn"
+        class="refresh-btn">
+
+        ⟳
+
+    </button>
+
+</div>
+
         type="text"
         id="searchInput"
         placeholder="Cari Nama Tamu">
@@ -29,24 +40,37 @@
             id="tabBelum"
             class="active">
 
-            Belum Print
+            <span class="badge waiting">
+                  BELUM PRINT
+            </span>
 
         </button>
 
         <button
             id="tabSudah">
 
-            Sudah Print
+            <span class="badge done">
+                SUDAH PRINT
+            </span>
 
         </button>
 
     </div>
 
+      <div id="loadingBox">
+          <div class="loader"></div>
+      </div>
+
     <div id="listData"></div>
+
+      <div class="skeleton"></div>
+      <div class="skeleton"></div>
+      <div class="skeleton"></div>
 
 </div>
 
 <script src="print.js"></script>
+
 
 </body>
 </html>
