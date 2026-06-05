@@ -516,7 +516,7 @@ async function printReg(
     text += "Kehadiran dan Do'a Restu\n";
     text += "Bapak / Ibu / Saudara / i\n";
 
-    text += "\n\n";
+    //text += "\n\n";
 
     location.href =
         "rawbt:" +
