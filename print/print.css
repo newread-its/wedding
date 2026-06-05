@@ -1,3 +1,9 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
 body{
 
     margin:0;
@@ -64,7 +70,11 @@ h2{
 
 #searchInput{
 
+    display:block;
+
     width:100%;
+
+    max-width:100%;
 
     padding:14px 16px;
 
@@ -74,7 +84,7 @@ h2{
 
     font-size:16px;
 
-    margin-bottom:15px;
+    margin:15px 0;
 
     background:white;
 
