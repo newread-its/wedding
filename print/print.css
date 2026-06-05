@@ -315,3 +315,38 @@ h2{
         shimmer 1.2s infinite;
 
 }
+
+.member{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:10px 0;
+
+    border-bottom:
+        1px dashed #ddd;
+
+}
+
+.member-name{
+
+    font-weight:600;
+
+    flex:1;
+
+}
+
+.member-asal{
+
+    font-size:13px;
+
+    color:#666;
+
+    white-space:nowrap;
+
+}
