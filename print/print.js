@@ -18,6 +18,9 @@ async function loadData(){
     allData =
         await res.json();
 
+    console.log("DATA:", allData);
+    console.log("ARRAY?", Array.isArray(allData));
+
     render();
 
 }
