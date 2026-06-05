@@ -113,35 +113,48 @@ function render(){
         wrap.innerHTML += `
 
             <div class="card">
-
+            
                 <div
                     onclick="
                         loadDetail(
                             '${item.id_kelompok}'
                         )
                     ">
-
+            
                     <div class="reg-id">
                         ${item.id_kelompok}
                     </div>
-
+            
                     <div>
                         ${item.nama}
                     </div>
-
+            
                     <div class="total">
                         Total ${item.total} Tamu
                     </div>
-
+            
                 </div>
-
+            
+                <button
+                    class="btn-print-top"
+                    onclick="
+                        event.stopPropagation();
+                        printReg(
+                            '${item.id_kelompok}'
+                        );
+                    ">
+            
+                    PRINT
+            
+                </button>
+            
                 <div
                     id="detail-${item.id_kelompok}">
                 </div>
-
+            
             </div>
-
-        `;
+            
+`            ;
 
     });
 
