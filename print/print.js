@@ -85,7 +85,7 @@ function render(){
                 item.printed == 1;
 
             const matchSearch =
-                item.nama
+                item.search
                 .toLowerCase()
                 .includes(keyword);
 
