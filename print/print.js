@@ -4,15 +4,27 @@ const API_URL =
 let allData = [];
 let currentTab = 0;
 let keyword = "";
+let detailCache = {};
+
+/* =========================
+   SEARCH
+========================= */
 
 document
 .getElementById("searchInput")
 .addEventListener("input", e => {
+
     keyword =
         e.target.value
         .toLowerCase();
+
     render();
+
 });
+
+/* =========================
+   TAB
+========================= */
 
 document
 .getElementById("tabBelum")
@@ -35,35 +47,136 @@ document
 document
 .getElementById("tabSudah")
 .onclick = () => {
+
     currentTab = 1;
+
     document
     .getElementById("tabSudah")
     .classList.add("active");
+
     document
     .getElementById("tabBelum")
-    .classList.remove("active");    
+    .classList.remove("active");
+
     render();
+
 };
 
-loadData();
+/* =========================
+   REFRESH
+========================= */
 
-async function loadData(){
+document
+.getElementById("refreshBtn")
+.onclick = () => {
 
-    const res =
-        await fetch(
-            API_URL +
-            "?action=registrasi"
-        );
+    detailCache = {};
+
+    localStorage.removeItem(
+        "registrasi_cache"
+    );
+
+    loadData();
+
+};
+
+/* =========================
+   LOAD CACHE
+========================= */
+
+const cache =
+    localStorage.getItem(
+        "registrasi_cache"
+    );
+
+if(cache){
 
     allData =
-        await res.json();
-
-    console.log("DATA:", allData);
-    console.log("ARRAY?", Array.isArray(allData));
+        JSON.parse(cache);
 
     render();
 
 }
+
+loadData();
+
+/* =========================
+   LOAD DATA
+========================= */
+
+async function loadData(){
+
+    const btn =
+        document.getElementById(
+            "refreshBtn"
+        );
+
+    const loading =
+        document.getElementById(
+            "loadingBox"
+        );
+
+    const list =
+        document.getElementById(
+            "listData"
+        );
+
+    btn.classList.add(
+        "spinning"
+    );
+
+    loading.style.display =
+        "flex";
+
+    list.style.display =
+        "none";
+
+    try{
+
+        const res =
+            await fetch(
+                API_URL +
+                "?action=registrasi"
+            );
+
+        allData =
+            await res.json();
+
+        localStorage.setItem(
+
+            "registrasi_cache",
+
+            JSON.stringify(allData)
+
+        );
+
+        render();
+
+    }
+    catch(err){
+
+        console.error(err);
+
+    }
+    finally{
+
+        btn.classList.remove(
+            "spinning"
+        );
+
+        loading.style.display =
+            "none";
+
+        list.style.display =
+            "block";
+
+    }
+
+}
+
+/* =========================
+   RENDER
+========================= */
 
 function render(){
 
@@ -113,28 +226,28 @@ function render(){
         wrap.innerHTML += `
 
             <div class="card">
-            
+
                 <div
                     onclick="
                         loadDetail(
                             '${item.id_kelompok}'
                         )
                     ">
-            
+
                     <div class="reg-id">
                         ${item.id_kelompok}
                     </div>
-            
+
                     <div>
                         ${item.nama}
                     </div>
-            
+
                     <div class="total">
                         Total ${item.total} Tamu
                     </div>
-            
+
                 </div>
-            
+
                 <button
                     id="btn-${item.id_kelompok}"
                     class="btn-print-top"
@@ -144,67 +257,36 @@ function render(){
                             '${item.id_kelompok}'
                         );
                     ">
+
                     PRINT
+
                 </button>
-            
+
                 <div
                     id="detail-${item.id_kelompok}">
                 </div>
-            
+
             </div>
-            
-`            ;
+
+        `;
 
     });
 
 }
 
+/* =========================
+   RENDER DETAIL
+========================= */
 
-async function loadDetail(idKelompok){
+function renderDetail(
+    idKelompok,
+    data
+){
 
     const detailDiv =
         document.getElementById(
             "detail-" + idKelompok
         );
-
-    const btnTop =
-        document.getElementById(
-            "btn-" + idKelompok
-        );
-
-    // collapse
-    if(detailDiv.innerHTML.trim()){
-
-        detailDiv.innerHTML = "";
-
-        if(btnTop){
-            btnTop.style.display = "block";
-        }
-
-        return;
-
-    }
-
-    // expand
-    if(btnTop){
-        btnTop.style.display = "none";
-    }
-
-    const res =
-        await fetch(
-
-            API_URL +
-
-            "?action=detail&id_kelompok=" +
-
-            encodeURIComponent(
-                idKelompok
-            )
-
-        );
-
-    const data =
-        await res.json();
 
     detailDiv.innerHTML = `
 
@@ -243,7 +325,112 @@ async function loadDetail(idKelompok){
 
 }
 
-async function printReg(idKelompok){
+/* =========================
+   DETAIL
+========================= */
+
+async function loadDetail(
+    idKelompok
+){
+
+    const detailDiv =
+        document.getElementById(
+            "detail-" + idKelompok
+        );
+
+    const btnTop =
+        document.getElementById(
+            "btn-" + idKelompok
+        );
+
+    if(
+        detailDiv.innerHTML.trim()
+    ){
+
+        detailDiv.innerHTML = "";
+
+        if(btnTop){
+            btnTop.style.display =
+                "block";
+        }
+
+        return;
+
+    }
+
+    if(btnTop){
+        btnTop.style.display =
+            "none";
+    }
+
+    if(
+        detailCache[idKelompok]
+    ){
+
+        renderDetail(
+            idKelompok,
+            detailCache[idKelompok]
+        );
+
+        return;
+
+    }
+
+    detailDiv.innerHTML = `
+
+        <div class="detail">
+
+            <div class="skeleton"></div>
+            <div class="skeleton"></div>
+            <div class="skeleton"></div>
+
+        </div>
+
+    `;
+
+    try{
+
+        const res =
+            await fetch(
+
+                API_URL +
+
+                "?action=detail&id_kelompok=" +
+
+                encodeURIComponent(
+                    idKelompok
+                )
+
+            );
+
+        const data =
+            await res.json();
+
+        detailCache[
+            idKelompok
+        ] = data;
+
+        renderDetail(
+            idKelompok,
+            data
+        );
+
+    }
+    catch(err){
+
+        console.error(err);
+
+    }
+
+}
+
+/* =========================
+   PRINT
+========================= */
+
+async function printReg(
+    idKelompok
+){
 
     const res =
         await fetch(
@@ -263,13 +450,9 @@ async function printReg(idKelompok){
 
     let text = "";
 
-    // RESET
     text += "\x1B\x40";
-
-    // CENTER
     text += "\x1B\x61\x01";
 
-    // BOLD + BESAR
     text += "\x1B\x45\x01";
     text += "\x1D\x21\x11";
 
@@ -279,14 +462,12 @@ async function printReg(idKelompok){
 
     text += "------------------------------\n\n";
 
-    // ID
     text += "\x1B\x45\x01";
     text += "ID : " + idKelompok + "\n";
     text += "\x1B\x45\x00";
 
     text += "\n";
 
-    // QR
     const qrData = idKelompok;
 
     text += "\x1D\x28\x6B\x03\x00\x31\x43\x08";
@@ -306,7 +487,6 @@ async function printReg(idKelompok){
 
     text += "\n";
 
-    // TOTAL TAMU
     text += "\x1B\x45\x01";
     text += "Total " + members.length + " Tamu\n";
     text += "\x1B\x45\x00";
@@ -314,7 +494,6 @@ async function printReg(idKelompok){
     text += "\n";
     text += "------------------------------\n";
 
-    // LIST
     text += "\x1B\x61\x00";
 
     members.forEach(m => {
@@ -331,7 +510,6 @@ async function printReg(idKelompok){
     text += "\n";
     text += "------------------------------\n";
 
-    // FOOTER
     text += "\x1B\x61\x01";
 
     text += "Terima Kasih Atas\n";
@@ -340,12 +518,10 @@ async function printReg(idKelompok){
 
     text += "\n\n";
 
-    // PRINT RAWBT
     location.href =
         "rawbt:" +
         encodeURIComponent(text);
 
-    // UPDATE STATUS PRINT
     setTimeout(async ()=>{
 
         await fetch(API_URL,{
@@ -362,7 +538,32 @@ async function printReg(idKelompok){
 
         });
 
-        loadData();
+        allData =
+            allData.map(item => {
+
+                if(
+                    item.id_kelompok
+                    ==
+                    idKelompok
+                ){
+
+                    item.printed = 1;
+
+                }
+
+                return item;
+
+            });
+
+        localStorage.setItem(
+
+            "registrasi_cache",
+
+            JSON.stringify(allData)
+
+        );
+
+        render();
 
     },2000);
 
