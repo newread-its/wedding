@@ -136,6 +136,7 @@ function render(){
                 </div>
             
                 <button
+                    id="btn-${item.id_kelompok}"
                     class="btn-print-top"
                     onclick="
                         event.stopPropagation();
@@ -143,9 +144,7 @@ function render(){
                             '${item.id_kelompok}'
                         );
                     ">
-            
                     PRINT
-            
                 </button>
             
                 <div
@@ -161,24 +160,34 @@ function render(){
 }
 
 
-async function loadDetail(
-    idKelompok
-){
+async function loadDetail(idKelompok){
 
-    const div =
+    const detailDiv =
         document.getElementById(
-            "detail-" +
-            idKelompok
+            "detail-" + idKelompok
         );
 
-    if(
-        div.innerHTML.trim()
-    ){
+    const btnTop =
+        document.getElementById(
+            "btn-" + idKelompok
+        );
 
-        div.innerHTML = "";
+    // collapse
+    if(detailDiv.innerHTML.trim()){
+
+        detailDiv.innerHTML = "";
+
+        if(btnTop){
+            btnTop.style.display = "block";
+        }
 
         return;
 
+    }
+
+    // expand
+    if(btnTop){
+        btnTop.style.display = "none";
     }
 
     const res =
@@ -197,7 +206,7 @@ async function loadDetail(
     const data =
         await res.json();
 
-    div.innerHTML = `
+    detailDiv.innerHTML = `
 
         <div class="detail">
 
@@ -221,9 +230,7 @@ async function loadDetail(
                 class="btn-print"
                 onclick="
                     event.stopPropagation();
-                    printReg(
-                        '${idKelompok}'
-                    );
+                    printReg('${idKelompok}');
                 ">
 
                 PRINT
@@ -236,4 +243,127 @@ async function loadDetail(
 
 }
 
+async function printReg(idKelompok){
 
+    const res =
+        await fetch(
+
+            API_URL +
+
+            "?action=detail&id_kelompok=" +
+
+            encodeURIComponent(
+                idKelompok
+            )
+
+        );
+
+    const members =
+        await res.json();
+
+    let text = "";
+
+    // RESET
+    text += "\x1B\x40";
+
+    // CENTER
+    text += "\x1B\x61\x01";
+
+    // BOLD + BESAR
+    text += "\x1B\x45\x01";
+    text += "\x1D\x21\x11";
+
+    text += "DATA CHECK-IN\n";
+
+    text += "\x1D\x21\x00";
+
+    text += "------------------------------\n\n";
+
+    // ID
+    text += "\x1B\x45\x01";
+    text += "ID : " + idKelompok + "\n";
+    text += "\x1B\x45\x00";
+
+    text += "\n";
+
+    // QR
+    const qrData = idKelompok;
+
+    text += "\x1D\x28\x6B\x03\x00\x31\x43\x08";
+    text += "\x1D\x28\x6B\x03\x00\x31\x45\x31";
+
+    const len = qrData.length + 3;
+    const pL = len % 256;
+    const pH = Math.floor(len / 256);
+
+    text += "\x1D\x28\x6B";
+    text += String.fromCharCode(pL);
+    text += String.fromCharCode(pH);
+    text += "\x31\x50\x30";
+    text += qrData;
+
+    text += "\x1D\x28\x6B\x03\x00\x31\x51\x30";
+
+    text += "\n";
+
+    // TOTAL TAMU
+    text += "\x1B\x45\x01";
+    text += "Total " + members.length + " Tamu\n";
+    text += "\x1B\x45\x00";
+
+    text += "\n";
+    text += "------------------------------\n";
+
+    // LIST
+    text += "\x1B\x61\x00";
+
+    members.forEach(m => {
+
+        text +=
+            "* " +
+            m.nama +
+            " - " +
+            m.asal +
+            "\n";
+
+    });
+
+    text += "\n";
+    text += "------------------------------\n";
+
+    // FOOTER
+    text += "\x1B\x61\x01";
+
+    text += "Terima Kasih Atas\n";
+    text += "Kehadiran dan Do'a Restu\n";
+    text += "Bapak / Ibu / Saudara / i\n";
+
+    text += "\n\n";
+
+    // PRINT RAWBT
+    location.href =
+        "rawbt:" +
+        encodeURIComponent(text);
+
+    // UPDATE STATUS PRINT
+    setTimeout(async ()=>{
+
+        await fetch(API_URL,{
+
+            method:"POST",
+
+            body:JSON.stringify({
+
+                action:"printed",
+
+                id_kelompok:idKelompok
+
+            })
+
+        });
+
+        loadData();
+
+    },2000);
+
+}
