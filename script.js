@@ -38,6 +38,7 @@ if (nama) {
 // =========================
 const target =
 new Date("2026-06-12T07:30:00+07:00").getTime();
+console.log(new Date(target));
 
 setInterval(() => {
 
