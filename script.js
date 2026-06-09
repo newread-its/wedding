@@ -37,7 +37,7 @@ if (nama) {
 // COUNTDOWN
 // =========================
 const target =
-    new Date("Jun 13, 2026 12:30:00").getTime();
+    new Date("Jun 12, 2026 07:30:00").getTime();
 
 setInterval(() => {
 
