@@ -185,6 +185,8 @@ async function loadWishes(){
 
         });
 
+        wishList.scrollTop = 0;
+        
     }
 
     catch(err){
