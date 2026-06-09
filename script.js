@@ -524,7 +524,7 @@ setInterval(createLove, 250);
 
 });
 
-const targetDate = new Date("June 13, 2026 12:30:00").getTime();
+const targetDate = new Date("June 12, 2026 07:30:00").getTime();
 
 const daysEl = document.getElementById("days");
 const hoursEl = document.getElementById("hours");
