@@ -1755,22 +1755,35 @@ body.gift-lock .gift:not(.active){
 
     gap:12px;
 
-    max-height:430px;
+    max-height:500px;
 
     overflow-y:auto;
 
-    padding-right:4px;
+    padding-right:6px;
+
+    scroll-behavior:smooth;
 }
 
 .wish-list::-webkit-scrollbar{
-    width:4px;
+    width:5px;
+}
+
+.wish-list::-webkit-scrollbar-track{
+    background:transparent;
 }
 
 .wish-list::-webkit-scrollbar-thumb{
 
-    background:#ffffff30;
+    background:
+    rgba(200,174,120,0.45);
 
     border-radius:999px;
+}
+
+.wish-list::-webkit-scrollbar-thumb:hover{
+
+    background:
+    rgba(200,174,120,0.7);
 }
 
 
