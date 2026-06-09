@@ -85,7 +85,7 @@ document.getElementById("refreshWish");
 // =========================
 
 const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbzlewmDi-ltlpFsQrlrLyrKp2vXw157Tw7PifdPBH4MnaPBNjZVGW19zEpTw8_7I2Kiww/exec";
+"https://script.google.com/macros/s/AKfycbz9_0o129hpp51yccGXCGgtn5T6OsvrB_EC6TW8PahmBp_iZHH7dof9cnKYaRsgDN6BNA/exec";
 
 
 // =========================
