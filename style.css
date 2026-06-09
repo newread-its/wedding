@@ -1755,7 +1755,7 @@ body.gift-lock .gift:not(.active){
 
     gap:12px;
 
-    max-height:550px;
+    max-height:none;
 
     overflow-y:auto;
 
