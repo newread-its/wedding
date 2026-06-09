@@ -177,9 +177,7 @@ async function loadWishes(){
 
                 </div>
 
-                <div class="wish-message" dir="auto">
-                    ${item.pesan || "-"}
-                </div
+                <div class="wish-message">${item.pesan || "-"}</div>
 
             `;
 
