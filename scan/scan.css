@@ -1,179 +1,580 @@
+/* =========================
+   RESET
+========================= */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
+html,
 body{
-
-    background:#f4f7fb;
-
+    width:100%;
+    height:100%;
     font-family:
+        Inter,
         Arial,
         sans-serif;
+}
+
+/* =========================
+   BODY
+========================= */
+
+body{
+
+    background:
+        linear-gradient(
+            135deg,
+            #991b1b,
+            #dc2626
+        );
+
+    min-height:100vh;
+
+    padding:20px;
+
+    overflow-x:hidden;
 
 }
 
-.container{
+/* =========================
+   APP
+========================= */
 
-    max-width:700px;
+.app{
+
+    max-width:520px;
 
     margin:auto;
 
-    padding:16px;
-
 }
+
+/* =========================
+   HEADER
+========================= */
 
 .header{
 
     text-align:center;
 
-    margin-bottom:20px;
+    color:white;
+
+    margin-bottom:24px;
 
 }
 
-.header h2{
+.header-icon{
 
-    color:#4f46e5;
+    width:80px;
+
+    height:80px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:38px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .15
+        );
+
+    backdrop-filter:
+        blur(10px);
+
+    margin-bottom:15px;
 
 }
 
-.card{
+.header h1{
+
+    font-size:30px;
+
+    font-weight:700;
+
+    margin-bottom:8px;
+
+}
+
+.header p{
+
+    opacity:.9;
+
+    font-size:14px;
+
+}
+
+/* =========================
+   CARD
+========================= */
+
+.main-card{
 
     background:white;
 
-    padding:16px;
+    border-radius:28px;
 
-    border-radius:18px;
+    padding:22px;
 
     box-shadow:
-        0 4px 18px
-        rgba(0,0,0,.08);
+        0 20px 50px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+
+}
+
+/* =========================
+   BUTTON SCAN
+========================= */
+
+.scan-btn{
+
+    width:100%;
+
+    border:none;
+
+    cursor:pointer;
+
+    border-radius:22px;
+
+    padding:25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dc2626,
+            #ef4444
+        );
+
+    color:white;
+
+    transition:.2s;
+
+}
+
+.scan-btn:active{
+
+    transform:scale(.98);
+
+}
+
+.scan-icon{
+
+    font-size:42px;
+
+    margin-bottom:10px;
+
+}
+
+/* =========================
+   CAMERA
+========================= */
+
+.camera-wrap{
+
+    display:none;
+
+    margin-top:20px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:24px;
 
 }
 
 #reader{
 
-    border-radius:12px;
-
     overflow:hidden;
+
+    border-radius:24px;
 
 }
 
-#regInput{
+/* =========================
+   SCAN OVERLAY
+========================= */
+
+.scan-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    pointer-events:none;
+
+}
+
+.scan-frame{
+
+    width:220px;
+
+    height:220px;
+
+    border:4px solid white;
+
+    border-radius:20px;
+
+    position:relative;
+
+    box-shadow:
+        0 0 0 9999px
+        rgba(
+            0,
+            0,
+            0,
+            .35
+        );
+
+}
+
+.scan-line{
+
+    position:absolute;
+
+    left:0;
+
+    right:0;
+
+    height:4px;
+
+    background:white;
+
+    box-shadow:
+        0 0 20px white;
+
+    animation:
+        scanLine 2s linear infinite;
+
+}
+
+@keyframes scanLine{
+
+    from{
+
+        top:15px;
+
+    }
+
+    to{
+
+        top:190px;
+
+    }
+
+}
+
+/* =========================
+   INPUT
+========================= */
+
+.input-area{
+
+    margin-top:20px;
+
+}
+
+.input-area label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#7f1d1d;
+
+    font-weight:600;
+
+    font-size:14px;
+
+}
+
+.input-area input{
+
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:16px;
+
+    background:#fef2f2;
+
+    padding:16px;
+
+    font-size:16px;
+
+    color:#7f1d1d;
+
+}
+
+/* =========================
+   BUTTON PROSES
+========================= */
+
+.process-btn{
 
     width:100%;
 
     margin-top:15px;
 
-    padding:14px;
-
     border:none;
 
-    border-radius:12px;
+    cursor:pointer;
 
-    background:#f5f5f5;
+    border-radius:16px;
 
-}
-
-#btnCari{
-
-    width:100%;
-
-    margin-top:12px;
-
-    border:none;
-
-    padding:14px;
-
-    border-radius:12px;
-
-    background:#4f46e5;
+    padding:16px;
 
     color:white;
 
     font-size:16px;
 
-}
+    font-weight:700;
 
-.result-card{
+    background:
+        linear-gradient(
+            135deg,
+            #991b1b,
+            #dc2626
+        );
 
-    margin-top:16px;
-
-    background:white;
-
-    border-radius:18px;
-
-    padding:16px;
-
-    box-shadow:
-        0 4px 18px
-        rgba(0,0,0,.08);
+    transition:.2s;
 
 }
 
-.member{
+.process-btn:active{
 
-    display:flex;
-
-    justify-content:space-between;
-
-    padding:10px 0;
-
-    border-bottom:
-        1px dashed #ddd;
+    transform:scale(.98);
 
 }
 
-.submit-btn{
+/* =========================
+   LOADING
+========================= */
 
-    width:100%;
-
-    margin-top:15px;
-
-    border:none;
-
-    padding:14px;
-
-    border-radius:12px;
-
-    background:#16a34a;
-
-    color:white;
-
-}
-
-#popup{
+.loading-overlay{
 
     position:fixed;
 
-    top:20px;
+    inset:0;
 
-    left:50%;
-
-    transform:
-        translateX(-50%);
-
-    padding:14px 20px;
-
-    border-radius:12px;
-
-    color:white;
+    background:
+        rgba(
+            0,
+            0,
+            0,
+            .45
+        );
 
     display:none;
 
-    z-index:999;
+    align-items:center;
+
+    justify-content:center;
+
+    z-index:9999;
+
+    backdrop-filter:
+        blur(4px);
 
 }
 
-.success{
+.loading-box{
 
-    background:#16a34a;
+    background:white;
+
+    border-radius:24px;
+
+    padding:30px;
+
+    text-align:center;
+
+    min-width:220px;
 
 }
 
-.error{
+.spinner{
 
-    background:#dc2626;
+    width:60px;
+
+    height:60px;
+
+    border:5px solid #fecaca;
+
+    border-top-color:#dc2626;
+
+    border-radius:50%;
+
+    margin:auto;
+
+    animation:
+        spin .8s linear infinite;
+
+}
+
+.loading-text{
+
+    margin-top:15px;
+
+    color:#991b1b;
+
+    font-weight:600;
+
+}
+
+@keyframes spin{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+/* =========================
+   POPUP
+========================= */
+
+.popup{
+
+    position:fixed;
+
+    left:50%;
+
+    top:50%;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    width:320px;
+
+    max-width:90%;
+
+    background:white;
+
+    border-radius:26px;
+
+    padding:25px;
+
+    text-align:center;
+
+    box-shadow:
+        0 20px 60px
+        rgba(
+            0,
+            0,
+            0,
+            .25
+        );
+
+    display:none;
+
+    z-index:10000;
+
+}
+
+.popup.success{
+
+    border-top:
+        8px solid #22c55e;
+
+}
+
+.popup.error{
+
+    border-top:
+        8px solid #dc2626;
+
+}
+
+.popup-icon{
+
+    font-size:52px;
+
+    margin-bottom:10px;
+
+}
+
+.popup-title{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+.popup-message{
+
+    line-height:1.7;
+
+    color:#444;
+
+    font-size:15px;
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    body{
+
+        padding:14px;
+
+    }
+
+    .main-card{
+
+        padding:18px;
+
+    }
+
+    .header h1{
+
+        font-size:26px;
+
+    }
+
+    .scan-frame{
+
+        width:200px;
+
+        height:200px;
+
+    }
 
 }
