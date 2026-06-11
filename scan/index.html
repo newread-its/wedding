@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 
 <head>
 
 <meta charset="UTF-8">
 
 <meta
-name="viewport"
-content="width=device-width,initial-scale=1">
+    name="viewport"
+    content="width=device-width,initial-scale=1">
 
 <title>
-Scan Souvenir
+    Scan Souvenir
 </title>
 
 <link
-rel="stylesheet"
-href="scan.css">
+    rel="stylesheet"
+    href="scan.css">
 
 <script src="https://unpkg.com/html5-qrcode"></script>
 
@@ -23,46 +23,156 @@ href="scan.css">
 
 <body>
 
-<div class="container">
+<div class="app">
+
+    <!-- HEADER -->
 
     <div class="header">
 
-        <h2>
+        <div class="header-icon">
+            🎁
+        </div>
+
+        <h1>
             Scan Souvenir
-        </h2>
+        </h1>
+
+        <p>
+            Scan QR Registrasi atau ketik manual
+        </p>
 
     </div>
 
-    <div class="card">
+    <!-- CARD -->
 
-        <div id="reader"></div>
+    <div class="main-card">
 
-        <input
-            id="regInput"
-            placeholder="Scan atau ketik ID REG">
+        <!-- TOMBOL SCAN -->
 
         <button
-            id="btnCari">
+            id="scanBtn"
+            class="scan-btn">
 
-            CARI
+            <div class="scan-icon">
+                📷
+            </div>
+
+            <div>
+                TAP UNTUK SCAN
+            </div>
+
+        </button>
+
+        <!-- CAMERA -->
+
+        <div
+            id="cameraWrap"
+            class="camera-wrap">
+
+            <div
+                id="reader">
+            </div>
+
+            <div class="scan-overlay">
+
+                <div class="scan-frame">
+
+                    <div class="scan-line">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- INPUT MANUAL -->
+
+        <div class="input-area">
+
+            <label>
+                ID REGISTRASI
+            </label>
+
+            <input
+
+                id="regInput"
+
+                type="text"
+
+                placeholder="REGxxxxxxxx"
+
+                autocomplete="off">
+
+        </div>
+
+        <!-- TOMBOL PROSES -->
+
+        <button
+            id="manualBtn"
+            class="process-btn">
+
+            PROSES
 
         </button>
 
     </div>
 
-    <div
-        id="result">
+</div>
+
+<!-- LOADING -->
+
+<div
+    id="loadingOverlay"
+    class="loading-overlay">
+
+    <div class="loading-box">
+
+        <div class="spinner">
+        </div>
+
+        <div class="loading-text">
+
+            Memproses Data...
+
+        </div>
 
     </div>
 
 </div>
 
+<!-- POPUP -->
+
 <div
-    id="popup">
+    id="popup"
+    class="popup">
+
+    <div
+        id="popupIcon"
+        class="popup-icon">
+
+        ✓
+
+    </div>
+
+    <div
+        id="popupTitle"
+        class="popup-title">
+
+        BERHASIL
+
+    </div>
+
+    <div
+        id="popupMessage"
+        class="popup-message">
+
+    </div>
 
 </div>
 
 <script src="scan.js"></script>
 
 </body>
+
 </html>
