@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1">
+
+<title>
+Scan Souvenir
+</title>
+
+<link
+rel="stylesheet"
+href="scan.css">
+
+<script src="https://unpkg.com/html5-qrcode"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <h2>
+            Scan Souvenir
+        </h2>
+
+    </div>
+
+    <div class="card">
+
+        <div id="reader"></div>
+
+        <input
+            id="regInput"
+            placeholder="Scan atau ketik ID REG">
+
+        <button
+            id="btnCari">
+
+            CARI
+
+        </button>
+
+    </div>
+
+    <div
+        id="result">
+
+    </div>
+
+</div>
+
+<div
+    id="popup">
+
+</div>
+
+<script src="scan.js"></script>
+
+</body>
+</html>
